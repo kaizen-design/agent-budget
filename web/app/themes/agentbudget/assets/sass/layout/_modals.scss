@@ -1,0 +1,43 @@
+.modal-header{
+  border-bottom: none;
+  .close {
+    font-size: 0;
+    outline:0;
+    background:url("../images/exit.svg") no-repeat center center;
+    background-size: 18px 18px;
+    opacity: 1;
+    padding: 2rem 2rem;
+  }
+}
+.modal-content{
+  border: none;
+}
+.modal-dialog {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+}
+
+#forgetPasswordFormModal,
+#signUpFormModal,
+#signInFormModal{
+  .modal-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width:100%;
+    z-index: 9;
+  }
+  .modal-body{
+    padding:2.8125rem 2.1875rem;
+  }
+  @include media-breakpoint-up(sm) {
+    .modal-dialog {
+      max-width: 470px;
+    }
+  }
+}
+

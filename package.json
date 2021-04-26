@@ -1,0 +1,33 @@
+{
+  "name": "AgentBudget",
+  "author": "Hazem",
+  "company": "Virtual Results",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@babel/register": "^7.6.2",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-node5": "^12.0.1",
+    "babel-preset-react": "^6.24.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "*",
+    "gulp-sass": "^3.2.1"
+  },
+  "dependencies": {
+    "babel-register": "^6.26.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.8",
+    "node-sass": "^4.12.0",
+    "npm": "^6.11.3",
+    "gulp-rename": "^1.4.0"
+  },
+  "prettier": {
+    "printWidth": 160,
+    "singleQuote": false
+  }
+}

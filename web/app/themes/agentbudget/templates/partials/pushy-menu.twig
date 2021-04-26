@@ -1,0 +1,26 @@
+<nav class="pushy pushy-right">
+  
+  <ul class="pushy-menu list-unstyled mb-0">
+    {% for item in primary_menu.get_items %}
+      <li class="{{ item.classes|join(' ') }} {{ item.get_children ? 'pushy-submenu' : 'pushy-link' }}">
+        <a class="slide-effect" href="{{ item.get_children ? '#' : item.get_link }}" target="{{ item.target }}">
+          <span data-hover="{{ item.title }}">{{ item.title }}</span>
+        </a>
+        {% if item.get_children %}
+          <ul class="list-unstyled">
+            {% for child in item.get_children %}
+              <li class="{{ child.classes|join(' ') }}">
+                <a class="pushy-link" href="{{ child.get_link }}" target="{{ child.target }}">{{ child.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+         {% endif %}
+      </li>
+    {% endfor %}    
+  </ul>
+
+  <a class="close-btn pushy-link" href="#">X</a>
+
+</nav>
+
+<div class="site-overlay"></div>

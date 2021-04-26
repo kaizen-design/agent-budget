@@ -1,0 +1,41 @@
+.accordion-list{
+  .card{
+    border:0;
+    .card-body{
+      color: #757575;
+      font-size:1.125rem;
+      padding:0;
+    }
+  }
+  [id^='accordion']{
+    margin-bottom: 3.75rem;
+  }
+  .card-header {
+    padding: 0;
+    border: none;
+    background: none;
+    .btn-link{
+      padding: 0;
+      font-size:1.125rem;
+      color: $gray-500;
+      text-decoration: none;
+      font-weight: 900;
+      border: 0;
+      text-align: left;
+      text-transform: none;
+      padding-bottom: 2rem;
+      padding-top: 2rem;
+      border-bottom: 1px solid #D8D8D8;
+      border-radius: 0;
+      display: block;
+      width: 100%;
+      &:not(.collapsed){
+        color: $primary;
+        border-bottom: none;
+      }
+      &:hover{
+        color: $primary;
+      }
+    }
+  }
+}

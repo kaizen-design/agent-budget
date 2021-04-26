@@ -1,0 +1,126 @@
+.hidden_label{
+	&>label{
+		display:none;
+	}
+}
+.gfield {
+  position: relative;
+  clear: none;
+  display: inline-block;
+  &.gfield_error {
+    .form-control {
+      border-color: $danger;
+      &::-webkit-input-placeholder {
+        color: $danger;
+      }
+      &:-moz-placeholder {
+        color: $danger;
+      }
+      &::-moz-placeholder {
+        color: $danger;
+      }
+      &:-ms-input-placeholder {
+        color: $danger;
+      }
+      &:focus {
+        &::-webkit-input-placeholder {
+          color: $input-placeholder-color;
+        }
+        &:-moz-placeholder {
+          color: $input-placeholder-color;
+        }
+        &::-moz-placeholder {
+          color: $input-placeholder-color;
+        }
+        &:-ms-input-placeholder {
+          color: $input-placeholder-color;
+        }
+      }
+      & + .instruction {
+        display: none;
+      }
+    }
+    .validation_message {
+      position: absolute;
+      bottom: 12px;
+      right: 15px;
+      padding: 0px 10px;
+      background-color: $danger;
+      border-color: $danger;
+      color: $white;
+      border-radius: $border-radius;
+    }
+  }
+}
+.validation_message {
+  @extend .alert;
+  @extend .alert-danger;
+  font-size: .875rem;
+  margin-bottom: 0;
+  &.instruction {
+    margin-top: 1rem;
+  }
+}
+
+.gform_fields {
+  @extend .list-unstyled;
+  @extend .row;
+  .form-control {
+    @extend .form-control;
+    margin-bottom: 1rem;
+    &::-webkit-input-placeholder {
+      color: $input-placeholder-color;
+    }
+    &:-moz-placeholder {
+      color: $input-placeholder-color;
+    }
+    &::-moz-placeholder {
+      color: $input-placeholder-color;
+    }
+    &:-ms-input-placeholder {
+      color: $input-placeholder-color;
+    }
+  }
+  textarea {
+    height: auto;
+  }
+}
+
+.gfield_radio {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li{
+    display:inline-block;
+    margin-right:1rem;
+    vertical-align: middle;
+    label{
+      padding-left:.5rem;
+      margin-bottom: 0;
+    }
+  }
+  input{
+    vertical-align:middle;
+  }
+}
+.field_sublabel_below{
+  .gfield_label {
+    font-weight: bold;
+  }
+}
+.validation_error {
+  @extend .alert;
+  @extend .alert-danger;
+  font-size: .875rem;
+  line-height: 1.48;
+  text-align: center;
+  padding: .75rem;
+  margin-bottom: 2rem;
+}
+.form-bottom-action{
+  .btn{
+    &.btn-primary{
+      font-weight: 800;
+    }
+  }
+}

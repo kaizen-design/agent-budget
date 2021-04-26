@@ -1,0 +1,9 @@
+wp-content
+vendor/
+composer.lock
+node-modules
+node_modules
+!assets/tmp/
+!/assets/js/vendor/
+errors.txt
+.log.txt

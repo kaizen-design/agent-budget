@@ -1,0 +1,4 @@
+<?php
+/**
+ * CPT Registration
+ */

@@ -1,0 +1,19 @@
+<nav class="navbar {{ no_bg ? '' : 'solid-bg' }}">
+    <div class="container">
+        {% if theme_options.site_logo %}
+            <a class="navbar-brand" href="{{ site.link }}">
+                <img src="{{ theme_options.site_logo }}" alt="{{ site.name }}" />
+            </a>
+        {% endif %}
+
+        <div class="ml-auto ml-auto d-flex align-items-center">
+
+
+
+            <button class="navbar-toggler pushy-link d-inline-block d-md-none" type="button" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,42 @@
+{
+  "name": "virtualresults/agentbudget",
+  "description": "Agent Media wordpress Theme",
+  "type": "wordpress-theme",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Hazem",
+      "email": "hazem@virtualresults.net"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "autoload" : {
+    "psr-4": {
+      "AgentBudget\\": "app/AgentBudget/"
+    },
+    "files" : [
+      "app/acf.php",
+      "app/enqueue.php",
+      "app/helpers.php",
+      "app/custom-post-types.php",
+      "app/routes.php",
+      "app/actions.php",
+      "app/filters.php",
+      "app/ajax.php",
+      "app/user.php"
+    ]
+  },
+  "extra": {
+    "installer-paths": {
+      "../../plugins/{$name}/": [
+        "wpackagist-plugin/*",
+        "type:wordpress-plugin"
+      ]
+    }
+  }
+}

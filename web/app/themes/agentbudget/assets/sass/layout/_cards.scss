@@ -1,0 +1,111 @@
+.main-card{
+  border-radius: 11px;
+  border: 1px solid #E1E1E1;
+  margin-bottom: 8.125rem;
+  padding-right: 6.25rem;
+  padding-left: 6.25rem;
+  padding-top: 2.25rem;
+  padding-bottom: 5.125rem;
+  @include media-breakpoint-down(sm) {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+.service-card{
+  background-color: #FFFFFF;
+  text-align: center;
+  border-radius: 11px;
+  padding: 2.5rem;
+  position: relative;
+  height: 100%;
+  border: 1px solid #E1E1E1;
+  @include media-breakpoint-down(xl) {
+    padding: 1rem;
+  }
+
+  &.popular{
+    border: 5px solid #E6EBF1;
+    .ribbon{
+      position: absolute;
+      display: inline-block;
+      left: 0;
+      top: 0;
+      color: #fff;
+      z-index: 2;
+      overflow: hidden;
+      width: 200px;
+      height: 140px;
+      border-radius: 6px;
+      &:before{
+        content: 'POPULAR';
+        font-size: .875rem;
+        font-weight: 900;
+        background-color: #0f7c65;
+        text-align: center;
+        transform: rotate(-45deg);
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 1rem;
+        position: absolute;
+        justify-content: center;
+        height: 210px;
+        top: -120px;
+        left: -120px;
+        width: 100%;
+      }
+    }
+  }
+  .card-icon{
+    height: 90px;
+    width: 90px;
+    line-height: 70px;
+    background-color: #FFFFFF;
+    margin-left: auto;
+    margin-right: auto;
+    img{
+      max-width: 90px;
+      height: auto;
+    }
+  }
+  .card-body{
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    z-index: 3;
+    .card-title{
+      font-size:1.5rem;
+      color:$gray-600;
+    }
+    .card-text{
+      color: #6C6D6F;
+      font-size: 1rem;
+      min-height: 105px;
+    }
+    .price-from{
+      color: #6C6D6F;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+    .service-price{
+      color: $primary;
+      margin-bottom: 2.25rem;
+      font-weight: 900;
+      @include media-breakpoint-up(sm) {
+        font-size: 3rem;
+      }
+    }
+    .btn{
+      &.btn-primary{
+        &.book-now{
+          width: 260px;
+          max-width: 100%;
+          font-size: 1rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+}

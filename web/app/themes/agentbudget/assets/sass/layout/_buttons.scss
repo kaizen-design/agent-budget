@@ -1,0 +1,9 @@
+.btn{
+  &.btn-secondary,
+  &.btn-primary{
+    font-size:1.125rem;
+    font-weight: 800;
+    color:$white;
+    text-transform: none;
+  }
+}
