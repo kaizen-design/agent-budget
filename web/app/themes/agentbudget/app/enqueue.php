@@ -22,6 +22,8 @@ function agentbudget_enqueue_scripts() {
   //wp_register_script( 'fancybox-js', 'https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js', array( 'jquery' ), '', true );
   wp_register_script( 'loading-overlay-js', '//cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.4/dist/loadingoverlay.min.js', [], '', true );
   wp_register_script( 'noty-js-cdn', '//cdn.jsdelivr.net/npm/noty@3.2.0-beta/lib/noty.min.js', [], '', true );
+  //wp_register_script( 'waypoints-js', 'https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js', [], '', true );
+  //wp_register_script( 'counterup-js', $assetsDir . '/js/vendor/jquery.counterup.js', ['jquery', 'waypoints-js'], '', true );
   
   wp_register_script( 'frontpage-js', $assetsDir . '/js/dist/front-page.min.js', array(
     'jquery',
@@ -36,6 +38,8 @@ function agentbudget_enqueue_scripts() {
    * Front Page Scripts
    */
   if ( is_front_page() ) {
+    //wp_enqueue_script( 'waypoints-js' );
+    //wp_enqueue_script( 'counterup-js' );
     wp_enqueue_script( 'frontpage-js' );
   }
   

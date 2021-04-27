@@ -27,12 +27,10 @@ body.home {
   //  WELCOME SECTION
   .welcome-section {
     .greeting-text {
-      strong {
-
-      }
       small {
         color: #6C6D6F;
         font-size: 1rem;
+        line-height: $line-height-base;
       }
     }
   }
@@ -45,6 +43,19 @@ body.home {
     padding: rem-calc(13);
     border-radius: $border-radius;
     border-left: 8px solid $primary;
+    transition: $transition-base;
+    &:hover {
+      box-shadow: $box-shadow-sm;
+    }
+    & > .row > div:nth-child(2) {
+      @include media-breakpoint-down(lg) {
+        .item-meta {
+          &:before {
+            content: none;
+          }
+        }
+      }
+    }
     .item-title {
       line-height: rem-calc(45);
     }
@@ -61,6 +72,9 @@ body.home {
         left: -12px;
         top: 0;
         bottom: 0;
+        @include media-breakpoint-down(sm) {
+          content: none;
+        }
       }
       .meta-value {
         font-size: rem-calc(36);

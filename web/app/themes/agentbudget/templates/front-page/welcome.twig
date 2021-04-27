@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <div class="welcome-section py-5">
+  <div class="welcome-section py-5 text-center text-sm-start">
     <div class="container">
       <h1 class="greeting-text h4 fw-400 mb-5">
         Welcome <strong class="fw-800">{{ user.first_name and user.last_name ? user.first_name ~ ' ' ~ user.last_name : user.display_name|title }}!</strong>
@@ -14,32 +14,32 @@
           {% for item in post.meta('questionnaire') %}
             <li class="mb-3">
               <div class="row align-items-center">
-                <div class="col-lg-6 px-3">
+                <div class="col-lg-6 px-sm-3 pb-sm-3 pb-lg-0">
                   <h4 class="item-title fw-800 mb-0">{{ item.title }}</h4>
                   {% if item.description %}
                     <span class="item-description">{{ item.description }}</span>
                   {% endif %}
                 </div>
                 {% if item.sections %}
-                  <div class="col-lg-2 h-100">
+                  <div class="col-sm-4 col-lg-2 h-100">
                     <div class="item-meta text-center">
-                      <span class="meta-value d-block">{{ item.sections }}</span>
+                      <span class="meta-value d-block countUp">{{ item.sections }}</span>
                       <span class="meta-label d-block">Sections</span>
                     </div>
                   </div>
                 {% endif %}
                 {% if item.questions %}
-                  <div class="col-lg-2 h-100">
+                  <div class="col-sm-4 col-lg-2 h-100">
                     <div class="item-meta text-center">
-                      <span class="meta-value d-block">{{ item.questions }}</span>
+                      <span class="meta-value d-block countUp">{{ item.questions }}</span>
                       <span class="meta-label d-block">Questions</span>
                     </div>
                   </div>
                 {% endif %}
                 {% if item.mins_to_complete %}
-                  <div class="col-lg-2 h-100">
+                  <div class="col-sm-4 col-lg-2 h-100">
                     <div class="item-meta text-center">
-                      <span class="meta-value d-block">{{ item.mins_to_complete }}</span>
+                      <span class="meta-value d-block countUp">{{ item.mins_to_complete }}</span>
                       <span class="meta-label d-block">Mins to complete</span>
                     </div>
                   </div>
