@@ -5,6 +5,10 @@
         <img src="{{ theme_options.site_logo }}" alt="{{ site.name }}">
       </a>
     {% endif %}
-    <a href="#" class="btn btn-outline-primary btn-lg">LOGIN</a>
+    {% if is_user_logged_in %}
+      <a href="{{ fn('wp_logout_url', site.link) }}" class="btn btn-outline-primary btn-lg">LOG OUT</a>
+    {% else %}
+      <a href="{{ fn('wp_login_url', site.link) }}" class="btn btn-outline-primary btn-lg">LOGIN</a>
+    {% endif %}
   </div>
 </nav>

@@ -40,6 +40,8 @@ class AgentBudget extends TimberSite {
     $context['primary_menu'] = new TimberMenu( 'primary' );
     //$context['footer_menu'] = new TimberMenu( 'footer' );
     
+    $context['is_user_logged_in'] = is_user_logged_in();
+    
     return $context;
   }
   
