@@ -1,0 +1,7 @@
+//  18 COLUMN GRID
+.grid-18-col {
+  .container {
+    max-width: 1770px;
+  }
+  @include make-grid-columns(18);
+}

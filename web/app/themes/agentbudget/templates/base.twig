@@ -1,20 +1,14 @@
   {% include 'partials/html-header.twig' %}
   </head>
   <body class="{{ body_class }}" data-template="base.twig">
-    {% block header %}
-      {% include 'partials/pushy-menu.twig' %}
-
-      {% if not is_front_page %}
-        {% include 'partials/navbar.twig' %}
-      {% endif %}
-
+    {% block navbar %}
+      {% include 'partials/navbar.twig' %}
     {% endblock %}
     <div id="container" class="page-wrap">
       {% block content %}
         Sorry, no content
       {% endblock %}
     </div>
-    {% include 'partials/footer.twig' %}
     {{ function('wp_footer') }}
   </body>
 </html>

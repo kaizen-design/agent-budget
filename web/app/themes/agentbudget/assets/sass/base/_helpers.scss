@@ -1,42 +1,61 @@
-.mw-170{
-  min-width:170px;
+.mw-170 {
+  min-width: 170px;
 }
-.mw-lg-170{
+
+.mw-220 {
+  min-width: 220px;
+}
+
+.mw-lg-170 {
   @include media-breakpoint-up(lg) {
     min-width: 170px;
   }
 }
-.mw-270{
-  min-width:270px;
+
+.mw-270 {
+  min-width: 270px;
 }
-.mw-206{
-  min-width:270px;
+
+.mw-206 {
+  min-width: 270px;
 }
-.mw-400{
+
+.mw-400 {
   min-width: 400px;
   @include media-breakpoint-down(md) {
     min-width: 100%;
   }
 }
-.fw-500{
+
+.fw-500 {
   font-weight: 500;
 }
-.fw-700{
+
+.fw-700 {
   font-weight: 700;
 }
-.fw-900{
+
+.fw-900 {
   font-weight: 900;
 }
 
-.fz-12{
+.fz-12 {
   font-size: .75rem;
 }
-.fz-14{
+
+.fz-14 {
   font-size: .875rem;
 }
+
 .bg-cover {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-color: transparent;
+}
+
+//  CALCULATE REM SIZE
+@function rem-calc($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
 }

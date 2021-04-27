@@ -12,8 +12,8 @@ function agentbudget_theme_setup()
 {
 	register_nav_menus( array(
 		'primary'  => __( 'Primary Navigation' ),
-		'footer'   => __( 'Footer Navigation' ),
-		'services' => __( 'Footer Services' )
+		//'footer'   => __( 'Footer Navigation' ),
+		//'services' => __( 'Footer Services' )
 	) );
 }
 

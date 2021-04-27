@@ -1,7 +1,7 @@
 @import "lib/bootstrap";
-@import "lib/pushy";
-@import "lib/slick";
-@import "lib/fancybox";
+//@import "lib/pushy";
+//@import "lib/slick";
+//@import "lib/fancybox";
 @import "lib/noty";
 
 @import "base/helpers";
@@ -17,5 +17,7 @@
 @import "layout/collapse";
 @import "layout/wp";
 @import "layout/footer";
+@import "layout/typography";
+@import "layout/grid-18-col";
 
 @import "pages/home";

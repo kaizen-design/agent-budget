@@ -1,148 +1,28 @@
-nav{
-    &.navbar{
-        padding: 1rem 0;
-        color:#fff;
-        .container-fluid{
-            max-width:1780px;
-        }
-        .nav{
-            .nav-link{
-                line-height: 57px;
-                padding: 0 1.25rem;
-                font-size: 1.25rem;
-                color: $gray-600;
-                &:hover{
-                    color: $primary;
-                }
-                &.btn-login{
-                    color: #1A4025;
-                    font-weight: bold;
-                }
-            }
-        }
-        .navbar-toggler{
-            cursor: pointer;
-            padding: 0;
-            margin-left: 1.625rem;
-            outline: 0;
-            @include media-breakpoint-down(sm) {
-                margin-left: 1.25rem;
-            }
-            .navbar-toggler-icon{
-                background: url("../images/menu.svg") no-repeat center center;
-                width: 18px;
-                height: 12px;
-            }
-        }
-        .navbar-brand{
-            display:inline-block;
-            img {
-                max-height: 70px;
-                width: auto;
-                @include media-breakpoint-down(sm) {
-                    max-height: 45px;
-                }
-            }
-        }
-        .nav-phone{
-            font-weight: bold;
-            letter-spacing: 2.01px;
-            color: #FFFFFF;
-            font-size: 1.3125rem;
-            padding-left: 2rem;
-            line-height: 40px;
-            background: url("../images/phone-volume-alt.png") no-repeat left center;
-            background-size: 23px 31px;
-            margin-right:1.875rem;
-            &:hover,
-            &:focus{
-                color: #fff;
-                text-decoration: none;
-            }
-        }
-        .nav-right-box {
-            border: 5px solid #E6EBF1;
-            border-radius: 25px;
-            background-color: #FFFFFF;
-            padding: 0 1.25rem;
-            font-size: .875rem;
-            font-weight: bold;
-            @include media-breakpoint-down(sm) {
-                padding: 0 1rem;
-            }
-            .logged-out-user > a,
-            > a{
-                text-decoration: none;
-                display: inline-block;
-                vertical-align: middle;
-                line-height: 45px;
-            }
-            .btn-separator{
-                color: $primary;
-            }
-            .logged-in-user{
-                span{
-                    position: relative;
-                    span{
-                        display: inline-block;
-                        line-height: 45px;
-                        color:$primary;
-                        font-size:.875rem;
-                        a{
-                            text-decoration: none;
-                        }
-                    }
-                }
-            }
-            .dropdown-menu{
-                line-height: 1.5;
-                .dropdown-item{
-                    color:$headings-color;
-                    font-weight: bold;
-                    &:hover{
-                        color: $white;
-                        background: $primary;
-                    }
-                }
-            }
-        }
-        &.solid-bg{
-            /*background: linear-gradient(180deg, #46CE90 0%, #5C979D 100%);*/
+nav {
+  &.navbar {
+    padding: rem-calc(23.25) 0;
+    color: $white;
 
-        }
-        .logged-in-user{
-            display: inline-block;
-            color: $gray-300;
-            line-height: 57px;
-            font-size: 1.25rem;
-            background: $primary;
-            border-radius: 4px;
-            min-width: 170px;
-            padding: 0 1rem;
-            letter-spacing: 0;
-            margin-left: 1rem;
-            @include media-breakpoint-down(sm) {
-                font-size: 1rem;
-                margin-left:0;
-            }
-            a{
-                text-decoration: none;
-                color: #fff;
-                font-weight: 500;
-            }
-            .dropdown-menu{
-                line-height: 1.5;
-                .dropdown-item{
-                    color:$headings-color;
-                    font-weight: bold;
-                    &:hover{
-                        color: $white;
-                        background: $primary;
-                    }
-                }
-            }
-        }
-
+    .container-fluid {
+      max-width: 1780px;
     }
+
+    .btn-outline-primary {
+      min-width: 133px;
+    }
+
+    .navbar-brand {
+      display: inline-block;
+
+      img {
+        max-height: 71px;
+        width: auto;
+        @include media-breakpoint-down(sm) {
+          max-height: 45px;
+        }
+      }
+    }
+
+  }
 }
 

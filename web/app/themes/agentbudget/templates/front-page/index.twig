@@ -1,7 +1,27 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	{#
-    {% include 'front-page/partials/hero-section.twig' %}
-    #}
+  <div class="landing-section grid-18-col h-100 py-8">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center">
+        <div class="col-17">
+          <div class="row">
+            <div class="col-lg-12 col-xxl-9">
+              {% if post.meta('title') %}
+                <h1 class="display-1 mb-4">{{ post.meta('title') }}</h1>
+              {% endif %}
+              {% if post.meta('text') %}
+                <div class="text mb-4">{{ post.meta('text') }}</div>
+              {% endif %}
+              {% if post.meta('button_label') and post.meta('button_link') %}
+                <a href="{{ post.meta('button_link') }}" class="btn btn-primary btn-lg mw-220">
+                  {{ post.meta('button_label') }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

@@ -1,0 +1,9 @@
+h1, .h1, h2, .h2 {
+	small {
+		font-size: rem-calc(12);
+		color: #6C6D6F;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		font-weight: 600;
+	}
+}

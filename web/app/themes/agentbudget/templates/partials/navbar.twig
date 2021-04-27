@@ -1,19 +1,10 @@
-<nav class="navbar {{ no_bg ? '' : 'solid-bg' }}">
-    <div class="container">
-        {% if theme_options.site_logo %}
-            <a class="navbar-brand" href="{{ site.link }}">
-                <img src="{{ theme_options.site_logo }}" alt="{{ site.name }}" />
-            </a>
-        {% endif %}
-
-        <div class="ml-auto ml-auto d-flex align-items-center">
-
-
-
-            <button class="navbar-toggler pushy-link d-inline-block d-md-none" type="button" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-        </div>
-    </div>
+<nav class="navbar grid-18-col bg-dark">
+  <div class="container px-2 px-xl-3">
+    {% if theme_options.site_logo %}
+      <a class="navbar-brand mr-auto" href="{{ site.link }}">
+        <img src="{{ theme_options.site_logo }}" alt="{{ site.name }}">
+      </a>
+    {% endif %}
+    <a href="#" class="btn btn-outline-primary btn-lg">LOGIN</a>
+  </div>
 </nav>
