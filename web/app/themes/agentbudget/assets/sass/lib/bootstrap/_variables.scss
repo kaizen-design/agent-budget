@@ -280,7 +280,7 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white !default;
+$body-bg:                   #F7F8FA !default;
 $body-color:                $gray-700 !default;
 $body-text-align:           null !default;
 
@@ -463,6 +463,15 @@ $aspect-ratios: (
   url('../fonts/mulish-v3-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
   url('../fonts/mulish-v3-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+/* mulish-800 - latin */
+@font-face {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 800;
+  src: local(''),
+  url('../fonts/mulish-v3-latin-800.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+  url('../fonts/mulish-v3-latin-800.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
 /* mulish-900 - latin */
 @font-face {
   font-family: 'Mulish';
@@ -511,7 +520,7 @@ $font-family-code:            var(--#{$variable-prefix}font-monospace) !default;
 // $font-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
 // $font-size-base effects the font size of the body text
 $font-size-root:              null !default;
-$font-size-base:              1.125rem !default; // Assumes the browser default, typically `16px`
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
 $font-size-sm:                $font-size-base * .875 !default;
 $font-size-lg:                $font-size-base * 1.25 !default;
 
@@ -570,8 +579,8 @@ $display-line-height: $headings-line-height !default;
 // scss-docs-end display-headings
 
 // scss-docs-start type-variables
-$lead-font-size:              $font-size-base * 1.25 !default;
-$lead-font-weight:            300 !default;
+$lead-font-size:              $font-size-base * 1.125 !default;
+$lead-font-weight:            400 !default;
 
 $small-font-size:             .875em !default;
 

@@ -1,19 +1,76 @@
 body.home {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  .page-wrap {
-    flex-grow: 1;
+
+  //  LANDING SECTION
+  &:not(.logged-in) {
     display: flex;
     flex-direction: column;
-  }
-  .landing-section {
-    .display-1 {
-      letter-spacing: -1.1px;
-      line-height: 1.025;
+    height: 100%;
+
+    .page-wrap {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
-    .text {
-      line-height: 1.66;
+
+    .landing-section {
+      .display-1 {
+        letter-spacing: -1.1px;
+        line-height: 1.025;
+      }
+
+      .text {
+        line-height: 1.66;
+      }
+    }
+  }
+
+  //  WELCOME SECTION
+  .welcome-section {
+    .greeting-text {
+      strong {
+
+      }
+      small {
+        color: #6C6D6F;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+//  QUESTIONNAIRE LIST
+.questionnaire-list {
+  & > li {
+    background: $white;
+    padding: rem-calc(13);
+    border-radius: $border-radius;
+    border-left: 8px solid $primary;
+    .item-title {
+      line-height: rem-calc(45);
+    }
+    .item-description {
+      line-height: rem-calc(20);
+    }
+    .item-meta {
+      position: relative;
+      padding: rem-calc(23.5) 0;
+      &:before {
+        content: '';
+        border-left: 1px solid #C5C7CA;
+        position: absolute;
+        left: -12px;
+        top: 0;
+        bottom: 0;
+      }
+      .meta-value {
+        font-size: rem-calc(36);
+        line-height: rem-calc(45);
+        color: $black;
+        margin-bottom: rem-calc(5);
+      }
+      .meta-label {
+        line-height: rem-calc(20);
+      }
     }
   }
 }

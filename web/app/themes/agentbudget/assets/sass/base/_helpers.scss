@@ -1,25 +1,26 @@
+//  CALCULATE REM SIZE
+@function rem-calc($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}
+
 .mw-170 {
   min-width: 170px;
 }
-
 .mw-220 {
   min-width: 220px;
 }
-
 .mw-lg-170 {
   @include media-breakpoint-up(lg) {
     min-width: 170px;
   }
 }
-
 .mw-270 {
   min-width: 270px;
 }
-
 .mw-206 {
   min-width: 270px;
 }
-
 .mw-400 {
   min-width: 400px;
   @include media-breakpoint-down(md) {
@@ -27,24 +28,27 @@
   }
 }
 
+//  FONT WEIGHT
+.fw-300 {
+  font-weight: 300;
+}
+.fw-400 {
+  font-weight: 400;
+}
 .fw-500 {
   font-weight: 500;
 }
-
+.fw-600 {
+  font-weight: 600;
+}
 .fw-700 {
   font-weight: 700;
 }
-
+.fw-800 {
+  font-weight: 800;
+}
 .fw-900 {
   font-weight: 900;
-}
-
-.fz-12 {
-  font-size: .75rem;
-}
-
-.fz-14 {
-  font-size: .875rem;
 }
 
 .bg-cover {
@@ -52,10 +56,4 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-color: transparent;
-}
-
-//  CALCULATE REM SIZE
-@function rem-calc($size) {
-  $remSize: $size / 16;
-  @return #{$remSize}rem;
 }

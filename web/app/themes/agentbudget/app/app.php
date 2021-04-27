@@ -19,12 +19,12 @@ class AgentBudget extends TimberSite {
     add_theme_support( 'menus' );
     add_filter( 'timber_context', array( $this, 'add_to_context' ) );
     add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
-    add_action( 'init', array( $this, 'register_sidebars' ) );
+    //add_action( 'init', array( $this, 'register_sidebars' ) );
     parent::__construct();
     self::$instance = $this;
   }
   
-  public function register_sidebars() {
+  /*public function register_sidebars() {
     register_sidebar( array(
       'id' => 'post-sidebar',
       'name' => 'Post Sidebar',
@@ -33,14 +33,21 @@ class AgentBudget extends TimberSite {
       'before_title' => '<h3 class="module-title">',
       'after_title' => '</h3>',
     ) );
-  }
+  }*/
   
   function add_to_context( $context ) {
     $context['theme_options'] = get_fields( 'options' );
-    $context['primary_menu'] = new TimberMenu( 'primary' );
-    //$context['footer_menu'] = new TimberMenu( 'footer' );
+    //$context['primary_menu'] = new TimberMenu( 'primary' );
     
-    $context['is_user_logged_in'] = is_user_logged_in();
+    if ( is_user_logged_in() ) {
+      $context['is_user_logged_in'] = TRUE;
+      $current_user = wp_get_current_user();
+      $context['user'] = [
+        'first_name' => $current_user->first_name,
+        'last_name' => $current_user->last_name,
+        'display_name' => $current_user->display_name
+      ];
+    }
     
     return $context;
   }

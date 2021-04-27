@@ -1,7 +1,10 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <div class="landing-section grid-18-col h-100 py-8">
+  <div class="landing-section grid-18-col h-100 py-8 bg-cover"
+       {% if post.meta('background_image') %}
+         style="background: url('{{ post.meta('background_image') }}') center center"
+       {% endif %}>
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center">
         <div class="col-17">
@@ -11,7 +14,7 @@
                 <h1 class="display-1 mb-4">{{ post.meta('title') }}</h1>
               {% endif %}
               {% if post.meta('text') %}
-                <div class="text mb-4">{{ post.meta('text') }}</div>
+                <div class="text lead mb-4">{{ post.meta('text') }}</div>
               {% endif %}
               {% if post.meta('button_label') and post.meta('button_link') %}
                 <a href="{{ post.meta('button_link') }}" class="btn btn-primary btn-lg mw-220">

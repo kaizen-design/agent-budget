@@ -1,16 +1,17 @@
-
 {% extends "base.twig" %}
 
 {% block content %}
-    {% include "partials/page-header.twig" with {'page_title' : '404'} %}
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="main-card card ">
-                    <h1>Oh, that’s unfortunate! No, you didn’t break the Internet ...</h1>
-                    <p>... you’ve just reached a page that no longer exists or has been moved or replaced with a better one.   We’ve done some housecleaning recently and this may be the result.  <br />How about we start over at the <a href="{{ site.url }}">home page</a>?</p>
-                </div>
-            </div>
+  {% include "partials/page-header.twig" with {'page_title' : '404'} %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="main-card card ">
+          <h1>Oh, that’s unfortunate! No, you didn’t break the Internet ...</h1>
+          <p>... you’ve just reached a page that no longer exists or has been moved or replaced with a better one. We’ve
+            done some housecleaning recently and this may be the result. <br/>How about we start over at the <a
+                href="{{ site.url }}">home page</a>?</p>
         </div>
+      </div>
     </div>
+  </div>
 {% endblock %}
