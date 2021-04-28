@@ -1,0 +1,74 @@
+body.page-template-questionnaire {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .page-wrap {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+//  QUESTIONNAIRE APP
+.questionnaire-app {
+
+}
+
+//  QUESTIONNAIRE NAV
+.questionnaire-nav {
+  background: $white;
+  border-right: 1px solid $border-color;
+  width: 345px;
+  .list-group {
+    .list-group-item {
+      color: $black;
+      font-weight: bold;
+      padding: rem-calc(14) rem-calc(30) rem-calc(14) rem-calc(60);
+      background: $white;
+      transition: $transition-base;
+
+      &:hover {
+        background: darken($white, 2.5%);
+      }
+
+      &.list-group-parent-item {
+        color: $black;
+        font-weight: 800;
+        background: #E8EAED;
+        padding-left: rem-calc(30);
+        &:hover {
+          background: darken(#E8EAED, 2.5%);
+        }
+      }
+
+      &.active {
+        color: $white;
+        background: $primary;
+        position: relative;
+        &:after {
+          content: '';
+          position: absolute;
+          right: -30px;
+          top: -1px;
+          bottom: -1px;
+          width: 30px;
+          border-top-right-radius: $border-radius;
+          border-bottom-right-radius: $border-radius;
+          background: $primary;
+        }
+        &:hover {
+          background: $primary;
+          cursor: default;
+        }
+        strong {
+          color: $white;
+        }
+      }
+
+      strong {
+        color: $primary;
+        margin-right: 5px;
+      }
+    }
+  }
+}
