@@ -126,11 +126,13 @@ body.page-template-questionnaire {
 
   .lead {
     font-size: rem-calc(18);
-    line-height: rem-calc(31);
+    line-height: 1.27;
     @include media-breakpoint-up(sm) {
       font-size: rem-calc(21);
-      &.size-26 {
+      line-height: rem-calc(31);
+      &.fs-26 {
         font-size: rem-calc(26);
+        line-height: rem-calc(33);
       }
     }
   }
@@ -186,4 +188,42 @@ body.page-template-questionnaire {
 
     }
   }
+
+  .btn-group {
+    input[type="radio"] {
+      &:checked {
+        & + label {
+          border-color: $primary;
+          color: $white;
+        }
+      }
+    }
+    label {
+      font-size: rem-calc(24);
+      font-weight: 400;
+      border: 1px solid #D8DBDE;
+      border-radius: $border-radius!important;
+      margin-left: 0;
+      padding: 21.5px 10px;
+      flex-basis: 0;
+      &:not(:first-child) {
+        margin-right: 10px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      &:hover {
+        border-color: $primary;
+        color: $white;
+      }
+    }
+  }
+
+  .button-group-labels {
+    small {
+      color: $black;
+      font-size: rem-calc(14);
+    }
+  }
+
 }
