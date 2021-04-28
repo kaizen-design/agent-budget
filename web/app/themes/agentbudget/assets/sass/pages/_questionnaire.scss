@@ -11,14 +11,19 @@ body.page-template-questionnaire {
 
 //  QUESTIONNAIRE APP
 .questionnaire-app {
-
+  display: flex;
+  & > main {
+    flex-grow: 1;
+    padding-right: 30px;
+    padding-left: 45px;
+  }
 }
 
 //  QUESTIONNAIRE NAV
 .questionnaire-nav {
   background: $white;
   border-right: 1px solid $border-color;
-  width: 345px;
+  min-width: 345px;
   .list-group {
     .list-group-item {
       color: $black;
@@ -70,5 +75,21 @@ body.page-template-questionnaire {
         margin-right: 5px;
       }
     }
+  }
+}
+
+//  QUESTIONNAIRE FORM
+.questionnaire-form {
+  .form-title {
+    font-size: rem-calc(12);
+    font-weight: 600;
+    letter-spacing: 3px;
+  }
+  .lead {
+    font-size: rem-calc(21);
+    line-height: rem-calc(31);
+  }
+  .press-enter-btn {
+    font-size: rem-calc(14);
   }
 }
