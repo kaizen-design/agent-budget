@@ -30,6 +30,11 @@
     min-width: 100%;
   }
 }
+.mw-xxl-780 {
+  @include media-breakpoint-up(xxl) {
+    max-width: 780px;
+  }
+}
 
 //  FONT WEIGHT
 .fw-300 {

@@ -15,7 +15,7 @@ body.page-template-questionnaire {
   & > main {
     padding-right: 10px;
     padding-left: 10px;
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
       padding-right: 30px;
       padding-left: 45px;
       flex-grow: 1;
@@ -29,7 +29,7 @@ body.page-template-questionnaire {
   @include media-breakpoint-down(sm) {
     border-bottom: 1px solid $border-color;
   }
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     border-right: 1px solid $border-color;
     min-width: 345px;
     height: 100%;
@@ -43,11 +43,11 @@ body.page-template-questionnaire {
       background: $white;
       transition: $transition-base;
 
-      @include media-breakpoint-up(md) {
+      @include media-breakpoint-up(lg) {
         padding-left: rem-calc(60)
       }
 
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(lg) {
         display: none;
       }
 
@@ -60,7 +60,7 @@ body.page-template-questionnaire {
         font-weight: 800;
         background: #E8EAED;
         padding-left: rem-calc(25);
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-up(lg) {
           padding-left: rem-calc(30)
         }
 
@@ -81,7 +81,7 @@ body.page-template-questionnaire {
         color: $white;
         background: $primary;
         position: relative;
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-up(lg) {
           &:after {
             content: '';
             position: absolute;
@@ -94,7 +94,7 @@ body.page-template-questionnaire {
             background: $primary;
           }
         }
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-down(lg) {
           display: block;
         }
 
@@ -199,18 +199,21 @@ body.page-template-questionnaire {
       }
     }
     label {
-      font-size: rem-calc(24);
       font-weight: 400;
       border: 1px solid #D8DBDE;
-      border-radius: $border-radius!important;
-      margin-left: 0;
-      padding: 21.5px 10px;
       flex-basis: 0;
-      &:not(:first-child) {
-        margin-right: 10px;
-      }
-      &:last-child {
-        margin-right: 0;
+      padding: 10px 0;
+      @include media-breakpoint-up(sm) {
+        border-radius: $border-radius!important;
+        margin-left: 0;
+        padding: 21.5px 10px;
+        font-size: rem-calc(24);
+        &:not(:first-child) {
+          margin-right: 10px;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
       }
       &:hover {
         border-color: $primary;
