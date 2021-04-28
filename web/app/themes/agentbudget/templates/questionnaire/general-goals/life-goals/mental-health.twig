@@ -1,0 +1,27 @@
+<form class="questionnaire-form h-100 py-5 d-none">
+  <div class="container-fluid h-100">
+    <div class="row h-100 align-items-center justify-content-center">
+      <div class="col-xl-11 col-xxl-8 mt-auto">
+        <small class="form-title d-block mb-3">GENERAL GOALS</small>
+        <p class="lead text-dark fs-26 mb-4">Using the scale below, describe how important <strong class="fw-800">“mental health”</strong> is to your overall life goals.</p>
+        <div class="btn-group d-flex mw-xxl-780" role="group" aria-label="Mental health button group">
+          {% for i in range(1, 10) %}
+            <input type="radio" class="btn-check" name="mental-health" id="mental-health-{{ loop.index }}" autocomplete="off">
+            <label class="btn btn-outline-primary" for="mental-health-{{ loop.index }}">{{ loop.index }}</label>
+          {% endfor %}
+        </div>
+        <div class="button-group-labels d-flex justify-content-between mw-xxl-780 mt-2">
+          <small>Not important</small>
+          <small>Very important</small>
+        </div>
+        <div class="mt-5">
+          <button type="submit" class="btn btn-primary btn-lg mw-90 me-2">OK</button>
+          <small class="press-enter-btn text-dark fw-500">Press <strong class="fw-800">Enter ↵</strong></small>
+        </div>
+      </div>
+      <div class="col-xl-11 col-xxl-8 mt-5 mt-lg-auto">
+        {% include 'questionnaire/partials/pagination-progress.twig' %}
+      </div>
+    </div>
+  </div>
+</form>
