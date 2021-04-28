@@ -2,6 +2,7 @@ body.page-template-questionnaire {
   display: flex;
   flex-direction: column;
   height: 100%;
+
   .page-wrap {
     flex-grow: 1;
     display: flex;
@@ -14,13 +15,10 @@ body.page-template-questionnaire {
   & > main {
     padding-right: 10px;
     padding-left: 10px;
-    @include media-breakpoint-up(sm) {
-      padding-right: 25px;
-      padding-left: 25px;
-    }
     @include media-breakpoint-up(md) {
       padding-right: 30px;
       padding-left: 45px;
+      flex-grow: 1;
     }
   }
 }
@@ -28,24 +26,29 @@ body.page-template-questionnaire {
 //  QUESTIONNAIRE NAV
 .questionnaire-nav {
   background: $white;
-  border-right: 1px solid $border-color;
   @include media-breakpoint-down(sm) {
     border-bottom: 1px solid $border-color;
   }
   @include media-breakpoint-up(md) {
+    border-right: 1px solid $border-color;
     min-width: 345px;
     height: 100%;
   }
+
   .list-group {
     .list-group-item {
       color: $black;
       font-weight: bold;
-      padding: rem-calc(14) rem-calc(15) rem-calc(14) rem-calc(40);
+      padding: rem-calc(14) rem-calc(15) rem-calc(14) rem-calc(25);
       background: $white;
       transition: $transition-base;
 
-      @include media-breakpoint-up(sm) {
+      @include media-breakpoint-up(md) {
         padding-left: rem-calc(60)
+      }
+
+      @include media-breakpoint-down(md) {
+        display: none;
       }
 
       &:hover {
@@ -56,12 +59,21 @@ body.page-template-questionnaire {
         color: $black;
         font-weight: 800;
         background: #E8EAED;
-        padding-left: rem-calc(20);
-        @include media-breakpoint-up(sm) {
+        padding-left: rem-calc(25);
+        @include media-breakpoint-up(md) {
           padding-left: rem-calc(30)
         }
+
         &:hover {
           background: darken(#E8EAED, 2.5%);
+        }
+
+        &:first-child {
+          &.active {
+            &:after {
+              top: 0;
+            }
+          }
         }
       }
 
@@ -82,11 +94,15 @@ body.page-template-questionnaire {
             background: $primary;
           }
         }
+        @include media-breakpoint-down(md) {
+          display: block;
+        }
 
         &:hover {
           background: $primary;
           cursor: default;
         }
+
         strong {
           color: $white;
         }
@@ -107,14 +123,67 @@ body.page-template-questionnaire {
     font-weight: 600;
     letter-spacing: 3px;
   }
+
   .lead {
     font-size: rem-calc(18);
     line-height: rem-calc(31);
     @include media-breakpoint-up(sm) {
       font-size: rem-calc(21);
+      &.size-26 {
+        font-size: rem-calc(26);
+      }
     }
   }
+
   .press-enter-btn {
     font-size: rem-calc(14);
+  }
+
+  .form-control {
+    &.form-control-lg {
+      border: none;
+      border-bottom: 2px solid #C5C7CA;
+      background: none;
+      font-size: rem-calc(21);
+      padding-left: 0;
+      padding-right: 0;
+
+      &:focus, &:active {
+        box-shadow: none;
+        border-bottom-color: $black;
+        transition: $transition-base;
+      }
+    }
+  }
+
+  .pagination {
+    .page-item {
+      &.disabled {
+
+      }
+      .page-link {
+        border: none;
+        background: none;
+        font-size: rem-calc(14);
+        &:hover {
+          background: none;
+        }
+        &:focus, &:active {
+          box-shadow: none;
+        }
+        i {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .progress-bar-label {
+    font-size: rem-calc(12);
+  }
+  .progress {
+    .progress-bar {
+
+    }
   }
 }

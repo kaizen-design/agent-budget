@@ -6,7 +6,7 @@ function agentbudget_enqueue_scripts() {
   $assetsDir = get_stylesheet_directory_uri() . '/assets';
   
   //  CSS
-  //wp_enqueue_style( 'font-awesome-css', '//use.fontawesome.com/releases/v5.1.0/css/all.css' );
+  wp_enqueue_style( 'font-awesome-css', '//use.fontawesome.com/releases/v5.1.0/css/all.css' );
   wp_enqueue_style( 'app-css', $assetsDir . '/css/app.css' );
   
   // Scripts register
