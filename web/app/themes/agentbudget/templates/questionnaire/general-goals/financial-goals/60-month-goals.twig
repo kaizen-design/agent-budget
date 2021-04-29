@@ -1,20 +1,21 @@
-<form class="questionnaire-form h-100 py-5 d-none">
+<form class="questionnaire-form h-100 py-5 d-none" data-id="{{ id }}" novalidate>
   <div class="container-fluid h-100">
     <div class="row h-100 align-items-center justify-content-center">
       <div class="col-xxl-11 col-xxx-8 mt-auto mb-lg-5 mb-xl-0">
         <small class="form-title d-block mb-3">GENERAL GOALS</small>
         <p class="lead text-dark fs-26 mb-4">What income level would you like to reach in the next 60 months?</p>
-        <div class="btn-group price-btn-group d-flex" role="group" aria-label="24 month financial goals button group">
-          <input type="radio" class="btn-check" name="financial-goal-24-months" id="financial-goal-24-months-1" autocomplete="off">
-          <label class="btn btn-outline-primary fs-18 fw-700" for="financial-goal-24-months-1">$100k - $150k</label>
-          <input type="radio" class="btn-check" name="financial-goal-24-months" id="financial-goal-24-months-2" autocomplete="off">
-          <label class="btn btn-outline-primary fs-18 fw-700" for="financial-goal-24-months-2">$150k - $250k</label>
-          <input type="radio" class="btn-check" name="financial-goal-24-months" id="financial-goal-24-months-3" autocomplete="off">
-          <label class="btn btn-outline-primary fs-18 fw-700" for="financial-goal-24-months-3">$250k - $400k</label>
-          <input type="radio" class="btn-check" name="financial-goal-24-months" id="financial-goal-24-months-4" autocomplete="off">
-          <label class="btn btn-outline-primary fs-18 fw-700" for="financial-goal-24-months-4">$400k - $600k</label>
-          <input type="radio" class="btn-check" name="financial-goal-24-months" id="financial-goal-24-months-5" autocomplete="off">
-          <label class="btn btn-outline-primary fs-18 fw-700" for="financial-goal-24-months-5">$600k +</label>
+        <div class="btn-group price-btn-group d-flex" role="group" aria-label="60 month financial goals button group">
+          {% set values = ['$100k - $150k', '$150k - $250k', '$250k - $400k', '$400k - $600k', '$600k +'] %}
+          {% for value in values %}
+            <input type="radio"
+                   class="btn-check"
+                   name="financial_goal_60_months"
+                   id="financial-goal-60-months-{{ loop.index }}"
+                   value="{{ value }}"
+                   required
+                   autocomplete="off">
+            <label class="btn btn-outline-primary fs-18 fw-700" for="financial-goal-60-months-{{ loop.index }}">{{ value }}</label>
+          {% endfor %}
         </div>
         <div class="mt-5">
           <button type="submit" class="btn btn-primary btn-lg mw-90 me-2">OK</button>
