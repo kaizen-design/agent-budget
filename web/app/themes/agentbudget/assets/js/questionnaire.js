@@ -2,7 +2,7 @@
 
 const STORAGE = window.localStorage;
 
-let activeForm;
+//let activeForm;
 
 $(document).ready(() => {
 
@@ -15,7 +15,7 @@ $(document).ready(() => {
     if ($form[0].checkValidity()) {
       $form.attr('data-is-completed', 'true');
       switchForms($form, $form.next());
-      updateProgressCounter();
+      updateProgressBar();
       /*const formData = new FormData($form[0]);
       for(let [name, value] of formData) {
         alert(`${name} = ${value}`);
@@ -40,18 +40,24 @@ function handlePagination() {
   })
 }
 
+function handleSidebarNav() {
+
+}
+
 function switchForms(current, next) {
-  showLoader();
-  current.addClass('d-none');
-  setTimeout(() => {
-    next.removeClass('d-none');
-    showLoader(true);
-  }, 1000);
+  if (current && next) {
+    showLoader();
+    current.addClass('d-none');
+    setTimeout(() => {
+      next.removeClass('d-none');
+      showLoader(true);
+    }, 1000);
+  }
   //activeForm = parseInt(next.data('id'));
   //handlePagination();
 }
 
-function updateProgressCounter() {
+function updateProgressBar() {
   const completedForms = $('.questionnaire-form[data-is-completed="true"]').length,
         formsTotal = $('.questionnaire-form').length,
         progress = Math.round(completedForms * 100 / formsTotal) + '%';

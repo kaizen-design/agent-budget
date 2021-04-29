@@ -4,19 +4,24 @@
   <div class="questionnaire-app d-lg-flex h-100">
     {% include 'questionnaire/partials/sidebar.twig' %}
     <main>
-      {% include 'questionnaire/general-goals/life-goals/intro.twig' with { id: 1 } %}
-      {% include 'questionnaire/general-goals/life-goals/success-definition.twig' with { id: 2 } %}
-      {% include 'questionnaire/general-goals/life-goals/spiritual-health.twig' with { id: 3 } %}
-      {% include 'questionnaire/general-goals/life-goals/relational-health.twig' with { id: 4 } %}
-      {% include 'questionnaire/general-goals/life-goals/physical-health.twig' with { id: 5 } %}
-      {% include 'questionnaire/general-goals/life-goals/emotional-health.twig' with { id: 6 } %}
-      {% include 'questionnaire/general-goals/life-goals/mental-health.twig' with { id: 7 } %}
-      {% include 'questionnaire/general-goals/life-goals/vocational-health.twig' with { id: 8 } %}
-      {% include 'questionnaire/general-goals/life-goals/financial-health.twig' with { id: 9 } %}
-  
-      {% include 'questionnaire/general-goals/financial-goals/12-month-goals.twig' with { id: 10 } %}
-      {% include 'questionnaire/general-goals/financial-goals/24-month-goals.twig' with { id: 11 } %}
-      {% include 'questionnaire/general-goals/financial-goals/60-month-goals.twig' with { id: 12 } %}
+      {% set forms = [
+        'questionnaire/general-goals/intro.twig',
+        'questionnaire/general-goals/life-goals/success-definition.twig',
+        'questionnaire/general-goals/life-goals/spiritual-health.twig',
+        'questionnaire/general-goals/life-goals/relational-health.twig',
+        'questionnaire/general-goals/life-goals/physical-health.twig',
+        'questionnaire/general-goals/life-goals/emotional-health.twig',
+        'questionnaire/general-goals/life-goals/mental-health.twig',
+        'questionnaire/general-goals/life-goals/vocational-health.twig',
+        'questionnaire/general-goals/life-goals/financial-health.twig',
+        'questionnaire/general-goals/financial-goals/12-month-goals.twig',
+        'questionnaire/general-goals/financial-goals/24-month-goals.twig',
+        'questionnaire/general-goals/financial-goals/60-month-goals.twig',
+        'questionnaire/assumptions/intro.twig'
+      ] %}
+      {% for form in forms %}
+        {% include form with { id: loop.index } %}
+      {% endfor %}
     </main>
   </div>
 {% endblock %}
