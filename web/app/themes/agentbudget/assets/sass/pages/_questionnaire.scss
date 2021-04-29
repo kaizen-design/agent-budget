@@ -220,6 +220,45 @@ body.page-template-questionnaire {
         color: $white;
       }
     }
+
+    &.price-btn-group {
+      @include media-breakpoint-only(lg) {
+        flex-direction: column;
+        width: 100%;
+      }
+      @include media-breakpoint-down(md) {
+        flex-direction: column;
+        width: 100%;
+      }
+      label {
+        font-size: rem-calc(18);
+        font-weight: 700;
+        @include media-breakpoint-only(lg) {
+          &:not(:first-child) {
+            margin-right: 0;
+          }
+          &:not(:last-child) {
+            margin-bottom: 10px;
+          }
+        }
+        @include media-breakpoint-down(lg) {
+          font-size: rem-calc(16);
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+        @include media-breakpoint-down(md) {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          border-radius: $border-radius!important;
+          &:not(:first-child) {
+            margin-right: 0;
+          }
+          &:not(:last-child) {
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
   }
 
   .button-group-labels {

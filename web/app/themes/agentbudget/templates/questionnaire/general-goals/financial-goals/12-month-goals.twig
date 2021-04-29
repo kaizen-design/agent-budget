@@ -1,0 +1,29 @@
+<form class="questionnaire-form h-100 py-5">
+  <div class="container-fluid h-100">
+    <div class="row h-100 align-items-center justify-content-center">
+      <div class="col-xxl-11 col-xxx-8 mt-auto mb-lg-5 mb-xl-0">
+        <small class="form-title d-block mb-3">GENERAL GOALS</small>
+        <p class="lead text-dark fs-26 mb-4">What income level would you like to reach in the next 12 months?</p>
+        <div class="btn-group price-btn-group d-flex" role="group" aria-label="12 month financial goals button group">
+          <input type="radio" class="btn-check" name="financial-goal-12-months" id="financial-goal-12-months-1" autocomplete="off">
+          <label class="btn btn-outline-primary fs-18 fw-700" for="financial-goal-12-months-1">$100k - $150k</label>
+          <input type="radio" class="btn-check" name="financial-goal-12-months" id="financial-goal-12-months-2" autocomplete="off">
+          <label class="btn btn-outline-primary fs-18 fw-700" for="financial-goal-12-months-2">$150k - $250k</label>
+          <input type="radio" class="btn-check" name="financial-goal-12-months" id="financial-goal-12-months-3" autocomplete="off">
+          <label class="btn btn-outline-primary fs-18 fw-700" for="financial-goal-12-months-3">$250k - $400k</label>
+          <input type="radio" class="btn-check" name="financial-goal-12-months" id="financial-goal-12-months-4" autocomplete="off">
+          <label class="btn btn-outline-primary fs-18 fw-700" for="financial-goal-12-months-4">$400k - $600k</label>
+          <input type="radio" class="btn-check" name="financial-goal-12-months" id="financial-goal-12-months-5" autocomplete="off">
+          <label class="btn btn-outline-primary fs-18 fw-700" for="financial-goal-12-months-5">$600k +</label>
+        </div>
+        <div class="mt-5">
+          <button type="submit" class="btn btn-primary btn-lg mw-90 me-2">OK</button>
+          <small class="press-enter-btn text-dark fw-500">Press <strong class="fw-800">Enter ↵</strong></small>
+        </div>
+      </div>
+      <div class="col-xxl-11 col-xxx-8 mt-5 mt-lg-auto">
+        {% include 'questionnaire/partials/pagination-progress.twig' %}
+      </div>
+    </div>
+  </div>
+</form>
