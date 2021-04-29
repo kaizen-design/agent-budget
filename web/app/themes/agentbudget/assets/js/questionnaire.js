@@ -2,7 +2,11 @@
 
 const STORAGE = window.localStorage;
 
+let activeForm;
+
 $(document).ready(() => {
+
+  //activeForm = parseInt($('.questionnaire-form:not(.d-none)').data('id'));
 
   $('.questionnaire-form').on('submit', function (e) {
     e.preventDefault();
@@ -16,19 +20,35 @@ $(document).ready(() => {
       for(let [name, value] of formData) {
         alert(`${name} = ${value}`);
       }*/
+    } else {
+      d_noty_alert('Please answer the question to proceed!', 'error');
     }
     $form.addClass('was-validated');
   });
 
+  //handlePagination();
+
 });
 
 function handlePagination() {
-
+  const form = $('.questionnaire-form[data-id="' + activeForm +  '"]');
+  $('#paginationPrevBtn').on('click', function () {
+    switchForms(form, form.prev());
+  });
+  $('#paginationNextBtn').on('click', function () {
+    switchForms(form, form.next());
+  })
 }
 
 function switchForms(current, next) {
+  showLoader();
   current.addClass('d-none');
-  next.removeClass('d-none');
+  setTimeout(() => {
+    next.removeClass('d-none');
+    showLoader(true);
+  }, 1000);
+  //activeForm = parseInt(next.data('id'));
+  //handlePagination();
 }
 
 function updateProgressCounter() {

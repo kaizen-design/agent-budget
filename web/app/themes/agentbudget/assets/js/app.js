@@ -47,9 +47,9 @@ function m_ajax_request(url, request_type, data_type, data, cache, success_callb
 }
 
 function showLoader(hide) {
-  var toggle = hide ? 'hide' : 'show';
-  jQuery.LoadingOverlay(toggle, {
-    imageColor: '#46CE90'
+  const toggle = hide ? 'hide' : 'show';
+  $.LoadingOverlay(toggle, {
+    imageColor: '#7BBA42'
   });
 }
 

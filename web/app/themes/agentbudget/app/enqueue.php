@@ -18,7 +18,7 @@ function agentbudget_enqueue_scripts() {
   
   //wp_register_script( 'sweetalert-js', 'https://cdn.jsdelivr.net/npm/sweetalert2@9', array( 'jquery' ), '', true );
   wp_register_script( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js', [ 'jquery' ], false, true );
-  wp_register_script( 'loading-overlay-js', '//cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.4/dist/loadingoverlay.min.js', [], '', true );
+  wp_register_script( 'loading-overlay-js', 'https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js', [], '', true );
   wp_register_script( 'noty-js-cdn', '//cdn.jsdelivr.net/npm/noty@3.2.0-beta/lib/noty.min.js', [], '', true );
   
   wp_register_script( 'frontpage-js', $assetsDir . '/js/dist/front-page.min.js', array(
