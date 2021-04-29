@@ -20,10 +20,12 @@ function agentbudget_enqueue_scripts() {
   wp_register_script( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js', [ 'jquery' ], false, true );
   wp_register_script( 'loading-overlay-js', '//cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.4/dist/loadingoverlay.min.js', [], '', true );
   wp_register_script( 'noty-js-cdn', '//cdn.jsdelivr.net/npm/noty@3.2.0-beta/lib/noty.min.js', [], '', true );
-  //wp_register_script( 'waypoints-js', 'https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js', [], '', true );
-  //wp_register_script( 'counterup-js', $assetsDir . '/js/vendor/jquery.counterup.js', ['jquery', 'waypoints-js'], '', true );
   
   wp_register_script( 'frontpage-js', $assetsDir . '/js/dist/front-page.min.js', array(
+    'jquery',
+    'agentbudget-js'
+  ), '', true );
+  wp_register_script( 'questionnaire-js', $assetsDir . '/js/dist/questionnaire.min.js', array(
     'jquery',
     'agentbudget-js'
   ), '', true );
@@ -36,16 +38,21 @@ function agentbudget_enqueue_scripts() {
    * Front Page Scripts
    */
   if ( is_front_page() ) {
-    //wp_enqueue_script( 'waypoints-js' );
-    //wp_enqueue_script( 'counterup-js' );
     wp_enqueue_script( 'frontpage-js' );
+  }
+  
+  /**
+   * Questionnaire Scripts
+   */
+  if ( is_page_template('views/questionnaire.php') ) {
+    wp_enqueue_script( 'questionnaire-js' );
   }
   
   /**
    * Global scripts
    */
   wp_enqueue_script( 'bootstrap-js' );
-  wp_enqueue_script( 'pushy-js' );
+  wp_enqueue_script( 'noty-js-cdn' );
   wp_enqueue_script( 'agentbudget-js' );
   
   $appOptions = [
