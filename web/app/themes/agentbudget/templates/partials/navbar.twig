@@ -14,10 +14,10 @@
           Hi, <strong class="fw-700">{{ user.first_name ? user.first_name : user.display_name|title }}</strong>
         </button>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuDropdown">
-          <li><a class="dropdown-item" href="#">My Profile</a></li>
+          <li><a class="dropdown-item" href="{{ fn('get_edit_profile_url') }}">My Profile</a></li>
           <li><a class="dropdown-item disabled" href="#">View My Report</a></li>
-          <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-          <li><a class="dropdown-item" href="#">Change Password</a></li>
+          <li><a class="dropdown-item" href="{{ fn('get_edit_profile_url') }}">Edit Profile</a></li>
+          <li><a class="dropdown-item" href="{{ fn('get_edit_profile_url') }}">Change Password</a></li>
           <li><a class="dropdown-item" href="{{ fn('wp_logout_url', site.link) }}">Logout</a></li>
         </ul>
       </div>
