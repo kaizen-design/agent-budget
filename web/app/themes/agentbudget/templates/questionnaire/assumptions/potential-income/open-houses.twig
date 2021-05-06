@@ -1,0 +1,23 @@
+<form class="questionnaire-form h-100 py-5 d-none" data-id="{{ id }}" novalidate>
+  <div class="container-fluid h-100">
+    <div class="row h-100 align-items-center justify-content-center">
+      <div class="col-xl-11 col-xxl-8 mt-auto">
+        <small class="form-title d-block mb-3">POTENTIAL INCOME</small>
+        <p class="lead text-dark fs-26 mb-3">How many leads from <strong class="fw-800">open houses</strong> in the next 12 months?</p>
+        <input class="form-control form-control-lg"
+               type="text"
+               name="open_houses_leads"
+               placeholder="6"
+               required>
+        <small class="d-block text-end fw-700 fs-12 mt-1"><a class="acceptDefaultBtn" href="#">Accept default</a></small>
+        <div class="mt-4 mt-xxl-5">
+          <button type="submit" class="btn btn-primary btn-lg mw-90 me-2">OK</button>
+          <small class="press-enter-btn text-dark fw-500">Press <strong class="fw-800">Enter ↵</strong></small>
+        </div>
+      </div>
+      <div class="col-xl-11 col-xxl-8 mt-5 mt-lg-auto">
+        {% include 'questionnaire/partials/pagination-progress.twig' %}
+      </div>
+    </div>
+  </div>
+</form>

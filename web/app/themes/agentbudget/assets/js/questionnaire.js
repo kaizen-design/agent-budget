@@ -1,12 +1,14 @@
 'use strict';
 
-const STORAGE = window.localStorage;
+//const STORAGE = window.localStorage;
 
 //let activeForm;
 
 $(document).ready(() => {
 
   //activeForm = parseInt($('.questionnaire-form:not(.d-none)').data('id'));
+
+  initQuestionnaire();
 
   $('.questionnaire-form').on('submit', function (e) {
     e.preventDefault();
@@ -16,6 +18,7 @@ $(document).ready(() => {
       $form.attr('data-is-completed', 'true');
       switchForms($form, $form.next());
       updateProgressBar();
+      //activeForm++;
       /*const formData = new FormData($form[0]);
       for(let [name, value] of formData) {
         alert(`${name} = ${value}`);
@@ -27,34 +30,60 @@ $(document).ready(() => {
   });
 
   //handlePagination();
+  //handleSidebarNav();
 
 });
 
+function initQuestionnaire() {
+  showLoader();
+  setTimeout(() => {
+    //  TODO: init stuff here
+    showLoader(true);
+  }, 1000);
+}
+
+function updateState() {
+
+}
+
 function handlePagination() {
-  const form = $('.questionnaire-form[data-id="' + activeForm +  '"]');
+  /*const form = $('.questionnaire-form[data-id="' + activeForm +  '"]');
   $('#paginationPrevBtn').on('click', function () {
     switchForms(form, form.prev());
   });
   $('#paginationNextBtn').on('click', function () {
     switchForms(form, form.next());
-  })
+  })*/
 }
 
 function handleSidebarNav() {
-
+  /*switch (true) {
+    case 1 <= activeForm <= 8:
+      setActiveNavItem(1);
+      break;
+    case 9 <= activeForm <= 12:
+      setActiveNavItem(2);
+      break;
+  }
+  function setActiveNavItem(i) {
+    $('.questionnaire-nav .list-group-item-action').removeClass('active');
+    $('.questionnaire-nav .list-group-item-action[data-id="' + i + '"]').addClass('active');
+  }*/
 }
 
 function switchForms(current, next) {
-  if (current && next) {
+  if (next) {
     showLoader();
     current.addClass('d-none');
     setTimeout(() => {
       next.removeClass('d-none');
       showLoader(true);
     }, 1000);
+    //activeForm = parseInt(next.data('id'));
+    //handlePagination();
+  } else {
+
   }
-  //activeForm = parseInt(next.data('id'));
-  //handlePagination();
 }
 
 function updateProgressBar() {
