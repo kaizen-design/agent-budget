@@ -68,13 +68,33 @@ function updateState() {
 }
 
 function updateSidebarNav(id) {
-  console.warn(id);
   switch (true) {
     case id >= 10 && id <= 12:
       setActiveNavItem(2);
       break;
     case id >= 13 && id <= 17:
       setActiveNavItem(3);
+      break;
+    case id >= 18 && id <= 31:
+      setActiveNavItem(4);
+      break;
+    case id >= 32 && id <= 37:
+      setActiveNavItem(5);
+      break;
+    case id >= 38 && id <= 41:
+      setActiveNavItem(6);
+      break;
+    case id >= 42 && id <= 46:
+      setActiveNavItem(7);
+      break;
+    case id === 47:
+      setActiveNavItem(8);
+      break;
+    case id === 48:
+      setActiveNavItem(9);
+      break;
+    case id === 49:
+      setActiveNavItem(10);
       break;
     default:
       setActiveNavItem(1);
@@ -102,6 +122,7 @@ function switchForms(current, next) {
     }, 1000);
   } else {
     //  TODO: handle redirect to the report page
+    d_noty_alert('Congratulations! You\'ve successfully completed the questionnaire.', 'success');
   }
 }
 
