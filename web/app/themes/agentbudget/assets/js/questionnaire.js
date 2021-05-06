@@ -44,7 +44,7 @@ $(document).ready(() => {
     }
   });
 
-  //handleSidebarNav();
+  updateSidebarNav();
 
 });
 
@@ -60,19 +60,23 @@ function updateState() {
 
 }
 
-function handleSidebarNav() {
-  /*switch (true) {
-    case 1 <= activeForm <= 8:
-      setActiveNavItem(1);
-      break;
-    case 9 <= activeForm <= 12:
+function updateSidebarNav(id) {
+  console.warn(id);
+  switch (true) {
+    case id >= 10 && id <= 12:
       setActiveNavItem(2);
+      break;
+    case id >= 13 && id <= 17:
+      setActiveNavItem(3);
+      break;
+    default:
+      setActiveNavItem(1);
       break;
   }
   function setActiveNavItem(i) {
     $('.questionnaire-nav .list-group-item-action').removeClass('active');
     $('.questionnaire-nav .list-group-item-action[data-id="' + i + '"]').addClass('active');
-  }*/
+  }
 }
 
 function switchForms(current, next) {
@@ -81,6 +85,7 @@ function switchForms(current, next) {
     current.addClass('d-none');
     setTimeout(() => {
       next.removeClass('d-none');
+      updateSidebarNav(next.data('id'));
       showLoader(true);
     }, 1000);
   } else {
