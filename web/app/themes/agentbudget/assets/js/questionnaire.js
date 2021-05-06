@@ -29,6 +29,12 @@ $(document).ready(() => {
     $form.addClass('was-validated');
   });
 
+  $(document).on('click', '.acceptDefaultBtn', function () {
+    const formControl = $(this).parent().prev('.form-control');
+    const defaultValue = formControl.attr('placeholder');
+    formControl.val(defaultValue);
+  });
+
   //handlePagination();
   //handleSidebarNav();
 

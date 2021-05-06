@@ -1,6 +1,8 @@
 const ajaxurl = APP.ajaxUrl;
 const $ = jQuery;
-jQuery(document).ready(function ($) {
+$(document).ready(() => {
+
+  $(document).on('click', 'a[href="#"]', e => e.preventDefault());
 
 });
 

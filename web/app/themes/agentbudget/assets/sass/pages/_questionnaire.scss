@@ -142,6 +142,11 @@ body.page-template-questionnaire {
     font-size: rem-calc(14);
   }
 
+  label {
+    font-size: rem-calc(14);
+    font-weight: bold;
+  }
+
   .form-control {
     &.form-control-lg {
       border: none;
