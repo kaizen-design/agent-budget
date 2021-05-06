@@ -35,6 +35,20 @@ $(document).ready(() => {
     formControl.val(defaultValue);
   });
 
+  $('.pagination .page-link').on('click', function () {
+    const formID = $(this).data('id');
+    const activeForm = $('.questionnaire-form[data-id="' + formID +  '"]');
+    const action = $(this).data('action');
+    switch (action) {
+      case 'go-to-prev':
+        switchForms(activeForm, activeForm.prev());
+        break;
+      case 'go-to-next':
+        switchForms(activeForm, activeForm.next());
+        break;
+    }
+  });
+
   //handlePagination();
   //handleSidebarNav();
 
