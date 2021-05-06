@@ -1,35 +1,47 @@
 'use strict';
 
-//const STORAGE = window.localStorage;
+const STORAGE = window.localStorage;
+let QUESTIONNAIRE = {};
+let STATE = {
+  is_completed: false,
+  completed_forms: [],
+  current_form: 1,
+};
 
 $(document).ready(() => {
 
   initQuestionnaire();
 
+  //  FORM VALIDATION
   $('.questionnaire-form').on('submit', function (e) {
     e.preventDefault();
     e.stopPropagation();
     const $form = $(this);
     if ($form[0].checkValidity()) {
-      $form.attr('data-is-completed', 'true');
-      switchForms($form, $form.next());
-      updateProgressBar();
-      /*const formData = new FormData($form[0]);
-      for(let [name, value] of formData) {
-        alert(`${name} = ${value}`);
-      }*/
+
+      const formID = parseInt($form.data('id'));
+      let completed_forms = STATE['completed_forms'];
+      if (completed_forms.indexOf(formID) === -1) {
+        completed_forms.push(formID);
+        STATE['completed_forms'] = completed_forms;
+      }
+
+      switchForms($form, $form.next(), new FormData($form[0]));
+
     } else {
       d_noty_alert('Please answer the question to proceed!', 'error');
     }
     $form.addClass('was-validated');
   });
 
+  //  HANDLE ACCEPT DEFAULT BUTTON
   $(document).on('click', '.acceptDefaultBtn', function () {
     const formControl = $(this).parent().prev('.form-control');
     const defaultValue = formControl.attr('placeholder');
     formControl.val(defaultValue);
   });
 
+  //  PAGINATION
   $('.pagination .page-link').on('click', function () {
     const formID = $(this).data('id');
     const activeForm = $('.questionnaire-form[data-id="' + formID +  '"]');
@@ -44,6 +56,7 @@ $(document).ready(() => {
     }
   });
 
+  //  NAV MENU
   $('.questionnaire-nav .list-group-item-action').on('click', function () {
     const menuID = $(this).data('id');
     const formID = $(this).data('form-id');
@@ -51,6 +64,7 @@ $(document).ready(() => {
     setActiveForm(formID);
   });
 
+  //  HANDLE ENTER KEYPRESS
   $(document).keypress(function (e) {
     if (e.which === 13) {
       const form = getActiveForm();
@@ -58,20 +72,60 @@ $(document).ready(() => {
     }
   });
 
-  updateSidebarNav();
-
 });
 
 function initQuestionnaire() {
   showLoader();
+  if (!STATE['is_completed']) {
+    if (STORAGE.getItem('questionnaire')) {
+      QUESTIONNAIRE = JSON.parse(STORAGE.getItem('questionnaire'));
+      loadQuestionnaire(QUESTIONNAIRE);
+    }
+    if (STORAGE.getItem('state')) {
+      STATE = JSON.parse(STORAGE.getItem('state'));
+    }
+    loadState();
+  } else {
+    // TODO: redirect to the report page
+  }
   setTimeout(() => {
-    //  TODO: init stuff here
     showLoader(true);
   }, 1000);
 }
 
-function updateState() {
+function loadQuestionnaire(data) {
+  for (const prop in data) {
+    if (data.hasOwnProperty(prop)) {
+      const $input = $('input[name="' + prop + '"]');
+      if ($input.length) {
+        if ($input.is(':radio')) {
+          $('input[name="' + prop + '"][value="' + data[prop] + '"]').prop('checked', true);
+        } else {
+          $input.val(data[prop]);
+        }
+      }
+    }
+  }
+}
 
+function loadState() {
+  setActiveForm(STATE['current_form']);
+  updateSidebarNav(STATE['current_form']);
+  updateProgressBar(STATE['progress']);
+}
+
+function updateState(id) {
+  STATE['current_form'] = id;
+  STORAGE.setItem('state', JSON.stringify(STATE));
+  updateSidebarNav(STATE['current_form']);
+  updateProgressBar();
+}
+
+function updateStorage(data) {
+  for (let [name, value] of data) {
+    QUESTIONNAIRE[name] = value;
+    STORAGE.setItem('questionnaire', JSON.stringify(QUESTIONNAIRE));
+  }
 }
 
 function updateSidebarNav(id) {
@@ -115,30 +169,34 @@ function setActiveNavItem(i) {
 }
 
 function getActiveForm() {
-  return $('.questionnaire-form:not(.d-none)');
+  return $('.questionnaire-form[data-id="' + STATE["current_form"] + '"]');
 }
 
 function setActiveForm(id) {
   switchForms(getActiveForm(), $('.questionnaire-form[data-id="' + id +  '"]'))
 }
 
-function switchForms(current, next) {
+function switchForms(current, next, data) {
   if (next) {
     showLoader();
-    current.addClass('d-none');
     setTimeout(() => {
+      current.addClass('d-none');
       next.removeClass('d-none');
-      updateSidebarNav(next.data('id'));
+      updateState(next.data('id'));
+      if (data) {
+        updateStorage(data);
+      }
       showLoader(true);
     }, 1000);
   } else {
-    //  TODO: handle redirect to the report page
+    STATE['is_completed'] = true;
+    updateState(0);
     d_noty_alert('Congratulations! You\'ve successfully completed the questionnaire.', 'success');
   }
 }
 
 function updateProgressBar() {
-  const completedForms = $('.questionnaire-form[data-is-completed="true"]').length,
+  const completedForms = STATE['completed_forms'].length,
         formsTotal = $('.questionnaire-form').length,
         progress = Math.round(completedForms * 100 / formsTotal) + '%';
   $('.progress-bar').css('width', progress);
