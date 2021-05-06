@@ -1,3 +1,27 @@
 html {
   height: 100%;
 }
+
+//  USER NAV
+.user-nav {
+  .dropdown-toggle {
+    &:focus, &:active {
+      box-shadow: none;
+    }
+  }
+  .dropdown-menu {
+    box-shadow: 0 6px 60px 0 rgba(76,21,103,0.1);
+    border: none;
+    .dropdown-item {
+      color: #2C2C2F;
+      padding: .5rem rem-calc(26);
+      &.disabled {
+        color: #A3A5A8;
+      }
+      &.active {
+        color: $primary;
+        font-weight: bold;
+      }
+    }
+  }
+}

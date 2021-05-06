@@ -6,7 +6,21 @@
       </a>
     {% endif %}
     {% if is_user_logged_in %}
-      <a href="{{ fn('wp_logout_url', site.link) }}" class="btn btn-outline-primary btn-lg">LOG OUT</a>
+      <div class="user-nav dropdown">
+        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userMenuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          {% if user.avatar %}
+            <img src="{{ user.avatar }}" class="rounded-circle me-1" alt="{{ user.first_name ? user.first_name : user.display_name|title }}">
+          {% endif %}
+          Hi, <strong class="fw-700">{{ user.first_name ? user.first_name : user.display_name|title }}</strong>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuDropdown">
+          <li><a class="dropdown-item" href="#">My Profile</a></li>
+          <li><a class="dropdown-item disabled" href="#">View My Report</a></li>
+          <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+          <li><a class="dropdown-item" href="#">Change Password</a></li>
+          <li><a class="dropdown-item" href="{{ fn('wp_logout_url', site.link) }}">Logout</a></li>
+        </ul>
+      </div>
     {% else %}
       <a href="{{ fn('wp_login_url', site.link) }}" class="btn btn-outline-primary btn-lg">LOGIN</a>
     {% endif %}

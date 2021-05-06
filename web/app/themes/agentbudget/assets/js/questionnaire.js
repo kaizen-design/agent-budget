@@ -2,11 +2,7 @@
 
 //const STORAGE = window.localStorage;
 
-//let activeForm;
-
 $(document).ready(() => {
-
-  //activeForm = parseInt($('.questionnaire-form:not(.d-none)').data('id'));
 
   initQuestionnaire();
 
@@ -18,7 +14,6 @@ $(document).ready(() => {
       $form.attr('data-is-completed', 'true');
       switchForms($form, $form.next());
       updateProgressBar();
-      //activeForm++;
       /*const formData = new FormData($form[0]);
       for(let [name, value] of formData) {
         alert(`${name} = ${value}`);
@@ -49,7 +44,6 @@ $(document).ready(() => {
     }
   });
 
-  //handlePagination();
   //handleSidebarNav();
 
 });
@@ -64,16 +58,6 @@ function initQuestionnaire() {
 
 function updateState() {
 
-}
-
-function handlePagination() {
-  /*const form = $('.questionnaire-form[data-id="' + activeForm +  '"]');
-  $('#paginationPrevBtn').on('click', function () {
-    switchForms(form, form.prev());
-  });
-  $('#paginationNextBtn').on('click', function () {
-    switchForms(form, form.next());
-  })*/
 }
 
 function handleSidebarNav() {
@@ -99,10 +83,8 @@ function switchForms(current, next) {
       next.removeClass('d-none');
       showLoader(true);
     }, 1000);
-    //activeForm = parseInt(next.data('id'));
-    //handlePagination();
   } else {
-
+    //  TODO: handle redirect to the report page
   }
 }
 
