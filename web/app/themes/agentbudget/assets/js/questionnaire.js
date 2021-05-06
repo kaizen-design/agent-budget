@@ -44,6 +44,13 @@ $(document).ready(() => {
     }
   });
 
+  $('.questionnaire-nav .list-group-item-action').on('click', function () {
+    const menuID = $(this).data('id');
+    const formID = $(this).data('form-id');
+    setActiveNavItem(menuID);
+    setActiveForm(formID);
+  });
+
   updateSidebarNav();
 
 });
@@ -73,10 +80,15 @@ function updateSidebarNav(id) {
       setActiveNavItem(1);
       break;
   }
-  function setActiveNavItem(i) {
-    $('.questionnaire-nav .list-group-item-action').removeClass('active');
-    $('.questionnaire-nav .list-group-item-action[data-id="' + i + '"]').addClass('active');
-  }
+}
+
+function setActiveNavItem(i) {
+  $('.questionnaire-nav .list-group-item-action').removeClass('active');
+  $('.questionnaire-nav .list-group-item-action[data-id="' + i + '"]').addClass('active');
+}
+
+function setActiveForm(id) {
+  switchForms($('.questionnaire-form:not(.d-none)'), $('.questionnaire-form[data-id="' + id +  '"]'))
 }
 
 function switchForms(current, next) {
