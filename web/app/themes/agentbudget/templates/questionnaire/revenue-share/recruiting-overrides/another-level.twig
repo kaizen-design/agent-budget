@@ -1,0 +1,17 @@
+<form class="questionnaire-form h-100 py-5 d-none" data-id="{{ id }}" novalidate>
+  <div class="container-fluid h-100">
+    <div class="row h-100 align-items-center justify-content-center">
+      <div class="col-xl-11 col-xxl-8 mt-auto">
+        <small class="form-title d-block mb-3">REVENUE SHARE</small>
+        <p class="lead text-dark fs-26 mb-3">Would you like to <strong class="fw-800">add another</strong> revenue share level?</p>
+        <div class="mt-4 mt-xl-5">
+          <button type="submit" class="btn btn-primary btn-lg mw-90 me-2">YES</button>
+          <button type="submit" class="btn btn-outline-primary btn-lg mw-90">NO</button>
+        </div>
+      </div>
+      <div class="col-xl-11 col-xxl-8 mt-5 mt-lg-auto">
+        {% include 'questionnaire/partials/pagination-progress.twig' %}
+      </div>
+    </div>
+  </div>
+</form>
