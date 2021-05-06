@@ -51,6 +51,13 @@ $(document).ready(() => {
     setActiveForm(formID);
   });
 
+  $(document).keypress(function (e) {
+    if (e.which === 13) {
+      const form = getActiveForm();
+      form.submit();
+    }
+  });
+
   updateSidebarNav();
 
 });
@@ -107,8 +114,12 @@ function setActiveNavItem(i) {
   $('.questionnaire-nav .list-group-item-action[data-id="' + i + '"]').addClass('active');
 }
 
+function getActiveForm() {
+  return $('.questionnaire-form:not(.d-none)');
+}
+
 function setActiveForm(id) {
-  switchForms($('.questionnaire-form:not(.d-none)'), $('.questionnaire-form[data-id="' + id +  '"]'))
+  switchForms(getActiveForm(), $('.questionnaire-form[data-id="' + id +  '"]'))
 }
 
 function switchForms(current, next) {
