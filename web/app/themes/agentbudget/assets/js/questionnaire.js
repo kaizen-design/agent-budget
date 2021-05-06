@@ -86,7 +86,7 @@ function initQuestionnaire() {
     }
     loadState();
   } else {
-    // TODO: redirect to the report page
+    showSuccessModal();
   }
   setTimeout(() => {
     showLoader(true);
@@ -115,10 +115,12 @@ function loadState() {
 }
 
 function updateState(id) {
-  STATE['current_form'] = id;
+  if (id) {
+    STATE['current_form'] = id;
+    updateSidebarNav(STATE['current_form']);
+    updateProgressBar();
+  }
   STORAGE.setItem('state', JSON.stringify(STATE));
-  updateSidebarNav(STATE['current_form']);
-  updateProgressBar();
 }
 
 function updateStorage(data) {
@@ -190,8 +192,8 @@ function switchForms(current, next, data) {
     }, 1000);
   } else {
     STATE['is_completed'] = true;
-    updateState(0);
-    d_noty_alert('Congratulations! You\'ve successfully completed the questionnaire.', 'success');
+    updateState();
+    showSuccessModal();
   }
 }
 
@@ -201,4 +203,12 @@ function updateProgressBar() {
         progress = Math.round(completedForms * 100 / formsTotal) + '%';
   $('.progress-bar').css('width', progress);
   $('.progress-bar-label').text(`${progress} Completed`);
+}
+
+function showSuccessModal() {
+  const successModal = new bootstrap.Modal(document.getElementById('successModal'), {
+    backdrop: 'static',
+    keyboard: false
+  });
+  successModal.show();
 }
