@@ -29,6 +29,10 @@ function agentbudget_enqueue_scripts() {
     'jquery',
     'agentbudget-js'
   ), '', true );
+  wp_register_script( 'report-js', $assetsDir . '/js/dist/report.min.js', array(
+    'jquery',
+    'agentbudget-js'
+  ), '', true );
   
   if ( !is_admin() ) {
     wp_enqueue_script( 'jquery', false, [], false, false );
@@ -46,6 +50,13 @@ function agentbudget_enqueue_scripts() {
    */
   if ( is_page_template('views/questionnaire.php') ) {
     wp_enqueue_script( 'questionnaire-js' );
+  }
+  
+  /**
+   * Report Scripts
+   */
+  if ( is_page_template('views/report.php') ) {
+    wp_enqueue_script( 'report-js' );
   }
   
   /**
