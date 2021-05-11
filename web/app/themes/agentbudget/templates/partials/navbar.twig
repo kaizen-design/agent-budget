@@ -9,7 +9,11 @@
       <div class="user-nav dropdown">
         <button class="btn btn-link text-white dropdown-toggle" type="button" id="userMenuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
           {% if user.avatar %}
-            <img src="{{ user.avatar }}" class="rounded-circle me-1" alt="{{ user.first_name ? user.first_name : user.display_name|title }}">
+            <img src="{{ user.avatar }}"
+                 width="34"
+                 height="34"
+                 class="rounded-circle me-1"
+                 alt="{{ user.first_name ? user.first_name : user.display_name|title }}">
           {% endif %}
           Hi, <strong class="fw-700">{{ user.first_name ? user.first_name : user.display_name|title }}</strong>
         </button>

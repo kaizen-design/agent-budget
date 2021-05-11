@@ -18,16 +18,9 @@ $(document).ready(() => {
     e.stopPropagation();
     const $form = $(this);
     if ($form[0].checkValidity()) {
-
-      const formID = parseInt($form.data('id'));
-      let completed_forms = STATE['completed_forms'];
-      if (completed_forms.indexOf(formID) === -1) {
-        completed_forms.push(formID);
-        STATE['completed_forms'] = completed_forms;
-      }
-
+      const id = parseInt($form.data('id'));
+      updateCompletedForms(id);
       switchForms($form, $form.next(), new FormData($form[0]));
-
     } else {
       d_noty_alert('Please answer the question to proceed!', 'error');
     }
@@ -99,7 +92,8 @@ function loadQuestionnaire(data) {
       const $input = $('input[name="' + prop + '"]');
       if ($input.length) {
         if ($input.is(':radio')) {
-          $('input[name="' + prop + '"][value="' + data[prop] + '"]').prop('checked', true);
+          $('input[name="' + prop + '"][value="' + data[prop] + '"]')
+            .prop('checked', true);
         } else {
           $input.val(data[prop]);
         }
@@ -111,13 +105,13 @@ function loadQuestionnaire(data) {
 function loadState() {
   setActiveForm(STATE['current_form']);
   updateSidebarNav(STATE['current_form']);
-  updateProgressBar(STATE['progress']);
+  updateProgressBar();
 }
 
 function updateState(id) {
   if (id) {
     STATE['current_form'] = id;
-    updateSidebarNav(STATE['current_form']);
+    updateSidebarNav(id);
     updateProgressBar();
   }
   STORAGE.setItem('state', JSON.stringify(STATE));
@@ -127,6 +121,14 @@ function updateStorage(data) {
   for (let [name, value] of data) {
     QUESTIONNAIRE[name] = value;
     STORAGE.setItem('questionnaire', JSON.stringify(QUESTIONNAIRE));
+  }
+}
+
+function updateCompletedForms(id) {
+  let completed_forms = STATE['completed_forms'];
+  if (completed_forms.indexOf(id) === -1) {
+    completed_forms.push(id);
+    STATE['completed_forms'] = completed_forms;
   }
 }
 

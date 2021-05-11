@@ -1,0 +1,59 @@
+//  REPORT
+.report {
+
+}
+
+//  REPORT HEADER
+.report-header {
+  h4 {
+    font-size: rem-calc(21);
+  }
+  p {
+    line-height: rem-calc(27);
+  }
+  .success-statement {
+    background: rgba(123,186,66,0.06);
+    border-color: #7BBA42;
+    padding: rem-calc(30);
+    .alert-heading {
+      font-size: rem-calc(12);
+      letter-spacing: 3px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #7BBA42;
+    }
+    blockquote {
+      font-size: rem-calc(21);
+      line-height: rem-calc(26);
+      color: $black;
+      font-style: italic;
+      font-weight: 900;
+    }
+  }
+}
+
+//  REPORT SECTION
+.report-section {
+  h2 {
+    small {
+      font-size: rem-calc(12);
+      color: #6C6D6F;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    & + .lead {
+      line-height: rem-calc(27);
+    }
+  }
+}
+
+.financial-goals-list {
+  .progress {
+    background: rgba(232,234,237,0.4);
+    .progress-bar {
+      font-size: rem-calc(18);
+      font-weight: 800;
+    }
+  }
+}

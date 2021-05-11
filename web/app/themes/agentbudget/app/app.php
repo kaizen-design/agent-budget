@@ -46,7 +46,7 @@ class AgentBudget extends TimberSite {
         'first_name' => $user->first_name,
         'last_name' => $user->last_name,
         'display_name' => $user->display_name,
-        'avatar' => get_avatar_url($user->ID, ['size' => '34'])
+        'avatar' => get_avatar_url($user->ID, ['size' => '70'])
       ];
     }
     

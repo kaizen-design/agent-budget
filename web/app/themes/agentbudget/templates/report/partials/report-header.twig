@@ -1,0 +1,23 @@
+<div class="report-header py-5 py-xl-7">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3 col-lg-1">
+        {% if user.avatar %}
+          <img src="{{ user.avatar }}"
+               width="70"
+               height="70"
+               class="rounded-circle"
+               alt="{{ user.first_name ? user.first_name : user.display_name|title }}">
+        {% endif %}
+      </div>
+      <div class="col-sm-9 col-lg-11">
+        <h4 class="fw-700">Awesome work, <strong class="fw-900">{{ user.first_name ? user.first_name : user.display_name|title }}</strong>!</h4>
+        <p>You did an excellent job on your <strong class="fw-800">Agent Budget</strong> questionnaire! Below is a summary report of our projections and calculations based on your goals, aspirations, activities and input.</p>
+      </div>
+    </div>
+    <div class="success-statement alert alert-success mt-3 mb-0" role="alert">
+      <span class="alert-heading d-block mb-2">YOUR SUCCESS STATEMENT</span>
+      <blockquote class="mb-0">"Success is going from failure to failure without losing enthusiasm.”</blockquote>
+    </div>
+  </div>
+</div>
