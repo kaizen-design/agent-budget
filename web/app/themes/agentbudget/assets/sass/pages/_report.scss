@@ -54,6 +54,29 @@
   }
 }
 
+//  LIFE GOAL CARD
+.life-goal-card {
+  padding: 15px;
+  h4 {
+    font-size: rem-calc(24);
+    line-height: rem-calc(45);
+    font-weight: 800;
+    color: #2C2C2F;
+  }
+  p {
+
+  }
+  .score-value {
+    font-size: rem-calc(36);
+    line-height: rem-calc(45);
+    font-weight: 800;
+    color: $black;
+  }
+  .score-label {
+
+  }
+}
+
 //  FINANCIAL GOALS LIST
 .financial-goals-list {
   .progress {
