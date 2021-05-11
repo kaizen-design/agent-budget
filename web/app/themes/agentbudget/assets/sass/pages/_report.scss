@@ -54,6 +54,29 @@
   }
 }
 
+//  REPORT ACTIONS LIST
+.report-actions-list {
+  li {
+    font-size: rem-calc(12);
+    font-weight: normal;
+    a {
+      color: #6C6D6F;
+      i {
+        color: $link-color;
+        font-size: rem-calc(18);
+        margin-left: 5px;
+        vertical-align: bottom;
+      }
+      &:hover {
+        color: $black;
+        i {
+          color: $link-hover-color;
+        }
+      }
+    }
+  }
+}
+
 //  LIFE GOAL CARD
 .life-goal-card {
   padding: 15px;
