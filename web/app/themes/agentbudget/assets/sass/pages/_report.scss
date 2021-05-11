@@ -79,3 +79,18 @@
     }
   }
 }
+
+//  REPORT CARD
+.report-card {
+  .card-label {
+    font-size: rem-calc(10);
+    font-weight: 600;
+    letter-spacing: 2.5px;
+  }
+  .card-value {
+    font-size: rem-calc(42);
+    line-height: rem-calc(53);
+    color: $black;
+    font-weight: 800;
+  }
+}
