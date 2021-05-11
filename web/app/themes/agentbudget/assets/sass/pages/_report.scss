@@ -102,3 +102,22 @@
     font-weight: 800;
   }
 }
+
+//  EXPENSES TABLE
+.expenses-table {
+  tr {
+    td {
+      color: $black;
+      font-size: rem-calc(21);
+      border-bottom-color: #C5C7CA;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+        text-align: right;
+        font-weight: 800;
+      }
+    }
+  }
+}
