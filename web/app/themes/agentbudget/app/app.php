@@ -37,6 +37,7 @@ class AgentBudget extends TimberSite {
   
   function add_to_context( $context ) {
     $context['theme_options'] = get_fields( 'options' );
+    $context['theme_url'] = get_stylesheet_directory_uri();
     //$context['primary_menu'] = new TimberMenu( 'primary' );
     
     if ( is_user_logged_in() ) {
