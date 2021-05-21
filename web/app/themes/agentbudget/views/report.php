@@ -57,12 +57,33 @@ $context['report'] = [
     
     ],
     //  TODO: add more opportunities (per spreadsheet)
-  ]
+  ],
+  'expenses' => [
+    'eo_insurance' => get_user_meta($context['user']['id'], 'eo_insurance', true),
+    'realtor_dues' => get_user_meta($context['user']['id'], 'realtor_dues', true),
+    'mls_dues' => get_user_meta($context['user']['id'], 'mls_dues', true),
+    'lease_purchase_payments' => get_user_meta($context['user']['id'], 'lease_purchase_payments', true),
+    'auto_insurance' => get_user_meta($context['user']['id'], 'auto_insurance', true),
+    'fuel' => get_user_meta($context['user']['id'], 'fuel_expenses', true),
+    'total_road_fees' => get_user_meta($context['user']['id'], 'total_road_fees', true),
+    'other_auto_expenses' => get_user_meta($context['user']['id'], 'other_auto_expenses', true),
+    'office_rent' => get_user_meta($context['user']['id'], 'office_rent', true),
+    'phone_internet_services' => get_user_meta($context['user']['id'], 'phone_internet_services', true),
+    'docusign' => get_user_meta($context['user']['id'], 'docusign', true),
+    'office_assistant_employee' => get_user_meta($context['user']['id'], 'office_assistant_employee', true),
+    'other_office_expenses' => get_user_meta($context['user']['id'], 'other_office_expenses', true),
+    'digital_suite_membership' => get_user_meta($context['user']['id'], 'digital_suite_membership', true),
+    'print_mail_campaigns' => get_user_meta($context['user']['id'], 'print_mail_campaigns', true),
+    'client_gifts' => get_user_meta($context['user']['id'], 'client_gifts', true),
+    'other_marketing_expenses' => get_user_meta($context['user']['id'], 'other_marketing_expenses', true),
+    'donation_expenses' => get_user_meta($context['user']['id'], 'donation_expenses', true),
+    'savings_investment' => get_user_meta($context['user']['id'], 'savings_investment', true),
+  ],
 ];
+
+Timber::render( 'report/index.twig', $context );
 
 function get_financial_goals_progress ($goal) {
   $values = ['$100k - $150k', '$150k - $250k', '$250k - $400k', '$400k - $600k', '$600k '];
   return array_search($goal, $values) ? (array_search($goal, $values) + 1) * 20 : false;
 }
-
-Timber::render( 'report/index.twig', $context );

@@ -1,12 +1,12 @@
-<section class="report-section py-5 py-xl-7">
+<section id="expenses" class="report-section py-5 py-xl-7">
   <div class="container">
     <h2 class="section-title mb-3">
       <small class="d-block mb-3">EXPENSES</small>
       <div class="d-flex justify-content-between align-items-center">
         <span>Business Expenses</span>
-        <ul class="report-actions-list list-inline mb-0 d-flex">
+        <ul class="report-actions-list list-inline mb-0 d-flex d-print-none">
           <li class="list-inline-item me-3">
-            <a href="#">Print <i class="fas fa-print"></i></a>
+            <a href="#" class="printLink" data-id="expenses">Print <i class="fas fa-print"></i></a>
           </li>
           <li class="list-inline-item">
             <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
@@ -19,106 +19,156 @@
     <table class="expenses-table table caption-top mb-4">
       <caption class="table-label">INSURANCE & DUES</caption>
       <tbody>
-        <tr>
-          <td>E&O insurance</td>
-          <td>$600</td>
-        </tr>
-        <tr>
-          <td>Realtor Dues</td>
-          <td>$524</td>
-        </tr>
-        <tr>
-          <td>MLS Dues</td>
-          <td>$492</td>
-        </tr>
+        {% if report.expenses.eo_insurance %}
+          <tr>
+            <td>E&O insurance</td>
+            <td>{{ report.expenses.eo_insurance }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.realtor_dues %}
+          <tr>
+            <td>Realtor Dues</td>
+            <td>{{ report.expenses.realtor_dues }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.mls_dues %}
+          <tr>
+            <td>MLS Dues</td>
+            <td>{{ report.expenses.mls_dues }}</td>
+          </tr>
+        {% endif %}
       </tbody>
     </table>
   
     <table class="expenses-table table caption-top mb-4">
       <caption class="table-label">AUTO & TRANSPORTATION</caption>
       <tbody>
-        <tr>
-          <td>Auto Lease/Purchase</td>
-          <td>$12,000</td>
-        </tr>
-        <tr>
-          <td>Auto Insurance</td>
-          <td>$3,000</td>
-        </tr>
-        <tr>
-          <td>Fuel</td>
-          <td>$6,000</td>
-        </tr>
-        <tr>
-          <td>Toll Road - Fees</td>
-          <td>$3,000</td>
-        </tr>
+        {% if report.expenses.lease_purchase_payments %}
+          <tr>
+            <td>Auto Lease/Purchase</td>
+            <td>{{ report.expenses.lease_purchase_payments }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.auto_insurance %}
+          <tr>
+            <td>Auto Insurance</td>
+            <td>{{ report.expenses.auto_insurance }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.fuel_expenses %}
+          <tr>
+            <td>Fuel</td>
+            <td>{{ report.expenses.fuel_expenses }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.total_road_fees %}
+          <tr>
+            <td>Toll Road - Fees</td>
+            <td>{{ report.expenses.total_road_fees }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.other_auto_expenses %}
+          <tr>
+            <td>Other Auto/Transportation Expenses</td>
+            <td>{{ report.expenses.other_auto_expenses }}</td>
+          </tr>
+        {% endif %}
       </tbody>
     </table>
   
     <table class="expenses-table table caption-top mb-4">
       <caption class="table-label">OFFICE & MAINTENANCE</caption>
       <tbody>
-        <tr>
-          <td>Office Rent</td>
-          <td>$0</td>
-        </tr>
-        <tr>
-          <td>Phone & Internet</td>
-          <td>$3,000</td>
-        </tr>
-        <tr>
-          <td>Docusign</td>
-          <td>$200</td>
-        </tr>
-        <tr>
-          <td>Office Assistant/Employee</td>
-          <td>$40,000</td>
-        </tr>
+        {% if report.expenses.office_rent %}
+          <tr>
+            <td>Office Rent</td>
+            <td>{{ report.expenses.office_rent }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.phone_internet_services %}
+          <tr>
+            <td>Phone & Internet</td>
+            <td>{{ report.expenses.phone_internet_services }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.docusign %}
+          <tr>
+            <td>Docusign</td>
+            <td>{{ report.expenses.docusign }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.office_assistant_employee %}
+          <tr>
+            <td>Office Assistant/Employee</td>
+            <td>{{ report.expenses.office_assistant_employee }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.other_office_expenses %}
+          <tr>
+            <td>Other Office Expenses</td>
+            <td>{{ report.expenses.other_office_expenses }}</td>
+          </tr>
+        {% endif %}
       </tbody>
     </table>
   
     <table class="expenses-table table caption-top mb-4">
       <caption class="table-label">MARKETING & ADVERTISING</caption>
       <tbody>
-        <tr>
-          <td>Digital Suite Membership</td>
-          <td>$1,200</td>
-        </tr>
-        <tr>
-          <td>Print/Mail Campaigns</td>
-          <td>$10,000</td>
-        </tr>
-        <tr>
-          <td>Client Gifts</td>
-          <td>$6,000</td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <table class="expenses-table table caption-top mb-4">
-      <caption class="table-label">TITHING & SAVINGS</caption>
-      <tbody>
-        <tr>
-          <td>Tithing</td>
-          <td>10%</td>
-        </tr>
-        <tr>
-          <td>Savings & Investment</td>
-          <td>10%</td>
-        </tr>
+        {% if report.expenses.digital_suite_membership %}
+          <tr>
+            <td>Digital Suite Membership</td>
+            <td>{{ report.expenses.digital_suite_membership }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.print_mail_campaigns %}
+          <tr>
+            <td>Print/Mail Campaigns</td>
+            <td>{{ report.expenses.print_mail_campaigns }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.client_gifts %}
+          <tr>
+            <td>Client Gifts</td>
+            <td>{{ report.expenses.client_gifts }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.other_marketing_expenses %}
+          <tr>
+            <td>Other Marketing Expenses</td>
+            <td>{{ report.expenses.other_marketing_expenses }}</td>
+          </tr>
+        {% endif %}
       </tbody>
     </table>
   
     <table class="expenses-table table caption-top">
+      <caption class="table-label">TITHING & SAVINGS</caption>
+      <tbody>
+        {% if report.expenses.donation_expenses %}
+          <tr>
+            <td>Tithing</td>
+            <td>{{ report.expenses.donation_expenses }}</td>
+          </tr>
+        {% endif %}
+        {% if report.expenses.savings_investment %}
+          <tr>
+            <td>Savings & Investment</td>
+            <td>{{ report.expenses.savings_investment }}</td>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  
+    {#<table class="expenses-table table caption-top">
       <caption class="table-label">ADDITIONAL</caption>
       <tbody>
         <tr>
           <td>Additional Marketing</td>
-          <td>10%</td>
+          <td>{{ report.expenses.other_marketing_expenses }}</td>
         </tr>
       </tbody>
-    </table>
+    </table>#}
     
   </div>
 </section>
