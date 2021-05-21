@@ -15,9 +15,11 @@
         <p>You did an excellent job on your <strong class="fw-800">Agent Budget</strong> questionnaire! Below is a summary report of our projections and calculations based on your goals, aspirations, activities and input.</p>
       </div>
     </div>
-    <div class="success-statement alert alert-success mt-3 mb-0" role="alert">
-      <span class="alert-heading d-block mb-2">YOUR SUCCESS STATEMENT</span>
-      <blockquote class="mb-0">{{ '"' ~ fn('get_user_meta', user.ID, 'success_definition', true) ~ '”' }}</blockquote>
-    </div>
+    {% if report.life_goals.success_definition %}
+      <div class="success-statement alert alert-success mt-3 mb-0" role="alert">
+        <span class="alert-heading d-block mb-2">YOUR SUCCESS STATEMENT</span>
+        <blockquote class="mb-0">{{ '"' ~ report.life_goals.success_definition ~ '”' }}</blockquote>
+      </div>
+    {% endif %}
   </div>
 </div>

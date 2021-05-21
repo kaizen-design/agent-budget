@@ -15,65 +15,54 @@
       </div>
     </h2>
     <p class="lead mb-5">So strongly and metaphysically did I conceive of my situation then, that while earnestly watching his motions, I seemed distinctly to perceive that my own individuality was now merged in a joint stock company of two; that <strong class="fw-800">my free</strong> will had received a mortal wound; and that another's mistake or misfortune might plun.</p>
+    
     {% set values = ['$100k - $150k', '$150k - $250k', '$250k - $400k', '$400k - $600k', '$600k+'] %}
     <ul class="financial-goals-list list-unstyled mb-0">
-      <li class="row align-items-center mb-3">
-        <div class="col-lg-2 fw-600">
-          Next 12 Months
-        </div>
-        <div class="col-lg-10">
-          {% set financial_goal_12_months = fn('get_user_meta', user.ID, 'financial_goal_12_months', true) %}
-          {% set progress = 0 %}
-          {% for i in values %}
-            {% if financial_goal_12_months == i %}
-              {% set progress = loop.index * 20 %}
-            {% endif %}
-          {% endfor %}
-          <div class="progress rounded-0" style="height: 57px">
-            <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ progress ~ '%' }}" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100">
-              {{ financial_goal_12_months }}
+      {% if report.financial_goals.months_12 %}
+        <li class="row align-items-center mb-3">
+          <div class="col-lg-2 fw-600">
+            Next 12 Months
+          </div>
+          <div class="col-lg-10">
+            {% set progress = fn('get_financial_goals_progress', report.financial_goals.months_12) %}
+            <div class="progress rounded-0" style="height: 57px">
+              <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ progress ~ '%' }}" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100">
+                {{ report.financial_goals.months_12 }}
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-      <li class="row align-items-center mb-3">
-        <div class="col-lg-2 fw-600">
-          Next 24 Months
-        </div>
-        <div class="col-lg-10">
-          {% set financial_goal_24_months = fn('get_user_meta', user.ID, 'financial_goal_24_months', true) %}
-          {% set progress = 0 %}
-          {% for i in values %}
-            {% if financial_goal_24_months == i %}
-              {% set progress = loop.index * 20 %}
-            {% endif %}
-          {% endfor %}
-          <div class="progress rounded-0" style="height: 57px">
-            <div class="progress-bar bg-info" role="progressbar" style="width: {{ progress ~ '%' }}" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100">
-              {{ financial_goal_24_months }}
+        </li>
+      {% endif %}
+      {% if report.financial_goals.months_24 %}
+        <li class="row align-items-center mb-3">
+          <div class="col-lg-2 fw-600">
+            Next 24 Months
+          </div>
+          <div class="col-lg-10">
+            {% set progress = fn('get_financial_goals_progress', report.financial_goals.months_24) %}
+            <div class="progress rounded-0" style="height: 57px">
+              <div class="progress-bar bg-info" role="progressbar" style="width: {{ progress ~ '%' }}" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100">
+                {{ report.financial_goals.months_24 }}
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-      <li class="row align-items-center mb-3">
-        <div class="col-lg-2 fw-600">
-          Next 60 Months
-        </div>
-        <div class="col-lg-10">
-          {% set financial_goal_60_months = fn('get_user_meta', user.ID, 'financial_goal_60_months', true) %}
-          {% set progress = 0 %}
-          {% for i in values %}
-            {% if financial_goal_60_months == i %}
-              {% set progress = loop.index * 20 %}
-            {% endif %}
-          {% endfor %}
-          <div class="progress rounded-0" style="height: 57px">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: {{ progress ~ '%' }}" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100">
-              {{ financial_goal_60_months }}
+        </li>
+      {% endif %}
+      {% if report.financial_goals.months_60 %}
+        <li class="row align-items-center mb-3">
+          <div class="col-lg-2 fw-600">
+            Next 60 Months
+          </div>
+          <div class="col-lg-10">
+            {% set progress = fn('get_financial_goals_progress', report.financial_goals.months_60) %}
+            <div class="progress rounded-0" style="height: 57px">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: {{ progress ~ '%' }}" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100">
+                {{ report.financial_goals.months_60 }}
+              </div>
             </div>
           </div>
-        </div>
-      </li>
+        </li>
+      {% endif %}
     </ul>
   </div>
 </section>
