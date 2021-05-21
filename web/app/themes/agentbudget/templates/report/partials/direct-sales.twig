@@ -15,33 +15,41 @@
       </div>
     </h2>
     <p class="lead mb-5">Being the savage's bowsman, that is, the person who pulled the bow-oar in his boat (the second one from forward), it was my cheerful duty to attend upon him while taking that hard-scrabble scramble upon the dead whale's back. You have seen <strong class="fw-800">Italian organ-boys</strong> holding a dancing-ape by a long cord. Just so, from the.</p>
-    <div class="row">
-      <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-        <div class="report-card rounded bg-white border-start border-8 border-success p-3">
-          <span class="card-label d-block mb-2">PROPERTIES IN MY FARM</span>
-          <span class="card-value d-block">{{ fn('get_user_meta', user.ID, 'my_farm_properties', true) }}</span>
+    <div class="row justify-content-center">
+      {% if report.direct_sales.my_farm_properties %}
+        <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
+          <div class="report-card rounded bg-white border-start border-8 border-success p-3">
+            <span class="card-label d-block mb-2">PROPERTIES IN MY FARM</span>
+            <span class="card-value d-block">{{ report.direct_sales.my_farm_properties }}</span>
+          </div>
         </div>
-      </div>
-      <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-        <div class="report-card rounded bg-white border-start border-8 border-info p-3">
-          <span class="card-label d-block mb-2">AVG PRICE POINT/SALES</span>
-          <span class="card-value d-block">
-            {{ '$' ~ fn('d_nice_number', fn('get_user_meta', user.ID, 'avg_price_per_sale', true)|replace({'$' : ''})) }}
-          </span>
+      {% endif %}
+      {% if report.direct_sales.avg_price_per_sale %}
+        <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
+          <div class="report-card rounded bg-white border-start border-8 border-info p-3">
+            <span class="card-label d-block mb-2">AVG PRICE POINT/SALES</span>
+            <span class="card-value d-block">
+              {{ '$' ~ fn('d_nice_number', report.direct_sales.avg_price_per_sale|replace({'$' : ''})) }}
+            </span>
+          </div>
         </div>
-      </div>
-      <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-        <div class="report-card rounded bg-white border-start border-8 border-warning p-3">
-          <span class="card-label d-block mb-2">MY OPEN HOUSES THIS YEAR</span>
-          <span class="card-value d-block">{{ fn('get_user_meta', user.ID, 'open_houses', true) }}</span>
+      {% endif %}
+      {% if report.direct_sales.open_houses %}
+        <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
+          <div class="report-card rounded bg-white border-start border-8 border-warning p-3">
+            <span class="card-label d-block mb-2">MY OPEN HOUSES THIS YEAR</span>
+            <span class="card-value d-block">{{ report.direct_sales.open_houses }}</span>
+          </div>
         </div>
-      </div>
-      <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-        <div class="report-card rounded bg-white border-start border-8 border-pink p-3">
-          <span class="card-label d-block mb-2">MY AVG COMMISSION RATE</span>
-          <span class="card-value d-block">{{ fn('get_user_meta', user.ID, 'gross_commission_rate', true) }}</span>
+      {% endif %}
+      {% if report.direct_sales.gross_commission_rate %}
+        <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
+          <div class="report-card rounded bg-white border-start border-8 border-pink p-3">
+            <span class="card-label d-block mb-2">MY AVG COMMISSION RATE</span>
+            <span class="card-value d-block">{{ report.direct_sales.gross_commission_rate }}</span>
+          </div>
         </div>
-      </div>
+      {% endif %}
     </div>
   </div>
 </section>

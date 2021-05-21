@@ -45,7 +45,7 @@ class AgentBudget extends TimberSite {
       $user = wp_get_current_user();
       //var_dump( get_user_meta( $user->ID, 'success_definition' , true ) );
       $context['user'] = [
-        'ID' => $user->ID,
+        'id' => $user->ID,
         'first_name' => $user->first_name,
         'last_name' => $user->last_name,
         'display_name' => $user->display_name,
