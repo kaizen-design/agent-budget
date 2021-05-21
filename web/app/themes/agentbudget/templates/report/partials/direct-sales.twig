@@ -25,7 +25,9 @@
       <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
         <div class="report-card rounded bg-white border-start border-8 border-info p-3">
           <span class="card-label d-block mb-2">AVG PRICE POINT/SALES</span>
-          <span class="card-value d-block">{{ fn('get_user_meta', user.ID, 'avg_price_per_sale', true) }}</span>
+          <span class="card-value d-block">
+            {{ '$' ~ fn('d_nice_number', fn('get_user_meta', user.ID, 'avg_price_per_sale', true)|replace({'$' : ''})) }}
+          </span>
         </div>
       </div>
       <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
