@@ -37,7 +37,7 @@ $(document).ready(() => {
   //  PAGINATION
   $('.pagination .page-link').on('click', function () {
     const formID = $(this).data('id');
-    const activeForm = $('.questionnaire-form[data-id="' + formID +  '"]');
+    const activeForm = $('.questionnaire-form[data-id="' + formID + '"]');
     const action = $(this).data('action');
     switch (action) {
       case 'go-to-prev':
@@ -63,6 +63,11 @@ $(document).ready(() => {
       const form = getActiveForm();
       form.submit();
     }
+  });
+
+  $('.viewReportBtn').on('click', (e) => {
+    e.preventDefault();
+    storeDataToWP(JSON.stringify(QUESTIONNAIRE));
   });
 
 });
@@ -177,11 +182,11 @@ function getActiveForm() {
 }
 
 function setActiveForm(id) {
-  switchForms(getActiveForm(), $('.questionnaire-form[data-id="' + id +  '"]'))
+  switchForms(getActiveForm(), $('.questionnaire-form[data-id="' + id + '"]'))
 }
 
 function switchForms(current, next, data) {
-  if (next) {
+  if (next && !isQuestionnaireCompleted()) {
     showLoader();
     setTimeout(() => {
       current.addClass('d-none');
@@ -201,10 +206,14 @@ function switchForms(current, next, data) {
 
 function updateProgressBar() {
   const completedForms = STATE['completed_forms'].length,
-        formsTotal = $('.questionnaire-form').length,
-        progress = Math.round(completedForms * 100 / formsTotal) + '%';
+    formsTotal = $('.questionnaire-form').length,
+    progress = Math.round(completedForms * 100 / formsTotal) + '%';
   $('.progress-bar').css('width', progress);
   $('.progress-bar-label').text(`${progress} Completed`);
+}
+
+function isQuestionnaireCompleted() {
+  return $('.questionnaire-form').length === STATE['completed_forms'].length;
 }
 
 function showSuccessModal() {
@@ -213,4 +222,18 @@ function showSuccessModal() {
     keyboard: false
   });
   successModal.show();
+}
+
+function storeDataToWP(DATA) {
+  console.warn(DATA);
+  showLoader();
+  m_wp_ajax_post('action=update_wp_user_data&data=' + DATA,
+    (_) => {
+      showLoader('hide');
+      window.location.href = '/my-report/';
+    },
+    (_) => {
+      showLoader('hide');
+      d_noty_alert('Something went wrong, please try again later.', 'error');
+    });
 }

@@ -39,7 +39,8 @@
     "roots/wordpress": "^5.7",
     "roots/wp-config": "1.0.0",
     "roots/wp-password-bcrypt": "1.0.0",
-    "wpackagist-plugin/timber-library": "^1.18"
+    "wpackagist-plugin/timber-library": "^1.18",
+    "ext-json": "*"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.5.6",

@@ -1,12 +1,12 @@
-<section class="report-section py-5 py-xl-7">
+<section id="assumptions" class="report-section py-5 py-xl-7">
   <div class="container">
     <h2 class="section-title mb-3">
       <small class="d-block mb-3">ASSUMPTIONS</small>
       <div class="d-flex justify-content-between align-items-center">
         <span>Direct Sales</span>
-        <ul class="report-actions-list list-inline mb-0 d-flex">
+        <ul class="report-actions-list list-inline mb-0 d-flex d-print-none">
           <li class="list-inline-item me-3">
-            <a href="#">Print <i class="fas fa-print"></i></a>
+            <a href="#" class="printLink" data-id="assumptions">Print <i class="fas fa-print"></i></a>
           </li>
           <li class="list-inline-item">
             <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
@@ -19,25 +19,25 @@
       <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
         <div class="report-card rounded bg-white border-start border-8 border-success p-3">
           <span class="card-label d-block mb-2">PROPERTIES IN MY FARM</span>
-          <span class="card-value d-block">1100</span>
+          <span class="card-value d-block">{{ fn('get_user_meta', user.ID, 'my_farm_properties', true) }}</span>
         </div>
       </div>
       <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
         <div class="report-card rounded bg-white border-start border-8 border-info p-3">
           <span class="card-label d-block mb-2">AVG PRICE POINT/SALES</span>
-          <span class="card-value d-block">$2.5M</span>
+          <span class="card-value d-block">{{ fn('get_user_meta', user.ID, 'avg_price_per_sale', true) }}</span>
         </div>
       </div>
       <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
         <div class="report-card rounded bg-white border-start border-8 border-warning p-3">
           <span class="card-label d-block mb-2">MY OPEN HOUSES THIS YEAR</span>
-          <span class="card-value d-block">50</span>
+          <span class="card-value d-block">{{ fn('get_user_meta', user.ID, 'open_houses', true) }}</span>
         </div>
       </div>
       <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
         <div class="report-card rounded bg-white border-start border-8 border-pink p-3">
           <span class="card-label d-block mb-2">MY AVG COMMISSION RATE</span>
-          <span class="card-value d-block">2.47%</span>
+          <span class="card-value d-block">{{ fn('get_user_meta', user.ID, 'gross_commission_rate', true) }}</span>
         </div>
       </div>
     </div>

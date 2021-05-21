@@ -6,7 +6,7 @@
         <p class="lead text-dark fs-26 mb-4">Using the scale below, describe how important <strong class="fw-800">“emotional health”</strong> is to your overall life goals.</p>
         <div class="btn-group d-flex mw-xxl-780" role="group" aria-label="Emotional health button group">
           {% for i in range(1, 10) %}
-            <input type="radio" class="btn-check" name="emotional_health" id="emotional-health-{{ loop.index }}" required autocomplete="off">
+            <input type="radio" class="btn-check" name="emotional_health" id="emotional-health-{{ loop.index }}" value="{{ loop.index }}" required autocomplete="off">
             <label class="btn btn-outline-primary" for="emotional-health-{{ loop.index }}">{{ loop.index }}</label>
           {% endfor %}
         </div>

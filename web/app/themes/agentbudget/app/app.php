@@ -43,11 +43,13 @@ class AgentBudget extends TimberSite {
     if ( is_user_logged_in() ) {
       $context['is_user_logged_in'] = TRUE;
       $user = wp_get_current_user();
+      //var_dump( get_user_meta( $user->ID, 'success_definition' , true ) );
       $context['user'] = [
+        'ID' => $user->ID,
         'first_name' => $user->first_name,
         'last_name' => $user->last_name,
         'display_name' => $user->display_name,
-        'avatar' => get_avatar_url($user->ID, ['size' => '70'])
+        'avatar' => get_avatar_url($user->ID, ['size' => '70']),
       ];
     }
     

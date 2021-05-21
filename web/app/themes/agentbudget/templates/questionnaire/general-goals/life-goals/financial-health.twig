@@ -6,7 +6,7 @@
         <p class="lead text-dark fs-26 mb-4">Using the scale below, describe how important <strong class="fw-800">“financial health”</strong> is to your overall life goals.</p>
         <div class="btn-group d-flex mw-xxl-780" role="group" aria-label="Financial health button group">
           {% for i in range(1, 10) %}
-            <input type="radio" class="btn-check" name="financial_health" id="financial-health-{{ loop.index }}" required autocomplete="off">
+            <input type="radio" class="btn-check" name="financial_health" id="financial-health-{{ loop.index }}" value="{{ loop.index }}" required autocomplete="off">
             <label class="btn btn-outline-primary" for="financial-health-{{ loop.index }}">{{ loop.index }}</label>
           {% endfor %}
         </div>

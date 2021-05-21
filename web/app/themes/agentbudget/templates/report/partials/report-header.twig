@@ -17,7 +17,7 @@
     </div>
     <div class="success-statement alert alert-success mt-3 mb-0" role="alert">
       <span class="alert-heading d-block mb-2">YOUR SUCCESS STATEMENT</span>
-      <blockquote class="mb-0">"Success is going from failure to failure without losing enthusiasm.”</blockquote>
+      <blockquote class="mb-0">{{ '"' ~ fn('get_user_meta', user.ID, 'success_definition', true) ~ '”' }}</blockquote>
     </div>
   </div>
 </div>
