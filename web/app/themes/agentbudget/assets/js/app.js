@@ -1,10 +1,64 @@
 const ajaxurl = APP.ajaxUrl;
 const $ = jQuery;
+
 $(document).ready(() => {
 
   $(document).on('click', 'a[href="#"]', e => e.preventDefault());
 
 });
+
+function initIMask() {
+  $('.currency-mask').each((index, element) => {
+    IMask(element, {
+      mask: '$num',
+      blocks: {
+        num: {
+          scale: 0,
+          mask: Number,
+          thousandsSeparator: ',',
+          radix: '.',
+          mapToRadix: [','],
+        },
+      },
+    });
+  });
+  $('.percent-mask').each((index, element) => {
+    IMask(element, {
+      mask: [
+        {
+          mask: '',
+        },
+        {
+          mask: 'num%',
+          lazy: false,
+          blocks: {
+            num: {
+              mask: Number,
+              scale: 3,
+              min: 2,
+              max: 100,
+              radix: '.',
+              mapToRadix: [','],
+            },
+          },
+        }
+      ]
+    });
+  });
+  $('.number-mask').each((index, element) => {
+    IMask(element, {
+      mask: Number,
+      scale: 2,
+      signed: false,
+      thousandsSeparator: '',
+      padFractionalZeros: false,
+      normalizeZeros: true,
+      radix: '.',
+      mapToRadix: ['.'],
+      min: 0,
+    });
+  });
+}
 
 function m_wp_ajax_post(data, success_callback, error_callback) {
   return m_ajax_request(APP.ajaxUrl, "post", "json", data, false, success_callback, error_callback);

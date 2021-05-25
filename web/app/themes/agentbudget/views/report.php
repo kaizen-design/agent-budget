@@ -84,6 +84,6 @@ $context['report'] = [
 Timber::render( 'report/index.twig', $context );
 
 function get_financial_goals_progress ($goal) {
-  $values = ['$100k - $150k', '$150k - $250k', '$250k - $400k', '$400k - $600k', '$600k '];
+  $values = ['$100k - $150k', '$150k - $250k', '$250k - $400k', '$400k - $600k', '$600k  '];  //  TODO: minor fix of the "+" symbol JS/PHP parsing
   return array_search($goal, $values) ? (array_search($goal, $values) + 1) * 20 : false;
 }

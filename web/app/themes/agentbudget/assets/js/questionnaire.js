@@ -65,10 +65,14 @@ $(document).ready(() => {
     }
   });
 
+  //  VIEW REPORT
   $('.viewReportBtn').on('click', (e) => {
     e.preventDefault();
     storeDataToWP(JSON.stringify(QUESTIONNAIRE));
   });
+
+  //  INIT INPUT MASK/VALIDATION
+  initIMask();
 
 });
 
@@ -142,28 +146,28 @@ function updateSidebarNav(id) {
     case id >= 10 && id <= 12:
       setActiveNavItem(2);
       break;
-    case id >= 13 && id <= 17:
+    case id >= 13 && id <= 19:
       setActiveNavItem(3);
       break;
-    case id >= 18 && id <= 31:
+    case id >= 21 && id <= 35:
       setActiveNavItem(4);
       break;
-    case id >= 32 && id <= 37:
+    case id >= 36 && id <= 41:
       setActiveNavItem(5);
       break;
-    case id >= 38 && id <= 41:
+    case id >= 42 && id <= 45:
       setActiveNavItem(6);
       break;
-    case id >= 42 && id <= 46:
+    case id >= 46 && id <= 50:
       setActiveNavItem(7);
       break;
-    case id === 47:
+    case id === 51:
       setActiveNavItem(8);
       break;
-    case id === 48:
+    case id === 52:
       setActiveNavItem(9);
       break;
-    case id === 49:
+    case id === 53:
       setActiveNavItem(10);
       break;
     default:

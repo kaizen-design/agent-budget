@@ -3,19 +3,39 @@
     <div class="row h-100 align-items-center justify-content-center">
       <div class="col-xl-11 col-xxl-8 mt-auto">
         <small class="form-title d-block mb-3">POTENTIAL INCOME</small>
-        <p class="lead text-dark fs-26 mb-3">How many leads from the <strong class="fw-800">HOA / design review</strong> in the next 12 months?</p>
-        <input class="form-control form-control-lg"
-               type="text"
-               name="hoa_leads"
-               placeholder="0.5"
-               required>
-        <small class="d-block text-end fw-700 fs-12 mt-1"><a class="acceptDefaultBtn" href="#">Accept default</a></small>
+        <div class="form-group mb-4">
+          <p class="lead text-dark mb-0">How many listing leads from the <strong class="fw-800">HOA / design review</strong> in the next 12 months?</p>
+          <input class="form-control form-control-lg number-mask"
+                 type="text"
+                 name="hoa_listing_leads"
+                 placeholder="0.5"
+                 required>
+          <small class="d-block text-end fw-700 fs-12 mt-1"><a class="acceptDefaultBtn" href="#">Accept default</a></small>
+        </div>
+        <div class="form-group mb-4">
+          <p class="lead text-dark mb-0">How many buyer leads from the <strong class="fw-800">HOA / design review</strong> in the next 12 months?</p>
+          <input class="form-control form-control-lg number-mask"
+                 type="text"
+                 name="hoa_buyer_leads"
+                 placeholder="0.5"
+                 required>
+          <small class="d-block text-end fw-700 fs-12 mt-1"><a class="acceptDefaultBtn" href="#">Accept default</a></small>
+        </div>
+        <div class="form-group">
+          <p class="lead text-dark mb-0">What is your expected success rate for <strong class="fw-800">HOA / design review</strong> leads in the next 12 months?</p>
+          <input class="form-control form-control-lg percent-mask"
+                 type="text"
+                 name="hoa_success_rate"
+                 placeholder="50%"
+                 required>
+          <small class="d-block text-end fw-700 fs-12 mt-1"><a class="acceptDefaultBtn" href="#">Accept default</a></small>
+        </div>
         <div class="mt-4 mt-xxl-5">
           <button type="submit" class="btn btn-primary btn-lg mw-90 me-2">OK</button>
           <small class="press-enter-btn text-dark fw-500">Press <strong class="fw-800">Enter ↵</strong></small>
         </div>
       </div>
-      <div class="col-xl-11 col-xxl-8 mt-5 mt-lg-auto">
+      <div class="col-xl-11 col-xxl-8 mt-5">
         {% include 'questionnaire/partials/pagination-progress.twig' %}
       </div>
     </div>
