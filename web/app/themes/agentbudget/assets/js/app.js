@@ -7,6 +7,21 @@ $(document).ready(() => {
 
 });
 
+function storeDataToWP(DATA, redirect = '') {
+  showLoader();
+  m_wp_ajax_post('action=update_wp_user_data&data=' + DATA,
+    (_) => {
+      showLoader('hide');
+      if (redirect !== '') {
+        window.location.href = redirect;
+      }
+    },
+    (_) => {
+      showLoader('hide');
+      d_noty_alert('Something went wrong, please try again later.', 'error');
+    });
+}
+
 function initIMask() {
   $('.currency-mask').each((index, element) => {
     IMask(element, {

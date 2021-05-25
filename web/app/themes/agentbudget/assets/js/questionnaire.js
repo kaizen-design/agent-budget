@@ -68,7 +68,7 @@ $(document).ready(() => {
   //  VIEW REPORT
   $('.viewReportBtn').on('click', (e) => {
     e.preventDefault();
-    storeDataToWP(JSON.stringify(QUESTIONNAIRE));
+    storeDataToWP(JSON.stringify(QUESTIONNAIRE), '/my-report/');
   });
 
   //  INIT INPUT MASK/VALIDATION
@@ -155,19 +155,19 @@ function updateSidebarNav(id) {
     case id >= 36 && id <= 41:
       setActiveNavItem(5);
       break;
-    case id >= 42 && id <= 45:
+    case id >= 42 && id <= 73:
       setActiveNavItem(6);
       break;
-    case id >= 46 && id <= 50:
+    case id >= 74 && id <= 78:
       setActiveNavItem(7);
       break;
-    case id === 51:
+    case id === 79:
       setActiveNavItem(8);
       break;
-    case id === 52:
+    case id === 80:
       setActiveNavItem(9);
       break;
-    case id === 53:
+    case id === 81:
       setActiveNavItem(10);
       break;
     default:
@@ -226,18 +226,4 @@ function showSuccessModal() {
     keyboard: false
   });
   successModal.show();
-}
-
-function storeDataToWP(DATA) {
-  console.warn(DATA);
-  showLoader();
-  m_wp_ajax_post('action=update_wp_user_data&data=' + DATA,
-    (_) => {
-      showLoader('hide');
-      window.location.href = '/my-report/';
-    },
-    (_) => {
-      showLoader('hide');
-      d_noty_alert('Something went wrong, please try again later.', 'error');
-    });
 }
