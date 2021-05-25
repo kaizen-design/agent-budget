@@ -15,7 +15,6 @@ $(document).ready(() => {
   //  FORM VALIDATION
   $('.questionnaire-form').on('submit', function (e) {
     e.preventDefault();
-    e.stopPropagation();
     const $form = $(this);
     if ($form[0].checkValidity()) {
       const id = parseInt($form.data('id'));
@@ -68,6 +67,7 @@ $(document).ready(() => {
   //  VIEW REPORT
   $('.viewReportBtn').on('click', (e) => {
     e.preventDefault();
+    QUESTIONNAIRE['is_report_available'] = true;
     storeDataToWP(JSON.stringify(QUESTIONNAIRE), '/my-report/');
   });
 

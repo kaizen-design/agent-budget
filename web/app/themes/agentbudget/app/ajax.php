@@ -12,7 +12,7 @@ function update_wp_user_data() {
     return false;
   }
   $data = json_decode(stripslashes($_POST['data']), true);
-  //log_in_file($data);
+  log_in_file($data);
   
   foreach ($data as $key => $value) {
     update_user_meta( $user->ID, $key, $value );
