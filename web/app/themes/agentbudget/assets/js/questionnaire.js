@@ -63,6 +63,7 @@ $(document).ready(() => {
   }
   $('.addNewRecruitingLevel').on('click', () => {
     revenueShareFormIds.splice(0, 5);
+    console.warn(revenueShareFormIds);
   });
   $('.noMoreRecruitingLevels').on('click', () => {
     for (const id of revenueShareFormIds) {
@@ -164,16 +165,16 @@ function updateSidebarNav(id) {
     case id >= 13 && id <= 19:
       setActiveNavItem(3);
       break;
-    case id >= 21 && id <= 35:
+    case id >= 20 && id <= 35:
       setActiveNavItem(4);
       break;
     case id >= 36 && id <= 70:
       setActiveNavItem(5);
       break;
-    case id >= 71 && id <= 101:
+    case id >= 71 && id <= 102:
       setActiveNavItem(6);
       break;
-    case id >= 102 && id <= 107:
+    case id >= 103 && id <= 107:
       setActiveNavItem(7);
       break;
     case id === 108:
