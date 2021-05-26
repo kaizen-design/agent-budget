@@ -58,9 +58,17 @@ $(document).ready(() => {
 
   //  ADD REVENUE SHARE LEVEL
   let revenueShareFormIds = [];
-  $('.noMoreRevenueShareLevels').on('click', function () {
-    //switchForms(getActiveForm(), $('.questionnaire-form[data-id="37"]'));
-
+  for (let i = 41; i < 71; i++) {
+    revenueShareFormIds.push(i);
+  }
+  $('.addNewRecruitingLevel').on('click', () => {
+    revenueShareFormIds.splice(0, 5);
+  });
+  $('.noMoreRecruitingLevels').on('click', () => {
+    for (const id of revenueShareFormIds) {
+      $('.questionnaire-form[data-id="' + id + '"]').remove();
+    }
+    switchForms(getActiveForm(), $('.questionnaire-form[data-id="71"]'));
   });
 
   //  HANDLE ENTER KEYPRESS
@@ -159,22 +167,22 @@ function updateSidebarNav(id) {
     case id >= 21 && id <= 35:
       setActiveNavItem(4);
       break;
-    case id >= 36 && id <= 41:
+    case id >= 36 && id <= 70:
       setActiveNavItem(5);
       break;
-    case id >= 42 && id <= 73:
+    case id >= 71 && id <= 101:
       setActiveNavItem(6);
       break;
-    case id >= 74 && id <= 78:
+    case id >= 102 && id <= 107:
       setActiveNavItem(7);
       break;
-    case id === 79:
+    case id === 108:
       setActiveNavItem(8);
       break;
-    case id === 80:
+    case id === 109:
       setActiveNavItem(9);
       break;
-    case id === 81:
+    case id === 110:
       setActiveNavItem(10);
       break;
     default:
@@ -197,15 +205,15 @@ function setActiveForm(id) {
 }
 
 function switchForms(current, next, data) {
+  if (data) {
+    updateStorage(data);
+  }
   if (next && !isQuestionnaireCompleted()) {
     showLoader();
     setTimeout(() => {
       current.addClass('d-none');
       next.removeClass('d-none');
       updateState(next.data('id'));
-      if (data) {
-        updateStorage(data);
-      }
       showLoader(true);
     }, 1000);
   } else {

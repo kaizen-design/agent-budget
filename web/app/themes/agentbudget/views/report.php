@@ -129,12 +129,49 @@ $context['report'] = [
       ]
     ]
   ],
-  'recruiting_overrides' => [
-    //  TODO: add levels functionality
-    'agents_recruit' => get_user_meta($userID, 'revenue_share_agents_recruit', true),
-    'transactions' => get_user_meta($userID, 'revenue_share_transactions', true),
-    'highest_sold_price' => get_user_meta($userID, 'revenue_share_highest_sold_price', true),
-    'lowest_sold_price' => get_user_meta($userID, 'revenue_share_lowest_sold_price', true),
+  'recruiting' => [
+    1 => [
+      'agents' => get_user_meta($userID, 'recruiting_agents_level_1', true),
+      'transactions' => get_user_meta($userID, 'recruiting_transactions_level_1', true),
+      'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_1', true),
+      'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_1', true),
+    ],
+    2 => [
+      'agents' => get_user_meta($userID, 'recruiting_agents_level_2', true),
+      'transactions' => get_user_meta($userID, 'recruiting_transactions_level_2', true),
+      'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_2', true),
+      'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_2', true),
+    ],
+    3 => [
+      'agents' => get_user_meta($userID, 'recruiting_agents_level_3', true),
+      'transactions' => get_user_meta($userID, 'recruiting_transactions_level_3', true),
+      'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_3', true),
+      'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_3', true),
+    ],
+    4 => [
+      'agents' => get_user_meta($userID, 'recruiting_agents_level_4', true),
+      'transactions' => get_user_meta($userID, 'recruiting_transactions_level_4', true),
+      'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_4', true),
+      'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_4', true),
+    ],
+    5 => [
+      'agents' => get_user_meta($userID, 'recruiting_agents_level_5', true),
+      'transactions' => get_user_meta($userID, 'recruiting_transactions_level_5', true),
+      'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_5', true),
+      'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_5', true),
+    ],
+    6 => [
+      'agents' => get_user_meta($userID, 'recruiting_agents_level_6', true),
+      'transactions' => get_user_meta($userID, 'recruiting_transactions_level_6', true),
+      'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_6', true),
+      'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_6', true),
+    ],
+    7 => [
+      'agents' => get_user_meta($userID, 'recruiting_agents_level_7', true),
+      'transactions' => get_user_meta($userID, 'recruiting_transactions_level_7', true),
+      'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_7', true),
+      'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_7', true),
+    ]
   ],
   'opportunities' => [
     'agent_concept' => [
