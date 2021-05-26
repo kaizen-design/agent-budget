@@ -56,6 +56,13 @@ $(document).ready(() => {
     setActiveForm(formID);
   });
 
+  //  ADD REVENUE SHARE LEVEL
+  let revenueShareFormIds = [];
+  $('.noMoreRevenueShareLevels').on('click', function () {
+    //switchForms(getActiveForm(), $('.questionnaire-form[data-id="37"]'));
+
+  });
+
   //  HANDLE ENTER KEYPRESS
   $(document).keypress(function (e) {
     if (e.which === 13) {
