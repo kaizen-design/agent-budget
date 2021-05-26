@@ -212,9 +212,12 @@ $context['report'] = [
     'print_mail_campaigns' => get_user_meta($userID, 'print_mail_campaigns', true),
     'client_gifts' => get_user_meta($userID, 'client_gifts', true),
     'other_marketing_expenses' => get_user_meta($userID, 'other_marketing_expenses', true),
-    'donation_expenses' => get_user_meta($userID, 'donation_expenses', true),
-    'savings_investment' => get_user_meta($userID, 'savings_investment', true),
   ],
+  'budgets' => [
+    'tithing' => get_user_meta($userID, 'donation_expenses', true),
+    'savings' => get_user_meta($userID, 'savings_investment', true),
+    'marketing' => get_user_meta($userID, 'additional_marketing', true)
+  ]
 ];
 
 //  COUNT MY COMMISSION
@@ -260,12 +263,12 @@ foreach ($context['report']['results']['potential_income'] as $key => $value) {
 }
 $context['report']['results']['total_net_commission'] = $total_net_commission;
 
-//  COUNT TOTAL OPPORTUNITIES
+//  COUNT OPPORTUNITIES COMMISSION
 foreach ($context['report']['opportunities'] as $key => $value) {
   $intros = $context['report']['opportunities'][$key]['introductions'];
   $success_rate = $context['report']['opportunities'][$key]['success_rate'];
   $closed_transaction = count_closed_transactions($intros, $success_rate);
-  $context['report']['results']['opportunities'][$key] = count_opportunity_income(
+  $context['report']['results']['opportunities'][$key] = count_opportunity_commission(
     $closed_transaction,
     $context['report']['opportunities'][$key]['avg_cost'],
     $context['report']['opportunities'][$key]['commission'],
@@ -280,7 +283,14 @@ foreach ($context['report']['results']['opportunities'] as $key => $value) {
 }
 $context['report']['results']['total_opportunities_commission'] = $total_opportunities_commission;
 
-//var_dump($context['report']['results']['total_opportunities_commission']);
+//  COUNT TOTAL EXPENSES
+$total_expenses = 0;
+foreach ($context['report']['expenses'] as $key => $value) {
+  $total_expenses = $total_expenses + parse_as_number($context['report']['expenses'][$key]);
+}
+$context['report']['results']['total_expenses'] = round($total_expenses);
+
+//var_dump($context['report']['results']['total_expenses']);
 
 Timber::render( 'report/index.twig', $context );
 
@@ -320,7 +330,7 @@ function count_closed_transactions ($intros, $success_rate) {
   return $intros * parse_as_number($success_rate) / 100;
 }
 
-function count_opportunity_income ($closed_transaction, $avg_total, $commission, $brokerage_split) {
+function count_opportunity_commission ($closed_transaction, $avg_total, $commission, $brokerage_split) {
   return round($closed_transaction * parse_as_number($avg_total) * $commission * $brokerage_split);
 }
 

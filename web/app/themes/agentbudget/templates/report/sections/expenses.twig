@@ -145,16 +145,22 @@
     <table class="expenses-table table caption-top">
       <caption class="table-label">TITHING & SAVINGS</caption>
       <tbody>
-        {% if report.expenses.donation_expenses %}
+        {% if report.budgets.tithing %}
           <tr>
             <td>Tithing</td>
-            <td>{{ report.expenses.donation_expenses }}</td>
+            <td>{{ report.budgets.tithing }}</td>
           </tr>
         {% endif %}
-        {% if report.expenses.savings_investment %}
+        {% if report.budgets.savings %}
           <tr>
             <td>Savings & Investment</td>
-            <td>{{ report.expenses.savings_investment }}</td>
+            <td>{{ report.budgets.savings }}</td>
+          </tr>
+        {% endif %}
+        {% if report.budgets.marketing %}
+          <tr>
+            <td>Marketing</td>
+            <td>{{ report.budgets.marketing }}</td>
           </tr>
         {% endif %}
       </tbody>
