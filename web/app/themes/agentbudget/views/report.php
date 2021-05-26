@@ -143,10 +143,48 @@ $context['report'] = [
       'transactions' => get_user_meta($userID, 'agent_concept_transactions', true),
       'avg_cost' => get_user_meta($userID, 'agent_concept_avg_cost', true),
     ],
-    'agent_farm' => [
-    
+    'agent_smart_home' => [
+      'introductions' => get_user_meta($userID, 'agent_smart_home_introductions', true),
+      'success_rate' => get_user_meta($userID, 'agent_smart_home_success_rate', true),
+      'transactions' => get_user_meta($userID, 'agent_smart_home_transactions', true),
+      'avg_cost' => get_user_meta($userID, 'agent_smart_home_avg_cost', true),
     ],
-    //  TODO: add more opportunities (per spreadsheet)
+    'agent_media' => [
+      'introductions' => get_user_meta($userID, 'agent_media_introductions', true),
+      'success_rate' => get_user_meta($userID, 'agent_media_success_rate', true),
+      'transactions' => get_user_meta($userID, 'agent_media_transactions', true),
+      'avg_cost' => get_user_meta($userID, 'agent_media_avg_cost', true),
+    ],
+    'agent_auction' => [
+      'introductions' => get_user_meta($userID, 'agent_auction_introductions', true),
+      'success_rate' => get_user_meta($userID, 'agent_auction_success_rate', true),
+      'transactions' => get_user_meta($userID, 'agent_auction_transactions', true),
+      'avg_cost' => get_user_meta($userID, 'agent_auction_avg_cost', true),
+    ],
+    'agent_inc' => [
+      'introductions' => get_user_meta($userID, 'agent_inc_introductions', true),
+      'success_rate' => get_user_meta($userID, 'agent_inc_success_rate', true),
+      'transactions' => get_user_meta($userID, 'agent_inc_transactions', true),
+      'avg_cost' => get_user_meta($userID, 'agent_inc_avg_cost', true),
+    ],
+    'agent_commercial' => [
+      'introductions' => get_user_meta($userID, 'agent_smart_home_introductions', true),
+      'success_rate' => get_user_meta($userID, 'agent_smart_home_success_rate', true),
+      'transactions' => get_user_meta($userID, 'agent_smart_home_transactions', true),
+      'avg_cost' => get_user_meta($userID, 'agent_smart_home_avg_cost', true),
+    ],
+    'agent_ranch' => [
+      'introductions' => get_user_meta($userID, 'agent_ranch_introductions', true),
+      'success_rate' => get_user_meta($userID, 'agent_ranch_success_rate', true),
+      'transactions' => get_user_meta($userID, 'agent_ranch_transactions', true),
+      'avg_cost' => get_user_meta($userID, 'agent_ranch_avg_cost', true),
+    ],
+    'agent_property_management' => [
+      'introductions' => get_user_meta($userID, 'agent_property_management_introductions', true),
+      'success_rate' => get_user_meta($userID, 'agent_property_management_success_rate', true),
+      'transactions' => get_user_meta($userID, 'agent_property_management_transactions', true),
+      'avg_cost' => get_user_meta($userID, 'agent_property_management_avg_cost', true),
+    ]
   ],
   'expenses' => [
     'eo_insurance' => get_user_meta($userID, 'eo_insurance', true),

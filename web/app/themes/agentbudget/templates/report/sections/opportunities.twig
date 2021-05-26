@@ -21,48 +21,40 @@
           <div class="col-lg-4 mb-3">
             <img class="img-fluid"
                  src="{{ theme_url }}/assets/images/{{ key|replace({'_' : '-'}) }}-logo.png"
-                 alt="{{ key|replace({'_' : ' '})|capitalize }}">
+                 alt="{{ key|replace({'_' : ' '})|capitalize }}" width="207">
           </div>
-          {% if opportunity.introductions %}
-            <div class="col-sm-6 col-md-4 col-lg-2 mb-3">
-              <div class="report-card rounded border-bottom border-8 border-secondary py-3 px-2 text-center">
-                <span class="card-label d-block mb-2">INTRODUCTIONS</span>
-                <span class="card-value d-block">
-                  {{ opportunity.introductions }}
-                </span>
-              </div>
+          <div class="col-sm-6 col-md-4 col-lg-2 mb-3">
+            <div class="report-card rounded border-bottom border-8 border-secondary py-3 px-2 text-center">
+              <span class="card-label d-block mb-2">INTRODUCTIONS</span>
+              <span class="card-value d-block">
+                {{ opportunity.introductions }}
+              </span>
             </div>
-          {% endif %}
-          {% if opportunity.success_rate %}
-            <div class="col-sm-6 col-md-4 col-lg-2 mb-3">
-              <div class="report-card rounded border-bottom border-8 border-info py-3 px-2 text-center">
-                <span class="card-label d-block mb-2">SUCCESS RATE</span>
-                <span class="card-value d-block">
-                  {{ opportunity.success_rate }}
-                </span>
-              </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-2 mb-3">
+            <div class="report-card rounded border-bottom border-8 border-info py-3 px-2 text-center">
+              <span class="card-label d-block mb-2">SUCCESS RATE</span>
+              <span class="card-value d-block">
+                {{ opportunity.success_rate }}
+              </span>
             </div>
-          {% endif %}
-          {% if opportunity.transactions %}
-            <div class="col-sm-6 col-md-4 col-lg-2 mb-3">
-              <div class="report-card rounded border-bottom border-8 border-pink py-3 px-2 text-center">
-                <span class="card-label d-block mb-2">TRANSACTIONS</span>
-                <span class="card-value d-block">
-                  {{ opportunity.transactions }}
-                </span>
-              </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-2 mb-3">
+            <div class="report-card rounded border-bottom border-8 border-pink py-3 px-2 text-center">
+              <span class="card-label d-block mb-2">TRANSACTIONS</span>
+              <span class="card-value d-block">
+                {{ opportunity.transactions }}
+              </span>
             </div>
-          {% endif %}
-          {% if opportunity.avg_cost %}
-            <div class="col-sm-6 col-md-4 col-lg-2 mb-3">
-              <div class="report-card rounded border-bottom border-8 border-primary py-3 px-2 text-center">
-                <span class="card-label d-block mb-2">AVG COST</span>
-                <span class="card-value d-block">
-                  {{ '$' ~ fn('d_nice_number', opportunity.avg_cost|replace({'$' : ''})) }}
-                </span>
-              </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-2 mb-3">
+            <div class="report-card rounded border-bottom border-8 border-primary py-3 px-2 text-center">
+              <span class="card-label d-block mb-2">AVG COST</span>
+              <span class="card-value d-block">
+                {{ opportunity.avg_cost == '' ? '$0' : '$' ~ fn('d_nice_number', opportunity.avg_cost|replace({'$' : ''})) }}
+              </span>
             </div>
-          {% endif %}
+          </div>
         </div>
       {% endif %}
     {% endfor %}
