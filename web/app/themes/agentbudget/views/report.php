@@ -142,49 +142,57 @@ $context['report'] = [
       'success_rate' => get_user_meta($userID, 'agent_concept_success_rate', true),
       'transactions' => get_user_meta($userID, 'agent_concept_transactions', true),
       'avg_cost' => get_user_meta($userID, 'agent_concept_avg_cost', true),
+      'commission' => 0.1
     ],
     'agent_smart_home' => [
       'introductions' => get_user_meta($userID, 'agent_smart_home_introductions', true),
       'success_rate' => get_user_meta($userID, 'agent_smart_home_success_rate', true),
       'transactions' => get_user_meta($userID, 'agent_smart_home_transactions', true),
       'avg_cost' => get_user_meta($userID, 'agent_smart_home_avg_cost', true),
+      'commission' => 0.1
     ],
     'agent_media' => [
       'introductions' => get_user_meta($userID, 'agent_media_introductions', true),
       'success_rate' => get_user_meta($userID, 'agent_media_success_rate', true),
       'transactions' => get_user_meta($userID, 'agent_media_transactions', true),
       'avg_cost' => get_user_meta($userID, 'agent_media_avg_cost', true),
+      'commission' => 0.1
     ],
     'agent_auction' => [
       'introductions' => get_user_meta($userID, 'agent_auction_introductions', true),
       'success_rate' => get_user_meta($userID, 'agent_auction_success_rate', true),
       'transactions' => get_user_meta($userID, 'agent_auction_transactions', true),
       'avg_cost' => get_user_meta($userID, 'agent_auction_avg_cost', true),
+      'commission' => 0.01
     ],
     'agent_inc' => [
       'introductions' => get_user_meta($userID, 'agent_inc_introductions', true),
       'success_rate' => get_user_meta($userID, 'agent_inc_success_rate', true),
       'transactions' => get_user_meta($userID, 'agent_inc_transactions', true),
       'avg_cost' => get_user_meta($userID, 'agent_inc_avg_cost', true),
+      'commission' => 0.0062
     ],
     'agent_commercial' => [
-      'introductions' => get_user_meta($userID, 'agent_smart_home_introductions', true),
-      'success_rate' => get_user_meta($userID, 'agent_smart_home_success_rate', true),
-      'transactions' => get_user_meta($userID, 'agent_smart_home_transactions', true),
-      'avg_cost' => get_user_meta($userID, 'agent_smart_home_avg_cost', true),
+      'introductions' => get_user_meta($userID, 'agent_commercial_introductions', true),
+      'success_rate' => get_user_meta($userID, 'agent_commercial_success_rate', true),
+      'transactions' => get_user_meta($userID, 'agent_commercial_transactions', true),
+      'avg_cost' => get_user_meta($userID, 'agent_commercial_avg_cost', true),
+      'commission' => 0.0062
     ],
     'agent_ranch' => [
       'introductions' => get_user_meta($userID, 'agent_ranch_introductions', true),
       'success_rate' => get_user_meta($userID, 'agent_ranch_success_rate', true),
       'transactions' => get_user_meta($userID, 'agent_ranch_transactions', true),
       'avg_cost' => get_user_meta($userID, 'agent_ranch_avg_cost', true),
+      'commission' => 0.0062
     ],
-    'agent_property_management' => [
+    /*'agent_property_management' => [
       'introductions' => get_user_meta($userID, 'agent_property_management_introductions', true),
       'success_rate' => get_user_meta($userID, 'agent_property_management_success_rate', true),
       'transactions' => get_user_meta($userID, 'agent_property_management_transactions', true),
       'avg_cost' => get_user_meta($userID, 'agent_property_management_avg_cost', true),
-    ]
+      'commission' => 0.0062
+    ]*/
   ],
   'expenses' => [
     'eo_insurance' => get_user_meta($userID, 'eo_insurance', true),
@@ -252,7 +260,27 @@ foreach ($context['report']['results']['potential_income'] as $key => $value) {
 }
 $context['report']['results']['total_net_commission'] = $total_net_commission;
 
-//var_dump($context['report']['results']['total_net_commission']);
+//  COUNT TOTAL OPPORTUNITIES
+foreach ($context['report']['opportunities'] as $key => $value) {
+  $intros = $context['report']['opportunities'][$key]['introductions'];
+  $success_rate = $context['report']['opportunities'][$key]['success_rate'];
+  $closed_transaction = count_closed_transactions($intros, $success_rate);
+  $context['report']['results']['opportunities'][$key] = count_opportunity_income(
+    $closed_transaction,
+    $context['report']['opportunities'][$key]['avg_cost'],
+    $context['report']['opportunities'][$key]['commission'],
+    $context['report']['results']['brokerage_split']
+  );
+}
+
+//  COUNT TOTAL OPPORTUNITIES COMMISSION
+$total_opportunities_commission = 0;
+foreach ($context['report']['results']['opportunities'] as $key => $value) {
+  $total_opportunities_commission = $total_opportunities_commission + $context['report']['results']['opportunities'][$key];
+}
+$context['report']['results']['total_opportunities_commission'] = $total_opportunities_commission;
+
+//var_dump($context['report']['results']['total_opportunities_commission']);
 
 Timber::render( 'report/index.twig', $context );
 
@@ -286,6 +314,14 @@ function count_brokerage_split ($split_rate) {
 
 function count_net_commission ($sold_transactions, $avg_price, $brokerage_split, $lead_expense, $closed_deal_expense, $commission = 0.0247 ) {
   return round(($sold_transactions * $avg_price * $brokerage_split * $commission) - $lead_expense - $closed_deal_expense);
+}
+
+function count_closed_transactions ($intros, $success_rate) {
+  return $intros * parse_as_number($success_rate) / 100;
+}
+
+function count_opportunity_income ($closed_transaction, $avg_total, $commission, $brokerage_split) {
+  return round($closed_transaction * parse_as_number($avg_total) * $commission * $brokerage_split);
 }
 
 function parse_as_number ($string) {
