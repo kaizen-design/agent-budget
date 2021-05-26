@@ -186,13 +186,13 @@ $context['report'] = [
       'avg_cost' => get_user_meta($userID, 'agent_ranch_avg_cost', true),
       'commission' => 0.0062
     ],
-    /*'agent_property_management' => [
+    'agent_property_management' => [
       'introductions' => get_user_meta($userID, 'agent_property_management_introductions', true),
       'success_rate' => get_user_meta($userID, 'agent_property_management_success_rate', true),
       'transactions' => get_user_meta($userID, 'agent_property_management_transactions', true),
       'avg_cost' => get_user_meta($userID, 'agent_property_management_avg_cost', true),
       'commission' => 0.0062
-    ]*/
+    ]
   ],
   'expenses' => [
     'eo_insurance' => get_user_meta($userID, 'eo_insurance', true),
@@ -325,5 +325,5 @@ function count_opportunity_income ($closed_transaction, $avg_total, $commission,
 }
 
 function parse_as_number ($string) {
-  return str_replace(['$', ',', '%'], '', $string);
+  return $string ? str_replace(['$', ',', '%'], '', $string) : 0;
 }
