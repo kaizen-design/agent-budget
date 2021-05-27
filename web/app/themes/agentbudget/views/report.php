@@ -135,42 +135,49 @@ $context['report'] = [
       'transactions' => get_user_meta($userID, 'recruiting_transactions_level_1', true),
       'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_1', true),
       'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_1', true),
+      'revenue' => 0.02068
     ],
     2 => [
       'agents' => get_user_meta($userID, 'recruiting_agents_level_2', true),
       'transactions' => get_user_meta($userID, 'recruiting_transactions_level_2', true),
       'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_2', true),
       'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_2', true),
+      'revenue' => 0.0188
     ],
     3 => [
       'agents' => get_user_meta($userID, 'recruiting_agents_level_3', true),
       'transactions' => get_user_meta($userID, 'recruiting_transactions_level_3', true),
       'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_3', true),
       'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_3', true),
+      'revenue' => 0.0188
     ],
     4 => [
       'agents' => get_user_meta($userID, 'recruiting_agents_level_4', true),
       'transactions' => get_user_meta($userID, 'recruiting_transactions_level_4', true),
       'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_4', true),
       'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_4', true),
+      'revenue' => 0.0094
     ],
     5 => [
       'agents' => get_user_meta($userID, 'recruiting_agents_level_5', true),
       'transactions' => get_user_meta($userID, 'recruiting_transactions_level_5', true),
       'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_5', true),
       'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_5', true),
+      'revenue' => 0.0094
     ],
     6 => [
       'agents' => get_user_meta($userID, 'recruiting_agents_level_6', true),
       'transactions' => get_user_meta($userID, 'recruiting_transactions_level_6', true),
       'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_6', true),
       'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_6', true),
+      'revenue' => 0.0047
     ],
     7 => [
       'agents' => get_user_meta($userID, 'recruiting_agents_level_7', true),
       'transactions' => get_user_meta($userID, 'recruiting_transactions_level_7', true),
       'highest_sold_price' => get_user_meta($userID, 'recruiting_highest_sold_price_level_7', true),
       'lowest_sold_price' => get_user_meta($userID, 'recruiting_lowest_sold_price_level_7', true),
+      'revenue' => 0.00282
     ]
   ],
   'opportunities' => [
@@ -294,11 +301,36 @@ foreach ($context['report']['potential_income']['categories'] as $key => $value)
 }
 
 //  COUNT TOTAL NET COMMISSION
-$total_net_commission = 0;
+$context['report']['results']['total_net_commission'] = 0;
 foreach ($context['report']['results']['potential_income'] as $key => $value) {
-  $total_net_commission = $total_net_commission + $context['report']['results']['potential_income'][$key]['net_commission'];
+  $context['report']['results']['total_net_commission'] += $context['report']['results']['potential_income'][$key]['net_commission'];
 }
-$context['report']['results']['total_net_commission'] = $total_net_commission;
+
+//  COUNT RECRUITING COMMISSION
+foreach ($context['report']['recruiting'] as $key => $value) {
+  $agents = $context['report']['recruiting'][$key]['agents'];
+  $transactions = $context['report']['recruiting'][$key]['transactions'];
+  $highest_sold_price = $context['report']['recruiting'][$key]['highest_sold_price'];
+  $lowest_sold_price = $context['report']['recruiting'][$key]['lowest_sold_price'];
+  if ($agents && $transactions && $highest_sold_price && $lowest_sold_price) {
+    $total_commission = get_recruited_agents_total_commission(
+      $agents,
+      $transactions,
+      array_sum([
+        parse_as_number($highest_sold_price),
+        parse_as_number($lowest_sold_price)
+      ]) / 2,
+      parse_as_number($context['report']['direct_sales']['gross_commission_rate']) / 100
+    );
+    $context['report']['results']['recruiting'][$key] = round($total_commission * $context['report']['recruiting'][$key]['revenue']);
+  }
+}
+
+//  COUNT TOTAL RECRUITING COMMISSION
+$context['report']['results']['total_recruiting_commission'] = 0;
+foreach ($context['report']['results']['recruiting'] as $key => $value) {
+  $context['report']['results']['total_recruiting_commission'] += $context['report']['results']['recruiting'][$key];
+}
 
 //  COUNT OPPORTUNITIES COMMISSION
 foreach ($context['report']['opportunities'] as $key => $value) {
@@ -314,26 +346,24 @@ foreach ($context['report']['opportunities'] as $key => $value) {
 }
 
 //  COUNT TOTAL OPPORTUNITIES COMMISSION
-$total_opportunities_commission = 0;
+$context['report']['results']['total_opportunities_commission'] = 0;
 foreach ($context['report']['results']['opportunities'] as $key => $value) {
-  $total_opportunities_commission = $total_opportunities_commission + $context['report']['results']['opportunities'][$key];
+  $context['report']['results']['total_opportunities_commission'] += $context['report']['results']['opportunities'][$key];
 }
-$context['report']['results']['total_opportunities_commission'] = $total_opportunities_commission;
 
 //  COUNT TOTAL EXPENSES
-$total_expenses = 0;
+$context['report']['results']['total_expenses'] = 0;
 foreach ($context['report']['expenses'] as $key => $value) {
-  $total_expenses = $total_expenses + parse_as_number($context['report']['expenses'][$key]);
+  $context['report']['results']['total_expenses'] += parse_as_number($context['report']['expenses'][$key]);
 }
-$context['report']['results']['total_expenses'] = round($total_expenses);
 
-//var_dump($context['report']['results']['total_expenses']);
+//var_dump($context['report']['results']['recruiting']);
 
 Timber::render( 'report/index.twig', $context );
 
 function get_financial_goals_progress ($goal) {
-  $values = ['$100k - $150k', '$150k - $250k', '$250k - $400k', '$400k - $600k', '$600k  '];  //  TODO: minor fix of the "+" symbol JS/PHP parsing
-  return array_search($goal, $values) ? (array_search($goal, $values) + 1) * 20 : false;
+  $values = ['$100k - $150k', '$150k - $250k', '$250k - $400k', '$400k - $600k', '$600k  '];
+  return (array_search($goal, $values) + 1) * 20;
 }
 
 function count_my_commission ($average_price, $gross_commission_rate, $brokerage_split_rate, $my_market_share = 12.25) {
@@ -361,6 +391,10 @@ function count_brokerage_split ($split_rate) {
 
 function count_net_commission ($sold_transactions, $avg_price, $brokerage_split, $lead_expense, $closed_deal_expense, $commission = 0.0247 ) {
   return round(($sold_transactions * $avg_price * $brokerage_split * $commission) - $lead_expense - $closed_deal_expense);
+}
+
+function get_recruited_agents_total_commission ($agents, $transactions, $avg_price, $gross_commission) {
+  return ($agents * $transactions) * ($avg_price * $gross_commission);
 }
 
 function count_closed_transactions ($intros, $success_rate) {

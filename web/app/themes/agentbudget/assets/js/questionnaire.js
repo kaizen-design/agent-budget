@@ -63,7 +63,6 @@ $(document).ready(() => {
   }
   $('.addNewRecruitingLevel').on('click', () => {
     revenueShareFormIds.splice(0, 5);
-    console.warn(revenueShareFormIds);
   });
   $('.noMoreRecruitingLevels').on('click', () => {
     for (const id of revenueShareFormIds) {
