@@ -357,7 +357,32 @@ foreach ($context['report']['expenses'] as $key => $value) {
   $context['report']['results']['total_expenses'] += parse_as_number($context['report']['expenses'][$key]);
 }
 
-//var_dump($context['report']['results']['recruiting']);
+$context['report']['results']['total_net_income'] = count_total_net_income(
+  $context['report']['results']['total_net_commission'],
+  $context['report']['results']['total_recruiting_commission'],
+  $context['report']['results']['total_opportunities_commission']
+);
+
+$context['report']['results']['net_income_minus_business_expenses'] = $context['report']['results']['total_net_income'] - $context['report']['results']['total_expenses'];
+
+//  COUNT BUDGETS
+foreach ($context['report']['budgets'] as $key => $value) {
+  $context['report']['results']['budgets'][$key] = count_budget(
+    $context['report']['results']['net_income_minus_business_expenses'],
+    $context['report']['budgets'][$key]
+  );
+}
+
+//  COUNT TOTAL BUDGETS
+$context['report']['results']['total_budgets'] = 0;
+foreach ($context['report']['results']['budgets'] as $key => $value) {
+  $context['report']['results']['total_budgets'] += $context['report']['results']['budgets'][$key];
+}
+
+//  INCOME ESTIMATE
+$context['income_estimate']['months_12'] = $context['report']['results']['net_income_minus_business_expenses'] - $context['report']['results']['total_budgets'];
+$context['income_estimate']['months_24'] = round($context['income_estimate']['months_12'] * 1.3);
+$context['income_estimate']['months_60'] = round($context['income_estimate']['months_24'] * 1.3);
 
 Timber::render( 'report/index.twig', $context );
 
@@ -403,6 +428,14 @@ function count_closed_transactions ($intros, $success_rate) {
 
 function count_opportunity_commission ($closed_transaction, $avg_total, $commission, $brokerage_split) {
   return round($closed_transaction * parse_as_number($avg_total) * $commission * $brokerage_split);
+}
+
+function count_total_net_income ($net, $recruiting, $opportunities) {
+  return $net + $recruiting + $opportunities;
+}
+
+function count_budget ($net_income, $budget) {
+  return $net_income * parse_as_number($budget) / 100;
 }
 
 function parse_as_number ($string) {

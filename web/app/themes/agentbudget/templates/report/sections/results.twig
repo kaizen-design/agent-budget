@@ -9,19 +9,25 @@
       <div class="col-md-4 mb-3">
         <div class="report-card rounded border-bottom border-8 border-secondary py-3 px-2 text-center">
           <span class="card-label d-block mb-2">12 MONTH INCOME ESTIMATE</span>
-          <span class="card-value d-block">$150 - $250K</span>
+          <span class="card-value d-block">
+            {{ '$' ~ fn('d_nice_number', income_estimate.months_12|replace({'$' : ''})) }}
+          </span>
         </div>
       </div>
       <div class="col-md-4 mb-3">
         <div class="report-card rounded border-bottom border-8 border-pink py-3 px-2 text-center">
           <span class="card-label d-block mb-2">24 MONTH INCOME ESTIMATE</span>
-          <span class="card-value d-block">$250 - $400K</span>
+          <span class="card-value d-block">
+            {{ '$' ~ fn('d_nice_number', income_estimate.months_24|replace({'$' : ''})) }}
+          </span>
         </div>
       </div>
       <div class="col-md-4 mb-3">
         <div class="report-card rounded border-bottom border-8 border-warning py-3 px-2 text-center">
           <span class="card-label d-block mb-2">60 MONTH INCOME ESTIMATE</span>
-          <span class="card-value d-block">$450 - 600K</span>
+          <span class="card-value d-block">
+            {{ '$' ~ fn('d_nice_number', income_estimate.months_60|replace({'$' : ''})) }}
+          </span>
         </div>
       </div>
     </div>
