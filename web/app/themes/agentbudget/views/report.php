@@ -265,14 +265,14 @@ $context['report'] = [
 ];
 
 //  COUNT MY COMMISSION
-$context['report']['results']['my_commission'] = count_my_commission(
+$context['results']['my_commission'] = count_my_commission(
   $context['report']['direct_sales']['avg_price_per_sale'],
   $context['report']['direct_sales']['gross_commission_rate'],
   $context['report']['direct_sales']['brokerage_split_rate']
 );
 
 //  COUNT BROKERAGE SPLIT
-$context['report']['results']['brokerage_split'] = count_brokerage_split(
+$context['results']['brokerage_split'] = count_brokerage_split(
   $context['report']['direct_sales']['brokerage_split_rate']
 );
 
@@ -281,29 +281,29 @@ foreach ($context['report']['potential_income']['categories'] as $key => $value)
   $listing_leads = $context['report']['potential_income']['categories'][$key]['listing_leads'];
   $buyer_leads = $context['report']['potential_income']['categories'][$key]['buyer_leads'];
   $success_rate = $context['report']['potential_income']['categories'][$key]['success_rate'];
-  $context['report']['results']['potential_income'][$key]['sold_transactions'] = count_sold_transactions(
+  $context['results']['potential_income'][$key]['sold_transactions'] = count_sold_transactions(
     $listing_leads, $buyer_leads, $success_rate
   );
-  $context['report']['results']['potential_income'][$key]['lead_expense'] = count_expense_for_lead_ref(
+  $context['results']['potential_income'][$key]['lead_expense'] = count_expense_for_lead_ref(
     $listing_leads, $buyer_leads, $context['report']['potential_income']['lead_ref_expense']
   );
-  $context['report']['results']['potential_income'][$key]['closed_deal_ref_expense'] = count_closed_deal_ref_expense(
-    $context['report']['results']['potential_income'][$key]['sold_transactions'],
+  $context['results']['potential_income'][$key]['closed_deal_ref_expense'] = count_closed_deal_ref_expense(
+    $context['results']['potential_income'][$key]['sold_transactions'],
     $context['report']['potential_income']['closed_deal_ref_expense']
   );
-  $context['report']['results']['potential_income'][$key]['net_commission'] = count_net_commission(
-    $context['report']['results']['potential_income'][$key]['sold_transactions'],
+  $context['results']['potential_income'][$key]['net_commission'] = count_net_commission(
+    $context['results']['potential_income'][$key]['sold_transactions'],
     $context['report']['potential_income']['categories'][$key]['avg_listing_price'],
-    $context['report']['results']['brokerage_split'],
-    $context['report']['results']['potential_income'][$key]['lead_expense'],
-    $context['report']['results']['potential_income'][$key]['closed_deal_ref_expense']
+    $context['results']['brokerage_split'],
+    $context['results']['potential_income'][$key]['lead_expense'],
+    $context['results']['potential_income'][$key]['closed_deal_ref_expense']
   );
 }
 
 //  COUNT TOTAL NET COMMISSION
-$context['report']['results']['total_net_commission'] = 0;
-foreach ($context['report']['results']['potential_income'] as $key => $value) {
-  $context['report']['results']['total_net_commission'] += $context['report']['results']['potential_income'][$key]['net_commission'];
+$context['results']['total_net_commission'] = 0;
+foreach ($context['results']['potential_income'] as $key => $value) {
+  $context['results']['total_net_commission'] += $context['results']['potential_income'][$key]['net_commission'];
 }
 
 //  COUNT RECRUITING COMMISSION
@@ -322,14 +322,14 @@ foreach ($context['report']['recruiting'] as $key => $value) {
       ]) / 2,
       parse_as_number($context['report']['direct_sales']['gross_commission_rate']) / 100
     );
-    $context['report']['results']['recruiting'][$key] = round($total_commission * $context['report']['recruiting'][$key]['revenue']);
+    $context['results']['recruiting'][$key] = round($total_commission * $context['report']['recruiting'][$key]['revenue']);
   }
 }
 
 //  COUNT TOTAL RECRUITING COMMISSION
-$context['report']['results']['total_recruiting_commission'] = 0;
-foreach ($context['report']['results']['recruiting'] as $key => $value) {
-  $context['report']['results']['total_recruiting_commission'] += $context['report']['results']['recruiting'][$key];
+$context['results']['total_recruiting_commission'] = 0;
+foreach ($context['results']['recruiting'] as $key => $value) {
+  $context['results']['total_recruiting_commission'] += $context['results']['recruiting'][$key];
 }
 
 //  COUNT OPPORTUNITIES COMMISSION
@@ -337,50 +337,50 @@ foreach ($context['report']['opportunities'] as $key => $value) {
   $intros = $context['report']['opportunities'][$key]['introductions'];
   $success_rate = $context['report']['opportunities'][$key]['success_rate'];
   $closed_transaction = count_closed_transactions($intros, $success_rate);
-  $context['report']['results']['opportunities'][$key] = count_opportunity_commission(
+  $context['results']['opportunities'][$key] = count_opportunity_commission(
     $closed_transaction,
     $context['report']['opportunities'][$key]['avg_cost'],
     $context['report']['opportunities'][$key]['commission'],
-    $context['report']['results']['brokerage_split']
+    $context['results']['brokerage_split']
   );
 }
 
 //  COUNT TOTAL OPPORTUNITIES COMMISSION
-$context['report']['results']['total_opportunities_commission'] = 0;
-foreach ($context['report']['results']['opportunities'] as $key => $value) {
-  $context['report']['results']['total_opportunities_commission'] += $context['report']['results']['opportunities'][$key];
+$context['results']['total_opportunities_commission'] = 0;
+foreach ($context['results']['opportunities'] as $key => $value) {
+  $context['results']['total_opportunities_commission'] += $context['results']['opportunities'][$key];
 }
 
 //  COUNT TOTAL EXPENSES
-$context['report']['results']['total_expenses'] = 0;
+$context['results']['total_expenses'] = 0;
 foreach ($context['report']['expenses'] as $key => $value) {
-  $context['report']['results']['total_expenses'] += parse_as_number($context['report']['expenses'][$key]);
+  $context['results']['total_expenses'] += parse_as_number($context['report']['expenses'][$key]);
 }
 
-$context['report']['results']['total_net_income'] = count_total_net_income(
-  $context['report']['results']['total_net_commission'],
-  $context['report']['results']['total_recruiting_commission'],
-  $context['report']['results']['total_opportunities_commission']
+$context['results']['total_net_income'] = count_total_net_income(
+  $context['results']['total_net_commission'],
+  $context['results']['total_recruiting_commission'],
+  $context['results']['total_opportunities_commission']
 );
 
-$context['report']['results']['net_income_minus_business_expenses'] = $context['report']['results']['total_net_income'] - $context['report']['results']['total_expenses'];
+$context['results']['net_income_minus_business_expenses'] = $context['results']['total_net_income'] - $context['results']['total_expenses'];
 
 //  COUNT BUDGETS
 foreach ($context['report']['budgets'] as $key => $value) {
-  $context['report']['results']['budgets'][$key] = count_budget(
-    $context['report']['results']['net_income_minus_business_expenses'],
+  $context['results']['budgets'][$key] = count_budget(
+    $context['results']['net_income_minus_business_expenses'],
     $context['report']['budgets'][$key]
   );
 }
 
 //  COUNT TOTAL BUDGETS
-$context['report']['results']['total_budgets'] = 0;
-foreach ($context['report']['results']['budgets'] as $key => $value) {
-  $context['report']['results']['total_budgets'] += $context['report']['results']['budgets'][$key];
+$context['results']['total_budgets'] = 0;
+foreach ($context['results']['budgets'] as $key => $value) {
+  $context['results']['total_budgets'] += $context['results']['budgets'][$key];
 }
 
 //  INCOME ESTIMATE
-$context['income_estimate']['months_12'] = $context['report']['results']['net_income_minus_business_expenses'] - $context['report']['results']['total_budgets'];
+$context['income_estimate']['months_12'] = round($context['results']['net_income_minus_business_expenses'] - $context['results']['total_budgets']);
 $context['income_estimate']['months_24'] = round($context['income_estimate']['months_12'] * 1.3);
 $context['income_estimate']['months_60'] = round($context['income_estimate']['months_24'] * 1.3);
 
