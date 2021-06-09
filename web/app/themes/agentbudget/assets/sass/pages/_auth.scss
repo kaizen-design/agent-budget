@@ -1,4 +1,6 @@
-body.page-template-login {
+body.page-template-login,
+body.page-template-registration,
+body.page-template-forgot-password {
   display: flex;
   flex-direction: column;
   height: 100%;

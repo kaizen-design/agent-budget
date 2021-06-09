@@ -22,10 +22,10 @@
                   <input id="rememberme" type="checkbox" class="form-check-input" value="forever" name="rememberme">
                   <label class="form-check-label" for="remember_me">Remember Me</label>
                 </div>
-                <div><a href="#">Forgot password?</a></div>
+                <div><a href="{{ site.link ~ '/forgot-password/' }}">Forgot password?</a></div>
               </small>
               <input id="wp-submit" type="submit" value="LOGIN TO YOUR ACCOUNT" name="wp-submit" class="btn btn-primary btn-lg mw-310 mb-3">
-              <small class="d-block">Not yet a member? <a href="#">Register now</a>.</small>
+              <small class="d-block">Not yet a member? <a href="{{ site.link ~ '/register/' }}">Register now</a>.</small>
               <input type="hidden" value="{{ site.link }}" name="redirect_to">
               <input type="hidden" value="1" name="testcookie">
             </div>

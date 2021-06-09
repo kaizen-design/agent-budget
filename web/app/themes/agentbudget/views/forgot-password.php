@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Login
+ * Template Name: Forgot Password
  */
 
 if ( is_user_logged_in() ) {
@@ -12,4 +12,4 @@ $context = Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;
 
-Timber::render( 'auth/login.twig', $context );
+Timber::render( 'auth/forgot-password.twig', $context );
