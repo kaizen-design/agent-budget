@@ -41,3 +41,14 @@ body.page-template-login {
     white-space: initial;
   }
 }
+
+//  AUTH FORM
+.auth-form {
+  .form-title {
+    font-size: rem-calc(21)
+  }
+  small {
+    color: #2C2C2F;
+    font-size: rem-calc(12);
+  }
+}

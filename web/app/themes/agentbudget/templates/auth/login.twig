@@ -6,26 +6,28 @@
   <div class="auth-app d-lg-flex h-100">
     {% include 'auth/partials/sidebar.twig' %}
     <main>
-      <form class="auth-form h-100 py-5">
+      <form class="auth-form h-100 py-5" name="loginform" id="loginform" action="{{ site.link ~ '/wp/wp-login.php' }}" method="post">
         <div class="container-fluid h-100">
           <div class="row h-100 align-items-center justify-content-center">
             <div class="col-xl-11 col-xxl-8">
               <h4 class="form-title fw-700 mb-3">Login to your account</h4>
               <div class="mb-3">
-                <input type="text" class="form-control form-control-lg rounded" placeholder="Username or email" required>
+                <input id="user_login" name="log" type="text" class="form-control form-control-lg rounded" placeholder="Username or email" required>
               </div>
               <div class="mb-3">
-                <input type="password" class="form-control form-control-lg rounded" placeholder="********" required>
+                <input id="user_pass" name="pwd" type="password" size="20" class="form-control form-control-lg rounded" placeholder="********" required>
               </div>
-              <small class="d-flex justify-content-between mb-3">
+              <small class="d-flex justify-content-between mb-2 max-w-310">
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="remember_me">
+                  <input id="rememberme" type="checkbox" class="form-check-input" value="forever" name="rememberme">
                   <label class="form-check-label" for="remember_me">Remember Me</label>
                 </div>
                 <div><a href="#">Forgot password?</a></div>
               </small>
-              <button type="submit" class="btn btn-primary btn-lg mb-3">LOGIN TO YOUR ACCOUNT</button>
+              <input id="wp-submit" type="submit" value="LOGIN TO YOUR ACCOUNT" name="wp-submit" class="btn btn-primary btn-lg mw-310 mb-3">
               <small class="d-block">Not yet a member? <a href="#">Register now</a>.</small>
+              <input type="hidden" value="{{ site.link }}" name="redirect_to">
+              <input type="hidden" value="1" name="testcookie">
             </div>
           </div>
         </div>

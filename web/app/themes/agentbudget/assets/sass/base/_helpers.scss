@@ -24,6 +24,12 @@
 .mw-206 {
   min-width: 270px;
 }
+.mw-310 {
+  min-width: 310px;
+  @include media-breakpoint-down(md) {
+    min-width: 100%;
+  }
+}
 .mw-400 {
   min-width: 400px;
   @include media-breakpoint-down(md) {
@@ -33,6 +39,14 @@
 .mw-xxl-780 {
   @include media-breakpoint-up(xxl) {
     max-width: 780px;
+  }
+}
+
+//  MAX WIDTH
+.max-w-310 {
+  max-width: 310px;
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
   }
 }
 
