@@ -48,8 +48,8 @@ class AgentBudget extends TimberSite {
         'first_name' => $user->first_name,
         'last_name' => $user->last_name,
         'display_name' => $user->display_name,
-        'avatar' => get_avatar_url($user->ID, ['size' => '70']),
-        'is_report_available' => get_user_meta($user->ID, 'is_report_available', true)
+        'avatar' => get_avatar_url( $user->ID, [ 'size' => '70' ] ),
+        'is_report_available' => get_user_meta( $user->ID, 'is_report_available', true )
       ];
     }
     

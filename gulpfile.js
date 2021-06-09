@@ -5,7 +5,7 @@ const themeAssetsPath = './web/app/themes/agentbudget/assets';
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
-const autoprefixer = require('gulp-autoprefixer');
+//const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const gulpBabel = require("gulp-babel");
 const rename = require('gulp-rename');
@@ -27,7 +27,7 @@ const paths = {
 function styles() {
   return gulp.src(paths.styles.src)
     .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer({grid: 'autoplace'}))
+    //.pipe(autoprefixer({grid: 'autoplace'}))
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(gulp.dest(paths.styles.dest));
 }

@@ -1,0 +1,35 @@
+{% extends "base.twig" %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+  <div class="auth-app d-lg-flex h-100">
+    {% include 'auth/partials/sidebar.twig' %}
+    <main>
+      <form class="auth-form h-100 py-5">
+        <div class="container-fluid h-100">
+          <div class="row h-100 align-items-center justify-content-center">
+            <div class="col-xl-11 col-xxl-8">
+              <h4 class="form-title fw-700 mb-3">Login to your account</h4>
+              <div class="mb-3">
+                <input type="text" class="form-control form-control-lg rounded" placeholder="Username or email" required>
+              </div>
+              <div class="mb-3">
+                <input type="password" class="form-control form-control-lg rounded" placeholder="********" required>
+              </div>
+              <small class="d-flex justify-content-between mb-3">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="remember_me">
+                  <label class="form-check-label" for="remember_me">Remember Me</label>
+                </div>
+                <div><a href="#">Forgot password?</a></div>
+              </small>
+              <button type="submit" class="btn btn-primary btn-lg mb-3">LOGIN TO YOUR ACCOUNT</button>
+              <small class="d-block">Not yet a member? <a href="#">Register now</a>.</small>
+            </div>
+          </div>
+        </div>
+      </form>
+    </main>
+  </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+body.page-template-login {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .page-wrap {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+//  AUTH APP
+.auth-app {
+  //background: url('../images/bubble-accent.png') no-repeat right top;
+  & > main {
+    padding-right: 10px;
+    padding-left: 10px;
+    @include media-breakpoint-up(lg) {
+      padding-right: 30px;
+      padding-left: 45px;
+      flex-grow: 1;
+    }
+  }
+}
+
+//  AUTH NAV
+.auth-nav {
+  background: $black;
+  @include media-breakpoint-up(lg) {
+    min-width: 545px;
+    height: 100%;
+  }
+  .navbar-brand {
+    max-width: 307px;
+  }
+  .navbar-slogan {
+    color: rgba(255,255,255,0.5);
+    font-size: rem-calc(18);
+    line-height: 23px;
+    white-space: initial;
+  }
+}
