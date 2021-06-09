@@ -5,6 +5,22 @@ $(document).ready(() => {
 
   $(document).on('click', 'a[href="#"]', e => e.preventDefault());
 
+  //  SHOW/HIDE PASSWORD
+  $('.showPass').on('click', function () {
+    const $input = $(this).prev();
+    if ($input.attr('type') === 'text') {
+      $input.attr('type', 'password');
+      $(this)
+        .removeClass('fa-eye-slash')
+        .addClass('fa-eye');
+    } else {
+      $input.attr('type', 'text');
+      $(this)
+        .removeClass('fa-eye')
+        .addClass('fa-eye-slash');
+    }
+  });
+
 });
 
 function storeDataToWP(DATA, redirect = '') {
