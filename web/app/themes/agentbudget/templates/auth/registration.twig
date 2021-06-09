@@ -6,28 +6,31 @@
   <div class="auth-app d-lg-flex h-100">
     {% include 'auth/partials/sidebar.twig' %}
     <main>
-      <form class="auth-form h-100 py-5" name="registerform" id="registerform" action="{{ site.link ~ '/wp/wp-login.php?action=register' }}" method="post">
+      <form class="auth-form h-100 py-5" action="" method="post">
         <div class="container-fluid h-100">
           <div class="row h-100 align-items-center justify-content-center">
             <div class="col-xl-11 col-xxl-8">
               <h4 class="form-title fw-700 mb-3">Register an account</h4>
+              {% if errors %}
+                {% for error in errors %}
+                  {{ error }}
+                {% endfor %}
+              {% endif %}
               <div class="mb-3">
-                <input id="user_login" name="log" type="text" class="form-control form-control-lg rounded" placeholder="Your name" required>
+                <input id="user_name" name="user_name" type="text" class="form-control form-control-lg rounded" placeholder="Your name" required>
               </div>
               <div class="mb-3">
-                <input id="user_email" name="email" type="email" class="form-control form-control-lg rounded" placeholder="Your email" required>
+                <input id="user_email" name="user_email" type="email" class="form-control form-control-lg rounded" placeholder="Your email" required>
               </div>
               <div class="mb-3">
-                <input id="user_pass" name="pwd" type="password" size="20" class="form-control form-control-lg rounded" placeholder="Create a password" required>
+                <input id="user_pass" name="user_password" type="password" min="8" size="20" class="form-control form-control-lg rounded" placeholder="Create a password" required>
                 <small class="form-text d-block mt-1">Must contain at least 8 characters</small>
               </div>
               <div class="mb-3">
-                <input id="user_pass_confirm" name="pwd_confirm" type="password" size="20" class="form-control form-control-lg rounded" placeholder="Confirm password" required>
+                <input id="user_pass_confirm" name="user_password_confirm" type="password" min="8" size="20" class="form-control form-control-lg rounded" placeholder="Confirm password" required>
               </div>
-              <input id="wp-submit" type="submit" value="CREATE YOUR ACCOUNT" name="wp-submit" class="btn btn-primary btn-lg mw-310 mb-3">
+              <input id="user_registration" type="submit" value="CREATE YOUR ACCOUNT" name="user_registration" class="btn btn-primary btn-lg mw-310 mb-3">
               <small class="d-block">Already registered? <a href="{{ site.link ~ '/login/' }}">Login now</a>.</small>
-              <input type="hidden" value="{{ site.link }}" name="redirect_to">
-              <input type="hidden" value="1" name="testcookie">
             </div>
           </div>
         </div>
