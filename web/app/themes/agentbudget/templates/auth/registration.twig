@@ -13,7 +13,7 @@
               <h4 class="form-title fw-700 mb-3">Register an account</h4>
               {% if errors %}
                 {% for error in errors %}
-                  {{ error }}
+                  <div class="alert alert-danger" role="alert">{{ error }}</div>
                 {% endfor %}
               {% endif %}
               <div class="mb-3">

@@ -5,7 +5,7 @@
 
 global $wpdb, $user_ID;
 
-if (!$user_ID) {
+if ( !$user_ID ) {
   $context = Timber::get_context();
   $post = new TimberPost();
   $context['post'] = $post;
@@ -42,7 +42,7 @@ if (!$user_ID) {
     
     if ( is_wp_error( $reg_errors ) ) {
       foreach ( $reg_errors->get_error_messages() as $error ) {
-        $context['errors'][] = '<div class="alert alert-danger" role="alert">' . $error . '</div>';
+        $context['errors'][] = $error;
       }
     }
     
@@ -59,14 +59,13 @@ if (!$user_ID) {
         'user_pass' => $password,
       ];
       $user = wp_insert_user( $userdata );
-      wp_redirect( home_url('login', 'relative') );
+      wp_redirect( home_url( 'login', 'relative' ) );
       exit;
     }
   }
   
   Timber::render( 'auth/registration.twig', $context );
-}
-else {
+} else {
   wp_redirect( home_url() );
   exit;
 }

@@ -6,28 +6,29 @@
   <div class="auth-app d-lg-flex h-100">
     {% include 'auth/partials/sidebar.twig' %}
     <main>
-      <form class="auth-form h-100 py-5" name="loginform" id="loginform" action="{{ site.link ~ '/wp/wp-login.php' }}" method="post">
+      <form class="auth-form h-100 py-5" action="" method="post">
         <div class="container-fluid h-100">
           <div class="row h-100 align-items-center justify-content-center">
             <div class="col-xl-11 col-xxl-8">
               <h4 class="form-title fw-700 mb-3">Login to your account</h4>
+              {% if error %}
+                <div class="alert alert-danger" role="alert">{{ error }}</div>
+              {% endif %}
               <div class="mb-3">
-                <input id="user_login" name="log" type="text" class="form-control form-control-lg rounded" placeholder="Username or email" required>
+                <input id="user_login" name="user_login" type="text" class="form-control form-control-lg rounded" placeholder="Username or email" required>
               </div>
               <div class="mb-3">
-                <input id="user_pass" name="pwd" type="password" size="20" class="form-control form-control-lg rounded" placeholder="********" required>
+                <input id="user_pass" name="user_password" type="password" size="20" class="form-control form-control-lg rounded" placeholder="********" required>
               </div>
               <small class="d-flex justify-content-between mb-2 max-w-310">
                 <div class="form-check">
-                  <input id="rememberme" type="checkbox" class="form-check-input" value="forever" name="rememberme">
+                  <input id="remember_me" type="checkbox" class="form-check-input" value="true" name="remember_me">
                   <label class="form-check-label" for="remember_me">Remember Me</label>
                 </div>
                 <div><a href="{{ site.link ~ '/forgot-password/' }}">Forgot password?</a></div>
               </small>
-              <input id="wp-submit" type="submit" value="LOGIN TO YOUR ACCOUNT" name="wp-submit" class="btn btn-primary btn-lg mw-310 mb-3">
+              <input type="submit" value="LOGIN TO YOUR ACCOUNT" name="user_auth" class="btn btn-primary btn-lg mw-310 mb-3">
               <small class="d-block">Not yet a member? <a href="{{ site.link ~ '/registration/' }}">Register now</a>.</small>
-              <input type="hidden" value="{{ site.link }}" name="redirect_to">
-              <input type="hidden" value="1" name="testcookie">
             </div>
           </div>
         </div>
