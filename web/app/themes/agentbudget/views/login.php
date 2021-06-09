@@ -13,11 +13,9 @@ $post = new TimberPost();
 $context['post'] = $post;
 
 if ( isset( $_POST['user_auth'] ) ) {
-  $login = $_POST['user_login'];
-  $password = $_POST['user_password'];
   $creds = [
-    'user_login' => $login,
-    'user_password' => $password,
+    'user_login' => $_POST['user_login'],
+    'user_password' => $_POST['user_password'],
     'remember' => isset( $_POST['remember_me'] ) ? true : false
   ];
   $user = wp_signon( $creds );

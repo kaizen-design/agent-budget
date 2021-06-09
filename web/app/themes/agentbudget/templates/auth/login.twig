@@ -17,8 +17,27 @@
               <div class="mb-3">
                 <input id="user_login" name="user_login" type="text" class="form-control form-control-lg rounded" placeholder="Username or email" required>
               </div>
-              <div class="mb-3">
+              <div class="mb-3 position-relative">
                 <input id="user_pass" name="user_password" type="password" size="20" class="form-control form-control-lg rounded" placeholder="********" required>
+                <i class="showPass far fa-eye"></i>
+                <script>
+                  jQuery(document).ready(($) => {
+                    $('.showPass').on('click', function () {
+                      const $input = $(this).prev();
+                      if ($input.attr('type') === 'text') {
+                        $input.attr('type', 'password');
+                        $(this)
+                          .removeClass('fa-eye-slash')
+                          .addClass('fa-eye');
+                      } else {
+                        $input.attr('type', 'text');
+                        $(this)
+                          .removeClass('fa-eye')
+                          .addClass('fa-eye-slash');
+                      }
+                    });
+                  });
+                </script>
               </div>
               <small class="d-flex justify-content-between mb-2 max-w-310">
                 <div class="form-check">

@@ -1,3 +1,35 @@
+//  MIXINS
+@mixin vertical-align($top: 50%, $translateY: 50%) {
+  position: absolute;
+  top: $top;
+  -webkit-transform: translateY(-$translateY);
+  -moz-transform: translateY(-$translateY);
+  -ms-transform: translateY(-$translateY);
+  -o-transform: translateY(-$translateY);
+  transform: translateY(-$translateY);
+}
+
+@mixin horizontal-align($left: 50%, $translateX: 50%) {
+  position: absolute;
+  left: $left;
+  -webkit-transform: translateX(-$translateX);
+  -moz-transform: translateX(-$translateX);
+  -ms-transform: translateX(-$translateX);
+  -o-transform: translateX(-$translateX);
+  transform: translateX(-$translateX);
+}
+
+@mixin vertical-horizontal-align($top: 50%, $translateY: 50%, $left: 50%, $translateX: 50%) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  -webkit-transform: translate(-$translateY, -$translateX);
+  -moz-transform: translate(-$translateY, -$translateX);
+  -ms-transform: translate(-$translateY, -$translateX);
+  -o-transform: translate(-$translateY, -$translateX);
+  transform: translate(-$translateY, -$translateX);
+}
+
 //  CALCULATE REM SIZE
 @function rem-calc($size) {
   $remSize: $size / 16;
@@ -7,35 +39,43 @@
 .mw-90 {
   min-width: 90px;
 }
+
 .mw-170 {
   min-width: 170px;
 }
+
 .mw-220 {
   min-width: 220px;
 }
+
 .mw-lg-170 {
   @include media-breakpoint-up(lg) {
     min-width: 170px;
   }
 }
+
 .mw-270 {
   min-width: 270px;
 }
+
 .mw-206 {
   min-width: 270px;
 }
+
 .mw-310 {
   min-width: 310px;
   @include media-breakpoint-down(md) {
     min-width: 100%;
   }
 }
+
 .mw-400 {
   min-width: 400px;
   @include media-breakpoint-down(md) {
     min-width: 100%;
   }
 }
+
 .mw-xxl-780 {
   @include media-breakpoint-up(xxl) {
     max-width: 780px;
@@ -54,21 +94,27 @@
 .fw-300 {
   font-weight: 300;
 }
+
 .fw-400 {
   font-weight: 400;
 }
+
 .fw-500 {
   font-weight: 500;
 }
+
 .fw-600 {
   font-weight: 600;
 }
+
 .fw-700 {
   font-weight: 700;
 }
+
 .fw-800 {
   font-weight: 800;
 }
+
 .fw-900 {
   font-weight: 900;
 }
@@ -76,6 +122,7 @@
 .fs-12 {
   font-size: rem-calc(12);
 }
+
 .fs-18 {
   font-size: rem-calc(18);
 }
