@@ -86,7 +86,7 @@ $theme-colors: (
   "info":       $info,
   "warning":    $warning,
   "danger":     $danger,
-  "light":      $light,
+  "light":      $white,
   "dark":       $dark,
   "pink":       $pink,
   "cyan":       $cyan,
@@ -890,8 +890,8 @@ $form-switch-checked-bg-position: right center !default;
 $input-group-addon-padding-y:           $input-padding-y !default;
 $input-group-addon-padding-x:           $input-padding-x !default;
 $input-group-addon-font-weight:         $input-font-weight !default;
-$input-group-addon-color:               $input-color !default;
-$input-group-addon-bg:                  $gray-200 !default;
+$input-group-addon-color:               #2C2C2F !default;
+$input-group-addon-bg:                  #E8EAED !default;
 $input-group-addon-border-color:        $input-border-color !default;
 // scss-docs-end input-group-variables
 

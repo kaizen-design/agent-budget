@@ -1,0 +1,52 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="questionnaire-app d-lg-flex h-100">
+    {% include 'questionnaire/partials/sidebar.twig' %}
+    <main>
+      <div class="my-profile-form h-100 py-5">
+        <div class="container-fluid h-100">
+          <div class="row h-100 align-items-center justify-content-center">
+            <div class="col-xl-11 col-xxl-9">
+              <h4 class="form-title mb-3 fw-700">My Profile</h4>
+              {% if user.avatar %}
+                <img src="{{ user.avatar }}"
+                     width="70"
+                     height="70"
+                     class="rounded-circle mb-3"
+                     alt="{{ user.first_name ? user.first_name : user.display_name|title }}">
+              {% endif %}
+              <div class="input-group mb-3">
+                <span class="input-group-text mw-170 px-3" id="name-addon">Name</span>
+                <input type="text" class="form-control form-control-lg rounded-end bg-light px-3" value="Amanda Nguyen" aria-label="Username" aria-describedby="name-addon" readonly>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text mw-170 px-3" id="birth-date-addon">Date of Birth</span>
+                <input type="text" class="form-control form-control-lg rounded-end bg-light px-3" value="07/24/1998" aria-label="Date of Birth" aria-describedby="birth-date-addon" readonly>
+              </div>
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text mw-170 px-3" id="city-addon">City</span>
+                    <input type="text" class="form-control form-control-lg rounded-end bg-light px-3" value="Laguna Niguel" aria-label="City" aria-describedby="city-addon" readonly>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text mw-170 px-3" id="state-addon">State</span>
+                    <input type="text" class="form-control form-control-lg rounded-end bg-light px-3" value="California" aria-label="State" aria-describedby="state-addon" readonly>
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text mw-170 px-3" id="country-addon">Country</span>
+                <input type="text" class="form-control form-control-lg rounded-end bg-light px-3" value="USA" aria-label="Country" aria-describedby="country-addon" readonly>
+              </div>
+              <a href="/edit-profile/" class="btn btn-primary btn-lg mt-4 mw-170">EDIT PROFILE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
