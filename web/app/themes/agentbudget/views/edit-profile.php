@@ -12,6 +12,10 @@ if ( !is_user_logged_in() ) {
   exit;
 }
 
+if ( isset( $_GET['change-password'] ) ) {
+  $context['is_change_password_tab'] = true;
+}
+
 if ( isset( $_POST['edit_profile'] ) ) {
   
   $user_name = $_POST['user_name'];

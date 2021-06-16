@@ -16,17 +16,17 @@
               {% endif %}
               <ul class="profile-tabs nav nav-tabs mb-4" id="profileTabs" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="true">General</button>
+                  <button class="nav-link {{ not is_change_password_tab ? 'active' }}" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="{{ not is_change_password_tab ? 'true' : 'false' }}">General</button>
                 </li>
                 <li class="nav-item" role="presentation">
                   <button class="nav-link" id="profile-photo-tab" data-bs-toggle="tab" data-bs-target="#profile-photo" type="button" role="tab" aria-controls="profile-photo" aria-selected="false">Profile Photo</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="email-pass-tab" data-bs-toggle="tab" data-bs-target="#email-pass" type="button" role="tab" aria-controls="email-pass" aria-selected="false">Email & Password</button>
+                  <button class="nav-link {{ is_change_password_tab ? 'active'}}" id="email-pass-tab" data-bs-toggle="tab" data-bs-target="#email-pass" type="button" role="tab" aria-controls="email-pass" aria-selected="{{ is_change_password_tab ? 'true' : false }}">Email & Password</button>
                 </li>
               </ul>
               <div class="tab-content" id="profile-photoTabsContent">
-                <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                <div class="tab-pane fade {{ not is_change_password_tab ? 'show active' }}" id="general" role="tabpanel" aria-labelledby="general-tab">
                   <div class="mb-3 row align-items-center">
                     <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
@@ -115,7 +115,7 @@
                     For better results, ensure to upload an image where height and width are approximately equal.  JPG image format only.
                   </div>
                 </div>
-                <div class="tab-pane fade" id="email-pass" role="tabpanel" aria-labelledby="email-pass-tab">
+                <div class="tab-pane fade {{ is_change_password_tab ? 'show active' }}" id="email-pass" role="tabpanel" aria-labelledby="email-pass-tab">
                   <div class="mb-3 row">
                     <label for="inputEmail" name="user_email" class="col-sm-2 col-form-label mt-1">Email</label>
                     <div class="col-sm-10">
