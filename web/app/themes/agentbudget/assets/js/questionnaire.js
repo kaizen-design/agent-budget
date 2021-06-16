@@ -49,7 +49,8 @@ $(document).ready(() => {
   });
 
   //  NAV MENU
-  $('.questionnaire-nav .list-group-item-action').on('click', function () {
+  $('.questionnaire-nav .list-group-item-action').on('click', function (e) {
+    e.preventDefault();
     const menuID = $(this).data('id');
     const formID = $(this).data('form-id');
     setActiveNavItem(menuID);
