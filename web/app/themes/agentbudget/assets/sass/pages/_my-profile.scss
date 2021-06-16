@@ -29,6 +29,12 @@ body.page-template-edit-profile {
   .form-control {
     color: #6C6D6F;
   }
+  .alert-warning {
+    font-size: rem-calc(12);
+    color: #2C2C2F;
+    border-color: #FA8220;
+    background: #FEEEDE;
+  }
 }
 
 //  PROFILE TABS

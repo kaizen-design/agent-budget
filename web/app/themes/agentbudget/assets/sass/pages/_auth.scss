@@ -53,15 +53,17 @@ body.page-template-forgot-password {
     color: #2C2C2F;
     font-size: rem-calc(12);
   }
-  .showPass {
-    position: absolute;
-    @include vertical-align();
-    right: 1rem;
-    color: #2C2C2F;
-    font-size: rem-calc(20);
-    &:hover {
-      color: $primary;
-      cursor: pointer;
-    }
+}
+
+//  SHOW PASSWORD
+.showPass {
+  position: absolute;
+  @include vertical-align();
+  right: 1rem;
+  color: #2C2C2F;
+  font-size: rem-calc(20);
+  &:hover {
+    color: $primary;
+    cursor: pointer;
   }
 }

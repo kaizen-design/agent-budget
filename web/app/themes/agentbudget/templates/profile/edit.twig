@@ -378,10 +378,48 @@
                   </div>
                 </div>
                 <div class="tab-pane fade" id="profile-photo" role="tabpanel" aria-labelledby="profile-photo-tab">
-                
+                  <div class="d-flex mb-4 align-items-center">
+                    {% if user.avatar %}
+                      <img src="{{ user.avatar }}"
+                           width="70"
+                           height="70"
+                           class="rounded-circle me-3"
+                           alt="{{ user.display_name|title }}">
+                    {% endif %}
+                    <small>Current Photo</small>
+                  </div>
+                  <input class="form-control form-control-lg rounded mb-3" id="inputFile" type="file">
+                  <div class="alert alert-warning mb-0 text-center" role="alert">
+                    For better results, ensure to upload an image where height and width are approximately equal.  JPG image format only.
+                  </div>
                 </div>
                 <div class="tab-pane fade" id="email-pass" role="tabpanel" aria-labelledby="email-pass-tab">
-                
+                  <div class="mb-3 row">
+                    <label for="inputEmail" class="col-sm-2 col-form-label mt-1">Email</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control form-control-lg bg-light px-3 rounded" id="inputEmail" value="{{ user.email }}" readonly>
+                      <small class="form-text d-block fs-12">This field was used in registration and cannot be changed</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label mt-1">Password</label>
+                    <div class="col-sm-10">
+                      <div class="position-relative">
+                        <input type="password" class="form-control form-control-lg bg-light px-3 rounded" id="inputPassword" value="********" readonly>
+                        <i class="showPass far fa-eye"></i>
+                      </div>
+                      <a href="#" class="changePasswordBtn form-text text-primary d-inline-block fs-12">Change password</a>
+                    </div>
+                  </div>
+                  <div class="row align-items-center">
+                    <label for="inputConfirm" class="col-sm-2 col-form-label">Confirm</label>
+                    <div class="col-sm-10">
+                      <div class="position-relative">
+                        <input type="password" class="form-control form-control-lg bg-light px-3 rounded" id="inputConfirm" value="********" readonly>
+                        <i class="showPass far fa-eye"></i>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <button type="submit" class="btn btn-primary btn-lg mt-4 mw-170">SAVE CHANGES</button>
