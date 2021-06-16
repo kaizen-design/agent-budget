@@ -14,11 +14,11 @@
                      width="70"
                      height="70"
                      class="rounded-circle mb-3"
-                     alt="{{ user.first_name ? user.first_name : user.display_name|title }}">
+                     alt="{{ user.display_name|title }}">
               {% endif %}
               <div class="input-group mb-3">
                 <span class="input-group-text mw-170 px-3" id="name-addon">Name</span>
-                <input type="text" class="form-control form-control-lg rounded-end bg-light px-3" value="Amanda Nguyen" aria-label="Username" aria-describedby="name-addon" readonly>
+                <input type="text" class="form-control form-control-lg rounded-end bg-light px-3" value="{{ user.display_name|title }}" aria-label="Username" aria-describedby="name-addon" readonly>
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text mw-170 px-3" id="birth-date-addon">Date of Birth</span>

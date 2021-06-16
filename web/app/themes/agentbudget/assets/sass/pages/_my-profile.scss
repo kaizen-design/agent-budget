@@ -1,4 +1,5 @@
-body.page-template-my-profile {
+body.page-template-my-profile,
+body.page-template-edit-profile {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -14,5 +15,38 @@ body.page-template-my-profile {
 .my-profile-form {
   .form-title {
     font-size: rem-calc(21);
+  }
+}
+
+//  EDIT PROFILE FORM
+.edit-profile-form {
+  .form-title {
+    font-size: rem-calc(21);
+  }
+  .col-form-label {
+    color: #2C2C2F;
+  }
+  .form-control {
+    color: #6C6D6F;
+  }
+}
+
+//  PROFILE TABS
+.profile-tabs {
+  border-bottom: 1px solid #ECEBEB;
+  .nav-item {
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+    .nav-link {
+      color: #6C6D6F;
+      border: none;
+      padding: .75rem 0;
+      &.active {
+        color: $primary;
+        border-bottom: 3px solid $primary;
+        font-weight: bold;
+      }
+    }
   }
 }
