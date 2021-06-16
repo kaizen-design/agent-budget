@@ -43,6 +43,7 @@ class AgentBudget extends TimberSite {
     if ( is_user_logged_in() ) {
       $context['is_user_logged_in'] = TRUE;
       $user = wp_get_current_user();
+      $profile_image = get_user_meta( $user->ID, 'profile_image', true );
       $context['user'] = [
         'id' => $user->ID,
         'email' => $user->user_email,
@@ -56,7 +57,7 @@ class AgentBudget extends TimberSite {
         'city' => get_user_meta( $user->ID, 'city', true ),
         'state' => get_user_meta( $user->ID, 'state', true ),
         'country' => get_user_meta( $user->ID, 'country', true ),
-        'avatar' => get_user_meta( $user->ID, 'profile_image', true ) ? get_user_meta( $user->ID, 'profile_image', true ) : get_avatar_url( $user->ID, [ 'size' => '70' ] ),
+        'avatar' => $profile_image ? $profile_image : get_avatar_url( $user->ID, [ 'size' => '70' ] ),
         'is_report_available' => get_user_meta( $user->ID, 'is_report_available', true )
       ];
     }

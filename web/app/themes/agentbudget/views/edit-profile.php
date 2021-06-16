@@ -52,8 +52,6 @@ if ( isset( $_POST['edit_profile'] ) ) {
   }
   
   if ( isset( $_FILES['user_profile_image'] ) ) {
-    if ( ! function_exists( 'wp_handle_upload' ) )
-      require_once( ABSPATH . 'wp-admin/includes/file.php' );
     $movefile = wp_handle_upload( $_FILES['user_profile_image'], [ 'test_form' => false ] );
     update_user_meta( $context['user']['id'], 'profile_image', $movefile['url'] );
   }
