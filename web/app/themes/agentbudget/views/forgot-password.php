@@ -26,10 +26,10 @@ if ( isset( $_POST['reset_password'] ) ) {
     $random_password = wp_generate_password( 12, false );
     $user = get_user_by( 'email', $email );
     
-    $update_user = wp_update_user( array(
+    $update_user = wp_update_user( [
         'ID' => $user->ID,
         'user_pass' => $random_password
-      )
+      ]
     );
     
     // if  update user return true then lets send user an email containing the new password

@@ -43,6 +43,7 @@ class AgentBudget extends TimberSite {
     if ( is_user_logged_in() ) {
       $context['is_user_logged_in'] = TRUE;
       $user = wp_get_current_user();
+      //var_dump($user);
       $context['user'] = [
         'id' => $user->ID,
         'email' => $user->user_email,
@@ -50,6 +51,12 @@ class AgentBudget extends TimberSite {
         'first_name' => $user->first_name,
         'last_name' => $user->last_name,
         'display_name' => $user->display_name,
+        'birth_month' => get_user_meta( $user->ID, 'birth_month', true ),
+        'birth_day' => get_user_meta( $user->ID, 'birth_day', true ),
+        'birth_year' => get_user_meta( $user->ID, 'birth_year', true ),
+        'city' => get_user_meta( $user->ID, 'city', true ),
+        'state' => get_user_meta( $user->ID, 'state', true ),
+        'country' => get_user_meta( $user->ID, 'country', true ),
         'avatar' => get_avatar_url( $user->ID, [ 'size' => '70' ] ),
         'is_report_available' => get_user_meta( $user->ID, 'is_report_available', true )
       ];

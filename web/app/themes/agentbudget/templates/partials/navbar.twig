@@ -13,9 +13,9 @@
                  width="34"
                  height="34"
                  class="rounded-circle me-1"
-                 alt="{{ user.first_name ? user.first_name : user.display_name|title }}">
+                 alt="{{ user.display_name|title }}">
           {% endif %}
-          Hi, <strong class="fw-700">{{ user.first_name ? user.first_name : user.display_name|title }}</strong>
+          Hi, <strong class="fw-700">{{ user.display_name|title }}</strong>
         </button>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuDropdown">
           <li><a class="dropdown-item" href="/my-profile/">My Profile</a></li>
