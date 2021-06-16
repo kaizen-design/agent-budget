@@ -40,6 +40,13 @@ if ( isset( $_POST['edit_profile'] ) ) {
     update_user_meta( $context['user']['id'], 'country', $user_country );
   }
   
+  if ( isset( $_FILES['user_profile_image'] ) ) {
+    if ( ! function_exists( 'wp_handle_upload' ) )
+      require_once( ABSPATH . 'wp-admin/includes/file.php' );
+    $movefile = wp_handle_upload( $_FILES['user_profile_image'], [ 'test_form' => false ] );
+    update_user_meta( $context['user']['id'], 'profile_image', $movefile['url'] );
+  }
+  
   $update_user = wp_update_user( [
     'ID' => $context['user']['id'],
     'display_name' => $_POST['user_name'],
@@ -50,7 +57,7 @@ if ( isset( $_POST['edit_profile'] ) ) {
   } else {
     $context['msg']['error'] = 'Oops, something went wrong updating your account.';
   }
-  //wp_redirect( home_url('edit-profile', 'relative') );
+  wp_redirect( home_url('edit-profile', 'relative') );
 }
 
 Timber::render( 'profile/edit.twig', $context );
