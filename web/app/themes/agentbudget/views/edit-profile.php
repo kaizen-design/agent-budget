@@ -21,6 +21,13 @@ if ( isset( $_POST['edit_profile'] ) ) {
   $user_city = $_POST['user_city'];
   $user_state = $_POST['user_state'];
   $user_country = $_POST['user_country'];
+  $password = $_POST['user_password'];
+  $password_confirm = $_POST['user_password_confirm'];
+  
+  $args = [
+    'ID' => $context['user']['id'],
+    'display_name' => $user_name,
+  ];
   
   if ( !empty( $user_birth_month ) && !empty( $user_birth_day ) && !empty( $user_birth_year ) ) {
     update_user_meta( $context['user']['id'], 'birth_month', $user_birth_month );
@@ -47,10 +54,11 @@ if ( isset( $_POST['edit_profile'] ) ) {
     update_user_meta( $context['user']['id'], 'profile_image', $movefile['url'] );
   }
   
-  $update_user = wp_update_user( [
-    'ID' => $context['user']['id'],
-    'display_name' => $_POST['user_name'],
-  ] );
+  if ( !empty( $password ) && !empty( $password_confirm ) && $password === $password_confirm ) {
+    $args['user_pass'] = $password;
+  }
+  
+  $update_user = wp_update_user( $args );
   
   if ( $update_user ) {
     $context['msg']['success'] = 'Your account information has been successfully updated.';
