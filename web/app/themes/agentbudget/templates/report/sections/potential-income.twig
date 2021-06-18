@@ -14,7 +14,9 @@
         </ul>
       </div>
     </h2>
-    <p class="lead mb-5">The monkey-rope is found in all whalers; but it was only in the <strong class="fw-800">Pequod that the monkey</strong> and his holder were ever tied together. This improvement upon the original usage was introduced by no less a man than Stubb, in order to afford the imperilled harpooneer the strongest possible guarantee for the faithfulness and.</p>
+    {% if post.potential_income_description %}
+      <p class="lead mb-5">{{ post.potential_income_description }}</p>
+    {% endif %}
     <div class="row">
       <div class="col-sm-6 col-md-4 col-lg-2 mb-3">
         <div class="report-card rounded border-bottom border-8 border-secondary py-3 px-2 text-center">

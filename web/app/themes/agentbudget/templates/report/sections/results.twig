@@ -4,7 +4,9 @@
       <small class="d-block mb-3">YOUR RESULTS</small>
       The Bottom Line
     </h2>
-    <p class="lead mb-5">I have hinted that I would often jerk poor Queequeg from between the whale and the ship—where he would occasionally fall, from the incessant rolling and swaying of both. But this was not the <strong class="fw-800">only jamming jeopardy</strong> he was exposed to. Unappalled by the massacre made upon them during the night, the sharks now freshly.</p>
+    {% if post.bottom_line_description %}
+      <p class="lead mb-5">{{ post.bottom_line_description }}</p>
+    {% endif %}
     <div class="row">
       <div class="col-md-4 mb-3">
         <div class="report-card rounded border-bottom border-8 border-secondary py-3 px-2 text-center">
@@ -31,7 +33,9 @@
         </div>
       </div>
     </div>
-    <small class="report-disclaimer d-block">DISCLAIMER:  The monkey-rope is found in all whalers; but it was only in the Pequod that the monkey and his holder were ever tied together. This improvement upon the original usage was introduced by no less a man than Stubb, in order to afford the imperilled harpooneer the strongest possible guarantee for the faithfulness and.</small>
+    {% if post.disclaimer %}
+      <small class="report-disclaimer d-block">{{ post.disclaimer }}</small>
+    {% endif %}
     <h2 class="mb-0 text-center fw-800 mt-5">Congratulations, {{ user.first_name ? user.first_name : user.display_name|title }}! You are on track to meet your goals.</h2>
   </div>
 </section>

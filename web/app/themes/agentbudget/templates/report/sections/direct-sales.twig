@@ -14,7 +14,9 @@
         </ul>
       </div>
     </h2>
-    <p class="lead mb-5">Being the savage's bowsman, that is, the person who pulled the bow-oar in his boat (the second one from forward), it was my cheerful duty to attend upon him while taking that hard-scrabble scramble upon the dead whale's back. You have seen <strong class="fw-800">Italian organ-boys</strong> holding a dancing-ape by a long cord. Just so, from the.</p>
+    {% if post.direct_sales_description %}
+      <p class="lead mb-5">{{ post.direct_sales_description }}</p>
+    {% endif %}
     <div class="row justify-content-center">
       {% if report.direct_sales.my_farm_properties %}
         <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
