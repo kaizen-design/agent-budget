@@ -24,7 +24,9 @@
             <div class="row align-items-center">
               <div class="col-lg-9 border-end px-3">
                 <h4 class="mb-0">Spiritual</h4>
-                <p class="mb-0">It was a humorously perilous business for both of us. For, before we proceed further, it must be said that.</p>
+                {% if post.meta('goals_descriptions').spiritual %}
+                  <p class="mb-0">{{ post.meta('goals_descriptions').spiritual }}</p>
+                {% endif %}
               </div>
               <div class="col-lg-3 text-center">
                 <span class="score-value d-block">
@@ -42,8 +44,8 @@
             <div class="row align-items-center">
               <div class="col-lg-9 border-end px-3">
                 <h4 class="mb-0">Relational</h4>
-                {% if post.meta('goals_descriptions').spiritual %}
-                  <p class="mb-0">{{ post.meta('goals_descriptions').spiritual }}</p>
+                {% if post.meta('goals_descriptions').relational %}
+                  <p class="mb-0">{{ post.meta('goals_descriptions').relational }}</p>
                 {% endif %}
               </div>
               <div class="col-lg-3 text-center">
