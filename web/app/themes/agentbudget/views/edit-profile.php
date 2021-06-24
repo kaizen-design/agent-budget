@@ -51,7 +51,9 @@ if ( isset( $_POST['edit_profile'] ) ) {
     update_user_meta( $context['user']['id'], 'country', $user_country );
   }
   
-  if ( isset( $_FILES['user_profile_image'] ) ) {
+  var_dump($_FILES);
+  
+  if ( isset( $_FILES['user_profile_image'] ) && $_FILES['user_profile_image']['size'] !== 0 && $_FILES['user_profile_image']['error'] === 0 ) {
     if ( ! function_exists( 'wp_handle_upload' ) )
       require_once( ABSPATH . 'wp-admin/includes/file.php' );
     $movefile = wp_handle_upload( $_FILES['user_profile_image'], [ 'test_form' => false ] );
